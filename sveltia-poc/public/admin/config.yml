@@ -1,0 +1,46 @@
+# Sveltia CMS Configuration - Proof of Concept
+# Testing Git-based content management workflow
+
+# Backend configuration (GitHub)
+backend:
+  name: test-repo # Using test-repo for local development
+  # For production deployment with GitHub OAuth:
+  # name: github
+  # repo: your-org/your-repo
+  # branch: main
+
+# Local development support
+local_backend: true
+
+# Media storage
+media_folder: "public/images"
+public_folder: "/images"
+
+# Collections define the content types
+collections:
+  # Pages collection - basic page content
+  - name: "pages"
+    label: "Pages"
+    folder: "src/content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Description", name: "description", widget: "text", required: true, hint: "SEO meta description (155 characters recommended)" }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime", required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+
+  # Blog posts collection
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - { label: "Author", name: "author", widget: "string", default: "Staff Writer" }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime", required: true }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", default: ["uncategorized"] }
+      - { label: "Body", name: "body", widget: "markdown", required: true }

@@ -1,0 +1,46 @@
+---
+import { getEntry } from 'astro:content';
+
+// Fetch the home page content
+const homePage = await getEntry('pages', 'home');
+const { Content } = await homePage.render();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={homePage.data.description} />
+		<title>{homePage.data.title}</title>
+		<style>
+			body {
+				font-family: system-ui, -apple-system, sans-serif;
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 2rem;
+				line-height: 1.6;
+			}
+			h1 { color: #2563eb; }
+			.admin-link {
+				display: inline-block;
+				margin: 2rem 0;
+				padding: 1rem 2rem;
+				background: #2563eb;
+				color: white;
+				text-decoration: none;
+				border-radius: 0.5rem;
+			}
+			.admin-link:hover { background: #1d4ed8; }
+		</style>
+	</head>
+	<body>
+		<Content />
+		<a href="/admin" class="admin-link">Open Sveltia CMS Admin Panel →</a>
+		<hr />
+		<p><strong>POC Status:</strong> Sveltia CMS integrated and ready for testing.</p>
+		<p><a href="/blog">View Blog Posts →</a></p>
+	</body>
+</html>
