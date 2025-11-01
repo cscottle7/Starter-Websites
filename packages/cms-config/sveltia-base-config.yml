@@ -1,0 +1,71 @@
+# Sveltia CMS Base Configuration Template
+# Copy this file to sites/client-name/public/admin/config.yml and customize
+
+backend:
+  name: github
+  repo: your-org/starter-template  # Update with your GitHub repo
+  branch: main
+  base_url: https://api.netlify.com  # For Netlify OAuth
+  auth_endpoint: auth
+
+# Use editorial workflow for content review
+publish_mode: editorial_workflow
+
+# Media configuration
+media_folder: "src/assets/images"
+public_folder: "/images"
+
+# File slugs
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# Collections
+collections:
+  - name: "pages"
+    label: "Pages"
+    folder: "src/content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "SEO Description", name: "description", widget: "text", required: true }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "SEO Description", name: "description", widget: "text", required: true }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image", required: true }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "config"
+    label: "Site Configuration"
+    files:
+      - name: "navigation"
+        label: "Navigation"
+        file: "src/content/config/navigation.json"
+        fields:
+          - label: "Main Navigation"
+            name: "mainNav"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Footer Links"
+            name: "footerLinks"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }

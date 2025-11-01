@@ -1,0 +1,45 @@
+---
+/**
+ * Section - Content section wrapper
+ *
+ * @example
+ * ```astro
+ * <Section>
+ *   <h2>Section Title</h2>
+ *   <p>Section content</p>
+ * </Section>
+ * ```
+ */
+
+interface Props {
+  class?: string;
+  backgroundColor?: string;
+}
+
+const { class: className = '', backgroundColor = '#fff' } = Astro.props;
+---
+
+<section class:list={['section', className]} style={`background-color: ${backgroundColor}`}>
+  <div class="container">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    width: 100%;
+    padding: 4rem 0;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 2rem 0;
+    }
+  }
+</style>

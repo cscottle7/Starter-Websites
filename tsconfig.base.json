@@ -1,0 +1,23 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "baseUrl": ".",
+    "paths": {
+      "@workspace/ui-components": ["packages/ui-components/src/index.ts"],
+      "@workspace/seo-utils": ["packages/seo-utils/src/index.ts"],
+      "@workspace/cms-config": ["packages/cms-config/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist", ".nx"]
+}

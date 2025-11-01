@@ -1,0 +1,82 @@
+---
+/**
+ * Image - Optimized image wrapper with responsive sizing
+ *
+ * @example
+ * ```astro
+ * <Image
+ *   src="/images/hero.jpg"
+ *   alt="Team collaboration in modern office"
+ *   width={1200}
+ *   height={600}
+ *   loading="lazy"
+ * />
+ * ```
+ */
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+  sizes?: string;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  aspectRatio?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  loading = 'lazy',
+  class: className = '',
+  sizes,
+  objectFit = 'cover',
+  aspectRatio,
+} = Astro.props;
+
+// Validate alt text is provided (accessibility requirement)
+if (!alt && alt !== '') {
+  throw new Error('Image component requires alt text for accessibility. Use alt="" for decorative images.');
+}
+---
+
+<div class:list={['image-wrapper', className]} style={aspectRatio ? `aspect-ratio: ${aspectRatio}` : undefined}>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    sizes={sizes}
+    class="image"
+    style={`object-fit: ${objectFit}`}
+  />
+</div>
+
+<style>
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* Aspect ratio container */
+  .image-wrapper[style*="aspect-ratio"] .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

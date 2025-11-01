@@ -1,0 +1,35 @@
+{
+  "name": "starter-template",
+  "version": "1.0.0",
+  "description": "Multi-Site Website Development System with Astro + Sveltia CMS",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "nx run-many --target=dev --all",
+    "build": "nx run-many --target=build --all",
+    "lint": "nx run-many --target=lint --all",
+    "type-check": "nx run-many --target=type-check --all",
+    "test": "nx run-many --target=test --all",
+    "create-client": "node scripts/create-client-site.mjs"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "astro": "^5.0.0",
+    "eslint": "^8.57.0",
+    "nx": "^17.2.0",
+    "prettier": "^3.1.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.2.0",
+    "vitest": "^1.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "sites/*"
+  ],
+  "packageManager": "pnpm@10.20.0",
+  "dependencies": {
+    "schema-dts": "^1.1.5"
+  }
+}

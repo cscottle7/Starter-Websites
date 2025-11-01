@@ -37,7 +37,15 @@
       "Bash(test:*)",
       "Bash(touch:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(node:*)",
+      "Bash(npm --version)",
+      "Bash(pnpm:*)",
+      "Bash(npx nx graph:*)"
     ],
     "deny": [],
     "ask": []

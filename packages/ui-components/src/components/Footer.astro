@@ -1,0 +1,59 @@
+---
+/**
+ * Footer - Site footer with links
+ *
+ * @example
+ * ```astro
+ * <Footer copyright="© 2025 My Company" />
+ * ```
+ */
+
+interface Props {
+  copyright: string;
+}
+
+const { copyright } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <slot />
+    </div>
+    <div class="copyright">
+      {copyright.replace('{{year}}', currentYear.toString())}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 2rem 0;
+    background-color: #111827;
+    color: #fff;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .copyright {
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.875rem;
+  }
+</style>

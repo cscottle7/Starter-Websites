@@ -1,0 +1,23 @@
+{
+  "name": "ui-components",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ui-components/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint . --ext .ts,.astro",
+        "cwd": "packages/ui-components"
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "packages/ui-components"
+      }
+    }
+  },
+  "tags": ["type:library", "scope:shared"]
+}

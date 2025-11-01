@@ -1,0 +1,134 @@
+{
+  "graph": {
+    "nodes": {
+      "ui-components": {
+        "name": "ui-components",
+        "type": "lib",
+        "data": {
+          "root": "packages/ui-components",
+          "name": "ui-components",
+          "targets": {
+            "lint": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "eslint . --ext .ts,.astro",
+                "cwd": "packages/ui-components"
+              },
+              "configurations": {}
+            },
+            "type-check": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "tsc --noEmit",
+                "cwd": "packages/ui-components"
+              },
+              "configurations": {}
+            },
+            "nx-release-publish": {
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "executor": "@nx/js:release-publish",
+              "options": {},
+              "configurations": {}
+            }
+          },
+          "sourceRoot": "packages/ui-components/src",
+          "projectType": "library",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "tags": [
+            "type:library",
+            "scope:shared"
+          ],
+          "implicitDependencies": []
+        }
+      },
+      "@workspace/cms-config": {
+        "name": "@workspace/cms-config",
+        "type": "lib",
+        "data": {
+          "root": "packages/cms-config",
+          "targets": {
+            "nx-release-publish": {
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "executor": "@nx/js:release-publish",
+              "options": {},
+              "configurations": {}
+            }
+          },
+          "sourceRoot": "packages/cms-config",
+          "name": "@workspace/cms-config",
+          "projectType": "library",
+          "implicitDependencies": [],
+          "tags": []
+        }
+      },
+      "seo-utils": {
+        "name": "seo-utils",
+        "type": "lib",
+        "data": {
+          "root": "packages/seo-utils",
+          "name": "seo-utils",
+          "targets": {
+            "lint": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "eslint . --ext .ts",
+                "cwd": "packages/seo-utils"
+              },
+              "configurations": {}
+            },
+            "type-check": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "tsc --noEmit",
+                "cwd": "packages/seo-utils"
+              },
+              "configurations": {}
+            },
+            "test": {
+              "executor": "nx:run-commands",
+              "options": {
+                "command": "vitest run",
+                "cwd": "packages/seo-utils"
+              },
+              "configurations": {}
+            },
+            "test:watch": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "test:watch"
+              },
+              "configurations": {}
+            },
+            "nx-release-publish": {
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "executor": "@nx/js:release-publish",
+              "options": {},
+              "configurations": {}
+            }
+          },
+          "sourceRoot": "packages/seo-utils/src",
+          "projectType": "library",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "tags": [
+            "type:library",
+            "scope:shared"
+          ],
+          "implicitDependencies": []
+        }
+      }
+    },
+    "dependencies": {
+      "ui-components": [],
+      "@workspace/cms-config": [],
+      "seo-utils": []
+    }
+  },
+  "affectedProjects": [],
+  "criticalPath": []
+}

@@ -1,0 +1,51 @@
+---
+/**
+ * FormGroup - Wrapper for form fields with consistent spacing
+ *
+ * @example
+ * ```astro
+ * <FormGroup>
+ *   <Input label="Name" name="name" required />
+ *   <Input label="Email" name="email" type="email" required />
+ *   <Textarea label="Message" name="message" rows={5} />
+ * </FormGroup>
+ * ```
+ */
+
+interface Props {
+  class?: string;
+  spacing?: 'compact' | 'normal' | 'relaxed';
+}
+
+const { class: className = '', spacing = 'normal' } = Astro.props;
+
+const spacingClasses = {
+  compact: 'gap-3',
+  normal: 'gap-4',
+  relaxed: 'gap-6',
+};
+---
+
+<div class:list={['form-group', spacingClasses[spacing], className]}>
+  <slot />
+</div>
+
+<style>
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .gap-3 {
+    gap: 0.75rem;
+  }
+
+  .gap-4 {
+    gap: 1rem;
+  }
+
+  .gap-6 {
+    gap: 1.5rem;
+  }
+</style>

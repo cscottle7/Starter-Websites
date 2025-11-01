@@ -1,0 +1,59 @@
+---
+/**
+ * Container - Centered content container with max-width
+ *
+ * @example
+ * ```astro
+ * <Container>
+ *   <p>Centered content</p>
+ * </Container>
+ * ```
+ */
+
+interface Props {
+  class?: string;
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+}
+
+const { class: className = '', maxWidth = 'lg' } = Astro.props;
+
+const maxWidthClasses = {
+  sm: 'max-w-screen-sm',
+  md: 'max-w-screen-md',
+  lg: 'max-w-screen-lg',
+  xl: 'max-w-screen-xl',
+  full: 'max-w-full',
+};
+---
+
+<div class:list={['container', maxWidthClasses[maxWidth], className]}>
+  <slot />
+</div>
+
+<style>
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .max-w-screen-sm {
+    max-width: 640px;
+  }
+
+  .max-w-screen-md {
+    max-width: 768px;
+  }
+
+  .max-w-screen-lg {
+    max-width: 1024px;
+  }
+
+  .max-w-screen-xl {
+    max-width: 1280px;
+  }
+
+  .max-w-full {
+    max-width: 100%;
+  }
+</style>

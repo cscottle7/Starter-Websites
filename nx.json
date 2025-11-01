@@ -1,0 +1,40 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "test": {
+      "cache": true
+    },
+    "type-check": {
+      "cache": true
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "production": [
+      "default",
+      "!{projectRoot}/**/*.spec.ts",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/.eslintrc.json"
+    ]
+  },
+  "affected": {
+    "defaultBase": "main"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "type-check"]
+      }
+    }
+  },
+  "parallel": 3,
+  "cacheDirectory": ".nx/cache"
+}

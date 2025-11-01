@@ -1,0 +1,148 @@
+---
+/**
+ * Input - Form input with label and validation
+ *
+ * @example
+ * ```astro
+ * <Input
+ *   label="Email Address"
+ *   type="email"
+ *   name="email"
+ *   placeholder="you@example.com"
+ *   required
+ * />
+ * ```
+ */
+
+interface Props {
+  label: string;
+  type?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'number' | 'date';
+  name: string;
+  id?: string;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  value?: string;
+  autocomplete?: string;
+  pattern?: string;
+  minlength?: number;
+  maxlength?: number;
+  min?: number | string;
+  max?: number | string;
+  step?: number | string;
+  class?: string;
+  error?: string;
+}
+
+const {
+  label,
+  type = 'text',
+  name,
+  id = name,
+  placeholder,
+  required = false,
+  disabled = false,
+  value,
+  autocomplete,
+  pattern,
+  minlength,
+  maxlength,
+  min,
+  max,
+  step,
+  class: className = '',
+  error,
+} = Astro.props;
+---
+
+<div class:list={['input-wrapper', className]}>
+  <label for={id} class="input-label">
+    {label}
+    {required && <span class="required-indicator" aria-label="required">*</span>}
+  </label>
+  <input
+    type={type}
+    name={name}
+    id={id}
+    placeholder={placeholder}
+    required={required}
+    disabled={disabled}
+    value={value}
+    autocomplete={autocomplete}
+    pattern={pattern}
+    minlength={minlength}
+    maxlength={maxlength}
+    min={min}
+    max={max}
+    step={step}
+    class:list={['input-field', { 'input-error': error }]}
+    aria-invalid={error ? 'true' : undefined}
+    aria-describedby={error ? `${id}-error` : undefined}
+  />
+  {error && (
+    <div id={`${id}-error`} class="error-message" role="alert">
+      {error}
+    </div>
+  )}
+</div>
+
+<style>
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .input-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    display: block;
+  }
+
+  .required-indicator {
+    color: #ef4444;
+    margin-left: 0.25rem;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    font-size: 1rem;
+    font-family: inherit;
+    line-height: 1.5;
+    color: #1f2937;
+    background-color: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    transition: all 0.15s;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .input-field:disabled {
+    background-color: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+  }
+
+  .input-field.input-error {
+    border-color: #ef4444;
+  }
+
+  .input-field.input-error:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+
+  .error-message {
+    font-size: 0.875rem;
+    color: #ef4444;
+    margin-top: 0.25rem;
+  }
+</style>

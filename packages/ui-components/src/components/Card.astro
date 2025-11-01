@@ -1,0 +1,97 @@
+---
+/**
+ * Card - Content card with image, title, description, and link
+ *
+ * @example
+ * ```astro
+ * <Card
+ *   title="Card Title"
+ *   description="Card description text"
+ *   image="/images/card.jpg"
+ *   imageAlt="Card image description"
+ *   link="/learn-more"
+ * />
+ * ```
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  link?: string;
+}
+
+const { title, description, image, imageAlt = '', link } = Astro.props;
+const CardTag = link ? 'a' : 'div';
+---
+
+<CardTag href={link} class="card">
+  {image && (
+    <div class="image-wrapper">
+      <img src={image} alt={imageAlt} class="image" />
+    </div>
+  )}
+  <div class="content">
+    <h3 class="title">{title}</h3>
+    <p class="description">{description}</p>
+    {link && (
+      <span class="link-text">Learn more →</span>
+    )}
+  </div>
+</CardTag>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .image-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #f3f4f6;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  .link-text {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #3b82f6;
+    font-weight: 500;
+  }
+</style>

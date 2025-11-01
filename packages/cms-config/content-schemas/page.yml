@@ -1,0 +1,50 @@
+# Page Content Schema Template
+
+name: "pages"
+label: "Pages"
+folder: "src/content/pages"
+create: true
+slug: "{{slug}}"
+
+fields:
+  - label: "Title"
+    name: "title"
+    widget: "string"
+    hint: "Page title (appears as H1 and in browser tab)"
+
+  - label: "SEO Description"
+    name: "description"
+    widget: "text"
+    required: true
+    hint: "Meta description for search engines (150-160 characters)"
+    pattern: ['^.{50,160}$', "Description must be between 50-160 characters"]
+
+  - label: "Publish Date"
+    name: "publishDate"
+    widget: "datetime"
+    date_format: "YYYY-MM-DD"
+    time_format: false
+
+  - label: "Featured Image"
+    name: "image"
+    widget: "image"
+    required: false
+    hint: "Optional hero image for the page"
+
+  - label: "Image Alt Text"
+    name: "imageAlt"
+    widget: "string"
+    required: false
+    hint: "Describe the image for accessibility"
+
+  - label: "Body"
+    name: "body"
+    widget: "markdown"
+    hint: "Main page content"
+
+  - label: "No Index"
+    name: "noindex"
+    widget: "boolean"
+    default: false
+    required: false
+    hint: "Check to hide this page from search engines"

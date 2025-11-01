@@ -1,0 +1,48 @@
+---
+/**
+ * Navigation - Responsive navigation menu
+ *
+ * @example
+ * ```astro
+ * <Navigation>
+ *   <a href="/">Home</a>
+ *   <a href="/about">About</a>
+ *   <a href="/contact">Contact</a>
+ * </Navigation>
+ * ```
+ */
+---
+
+<nav class="navigation">
+  <slot />
+</nav>
+
+<style>
+  .navigation {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .navigation :global(a) {
+    text-decoration: none;
+    color: #111827;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .navigation :global(a:hover) {
+    color: #3b82f6;
+  }
+
+  .navigation :global(a[aria-current='page']) {
+    color: #3b82f6;
+  }
+
+  @media (max-width: 768px) {
+    .navigation {
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+  }
+</style>

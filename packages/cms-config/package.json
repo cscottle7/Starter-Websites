@@ -1,0 +1,7 @@
+{
+  "name": "@workspace/cms-config",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "description": "Shared Sveltia CMS configuration templates"
+}

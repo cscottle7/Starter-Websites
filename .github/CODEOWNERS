@@ -1,0 +1,33 @@
+# Code Ownership Rules
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything
+* @technical-lead
+
+# Shared packages require extra scrutiny
+# Changes to shared packages affect all client sites
+/packages/ @technical-lead @senior-developer
+
+# UI components - require design and accessibility review
+/packages/ui-components/ @technical-lead @frontend-lead
+
+# SEO utilities - require SEO specialist review
+/packages/seo-utils/ @technical-lead @seo-specialist
+
+# CMS configuration - require content strategy review
+/packages/cms-config/ @technical-lead @content-strategist
+
+# Documentation - all contributors can review
+/docs/ @technical-lead @senior-developer
+
+# CI/CD workflows - require DevOps review
+/.github/workflows/ @technical-lead @devops-lead
+
+# Project constitution and core architecture
+/CLAUDE.md @technical-lead
+/task_deps.md @technical-lead
+
+# Client sites - site-specific ownership
+# Add specific owners per client site as needed
+# /sites/client-a/ @client-a-lead
+# /sites/client-b/ @client-b-lead

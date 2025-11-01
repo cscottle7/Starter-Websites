@@ -1,0 +1,59 @@
+# Blog Post Content Schema Template
+
+name: "blog"
+label: "Blog Posts"
+folder: "src/content/blog"
+create: true
+slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+
+fields:
+  - label: "Title"
+    name: "title"
+    widget: "string"
+    hint: "Blog post title (appears as H1)"
+
+  - label: "SEO Description"
+    name: "description"
+    widget: "text"
+    required: true
+    hint: "Meta description for search engines (150-160 characters)"
+    pattern: ['^.{50,160}$', "Description must be between 50-160 characters"]
+
+  - label: "Author"
+    name: "author"
+    widget: "string"
+    default: "Staff Writer"
+
+  - label: "Publish Date"
+    name: "publishDate"
+    widget: "datetime"
+    date_format: "YYYY-MM-DD"
+    time_format: false
+
+  - label: "Featured Image"
+    name: "image"
+    widget: "image"
+    required: true
+    hint: "Recommended size: 1200x630px"
+
+  - label: "Image Alt Text"
+    name: "imageAlt"
+    widget: "string"
+    hint: "Describe the image for accessibility and SEO"
+
+  - label: "Categories"
+    name: "categories"
+    widget: "list"
+    required: false
+    hint: "Blog post categories (e.g., News, Tutorials, Case Studies)"
+
+  - label: "Tags"
+    name: "tags"
+    widget: "list"
+    required: false
+    hint: "Keywords for this post"
+
+  - label: "Body"
+    name: "body"
+    widget: "markdown"
+    hint: "Main blog post content"

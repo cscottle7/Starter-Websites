@@ -1,0 +1,69 @@
+# Navigation Content Schema Template
+
+name: "navigation"
+label: "Navigation"
+file: "src/content/config/navigation.json"
+
+fields:
+  - label: "Main Navigation"
+    name: "mainNav"
+    widget: "list"
+    hint: "Primary navigation menu items"
+    fields:
+      - label: "Label"
+        name: "label"
+        widget: "string"
+        hint: "Text displayed for this navigation link"
+
+      - label: "URL"
+        name: "url"
+        widget: "string"
+        hint: "Page URL (e.g., /about, /services, /contact)"
+
+      - label: "Open in New Tab"
+        name: "newTab"
+        widget: "boolean"
+        default: false
+        required: false
+
+  - label: "Footer Links"
+    name: "footerLinks"
+    widget: "list"
+    hint: "Footer navigation menu items"
+    fields:
+      - label: "Label"
+        name: "label"
+        widget: "string"
+        hint: "Text displayed for this footer link"
+
+      - label: "URL"
+        name: "url"
+        widget: "string"
+        hint: "Page URL or external link"
+
+      - label: "Open in New Tab"
+        name: "newTab"
+        widget: "boolean"
+        default: false
+        required: false
+
+  - label: "Social Media Links"
+    name: "socialLinks"
+    widget: "list"
+    required: false
+    hint: "Social media profile links"
+    fields:
+      - label: "Platform"
+        name: "platform"
+        widget: "select"
+        options: ["Facebook", "Twitter", "LinkedIn", "Instagram", "YouTube", "GitHub"]
+
+      - label: "URL"
+        name: "url"
+        widget: "string"
+        hint: "Full URL to your social media profile"
+
+      - label: "Icon"
+        name: "icon"
+        widget: "string"
+        hint: "Icon name (e.g., facebook, twitter, linkedin)"
