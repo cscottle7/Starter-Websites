@@ -1056,7 +1056,9 @@ Each phase includes:
 - ⏱️ Client feedback iteration (Task 2.6 - pending deployment)
 
 **Actual Phase 2 Duration:** 1 day (intensive development session)
-**Committed:** c:\Users\cscot\Documents\Websites\Starter (commit 6c1a46e)
+**Git Commits:**
+- 6c1a46e - feat: Phase 2 - Complete pilot site implementation (dws-web-ai)
+- e71376c - docs: Update task_deps.md with Phase 2 completion status
 
 ---
 
