@@ -5,9 +5,14 @@ import { Section } from '@workspace/ui-components';
 import { Card } from '@workspace/ui-components';
 import { Button } from '@workspace/ui-components';
 import { generateWebsiteSchema, generateOrganizationSchema } from '@workspace/seo-utils';
+import { getEntry } from 'astro:content';
 
-const title = 'DWS-Web-AI - AI-Optimized Web Development Platform';
-const description = 'Transform your web development workflow with AI-powered automation. Launch client sites in under one week with automated quality gates and non-technical content editing.';
+// Load page content from CMS
+const homeContent = await getEntry('pages', 'home');
+const { Content } = await homeContent.render();
+
+const title = homeContent.data.title;
+const description = homeContent.data.description;
 
 // Generate schema markup
 const websiteSchema = generateWebsiteSchema({
