@@ -1,0 +1,98 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - staging
+    paths:
+      - 'sites/**'
+      - 'packages/**'
+      - '.github/workflows/deploy-staging.yml'
+  workflow_dispatch:
+
+jobs:
+  detect-changes:
+    name: Detect Changed Sites
+    runs-on: ubuntu-latest
+    outputs:
+      changed_sites: ${{ steps.detect.outputs.changed_sites }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed sites
+        id: detect
+        run: |
+          # Get list of changed files
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
+
+          # Find unique site directories
+          CHANGED_SITES=$(echo "$CHANGED_FILES" | grep '^sites/' | cut -d'/' -f2 | sort -u | jq -R -s -c 'split("\n")[:-1]')
+
+          # If packages changed, rebuild all sites
+          if echo "$CHANGED_FILES" | grep -q '^packages/'; then
+            CHANGED_SITES=$(ls -1 sites | jq -R -s -c 'split("\n")[:-1]')
+          fi
+
+          echo "changed_sites=$CHANGED_SITES" >> $GITHUB_OUTPUT
+          echo "Changed sites: $CHANGED_SITES"
+
+  build-and-deploy:
+    name: Build and Deploy ${{ matrix.site }}
+    needs: detect-changes
+    if: needs.detect-changes.outputs.changed_sites != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        site: ${{ fromJson(needs.detect-changes.outputs.changed_sites) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build site
+        run: pnpm --filter=${{ matrix.site }} build
+        env:
+          NODE_ENV: staging
+
+      - name: Deploy to staging
+        run: |
+          echo "Deploying ${{ matrix.site }} to staging environment"
+          echo "Build artifacts located at: sites/${{ matrix.site }}/dist"
+          # Add your deployment commands here (Vercel, Netlify, custom server, etc.)
+          # Example for Vercel:
+          # npx vercel deploy sites/${{ matrix.site }}/dist --token=${{ secrets.VERCEL_TOKEN }} --env=staging
+
+      - name: Comment on PR with staging URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🚀 Staging deployment for **${{ matrix.site }}** is ready!\n\nPreview URL: https://${{ matrix.site }}-staging.example.com`
+            })
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.site }}-staging-build
+          path: sites/${{ matrix.site }}/dist
+          retention-days: 7

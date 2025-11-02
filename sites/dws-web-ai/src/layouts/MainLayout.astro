@@ -1,0 +1,102 @@
+---
+import { BaseLayout } from '@workspace/ui-components';
+import { Header } from '@workspace/ui-components';
+import { Navigation } from '@workspace/ui-components';
+import { Footer } from '@workspace/ui-components';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const { title, description, canonicalUrl, ogImage, noindex = false } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  ogImage={ogImage}
+  noindex={noindex}
+>
+  <Header siteName="DWS-Web-AI">
+    <Navigation>
+      <a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>Home</a>
+      <a href="/about" aria-current={Astro.url.pathname === '/about' ? 'page' : undefined}>About</a>
+      <a href="/services" aria-current={Astro.url.pathname === '/services' ? 'page' : undefined}>Services</a>
+      <a href="/blog" aria-current={Astro.url.pathname.startsWith('/blog') ? 'page' : undefined}>Blog</a>
+    </Navigation>
+  </Header>
+
+  <main>
+    <slot />
+  </main>
+
+  <Footer copyright="© {{year}} DWS-Web-AI. All rights reserved.">
+    <div class="footer-links">
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/docs">Documentation</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </Footer>
+</BaseLayout>
+
+<style>
+  main {
+    flex: 1;
+    width: 100%;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-column h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-column a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-column a:hover {
+    color: #fff;
+  }
+</style>

@@ -1,0 +1,20 @@
+# Blog Images Directory
+
+This directory contains featured images for blog posts.
+
+## Image Requirements
+- Format: WebP primary, PNG/JPEG fallback
+- Size: 1200x630px for social sharing optimization
+- Optimization: All images <200KB after compression
+- Alt Text: Required for all images (defined in blog post frontmatter)
+
+## Current Placeholders
+The following placeholder files should be replaced with actual images:
+- ai-first-development.jpg
+- astro-nextjs-comparison.jpg
+- monorepo-architecture.jpg
+- core-web-vitals.jpg
+- sveltia-cms-workflow.jpg
+
+## Image Naming Convention
+Use kebab-case matching the blog post slug for easy reference.

@@ -1,0 +1,331 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Hero } from '@workspace/ui-components';
+import { Section } from '@workspace/ui-components';
+import { Card } from '@workspace/ui-components';
+import { Button } from '@workspace/ui-components';
+import { generateWebsiteSchema, generateOrganizationSchema } from '@workspace/seo-utils';
+
+const title = 'DWS-Web-AI - AI-Optimized Web Development Platform';
+const description = 'Transform your web development workflow with AI-powered automation. Launch client sites in under one week with automated quality gates and non-technical content editing.';
+
+// Generate schema markup
+const websiteSchema = generateWebsiteSchema({
+  name: 'DWS-Web-AI',
+  url: 'https://dws-web-ai.com',
+  description: description,
+});
+
+const organizationSchema = generateOrganizationSchema({
+  name: 'DWS-Web-AI',
+  url: 'https://dws-web-ai.com',
+  logo: 'https://dws-web-ai.com/logo.png',
+  description: 'AI-Optimized Web Development Platform',
+});
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+  <Hero
+    headline="AI-Powered Web Development That Scales"
+    subheadline="Launch high-performance client websites in under one week with automated quality gates and AI crawler optimization"
+    ctaText="Get Started"
+    ctaUrl="/about"
+  />
+
+  <Section>
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose DWS-Web-AI?</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Built from the ground up for modern web agencies who need to scale quality website delivery without proportional team growth.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <Card
+        title="Rapid Deployment"
+        description="Launch new client sites from template to production in less than one week using automated scaffolding and quality gates."
+      />
+      <Card
+        title="AI-First Optimization"
+        description="Every site is optimized for AI crawlers like GPTBot and ClaudeBot through server-side rendering and semantic HTML."
+      />
+      <Card
+        title="Automated Quality"
+        description="70% reduction in manual audit work through automated SEO, accessibility, and performance validation."
+      />
+    </div>
+  </Section>
+
+  <Section backgroundColor="#f9fafb">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Client Independence</h2>
+        <p class="text-lg text-gray-600 mb-6">
+          Empower your clients to manage their own content through an intuitive visual editing interface.
+          No technical knowledge required.
+        </p>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Visual content editing via Sveltia CMS</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Full version control with Git integration</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>90% of content updates self-service</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-4">Success Metrics</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700">Time to Launch</span>
+              <span class="text-sm font-medium text-gray-700">&lt;1 week</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700">Automation ROI</span>
+              <span class="text-sm font-medium text-gray-700">70% reduction</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-green-600 h-2 rounded-full" style="width: 70%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700">Client Independence</span>
+              <span class="text-sm font-medium text-gray-700">90% self-service</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-purple-600 h-2 rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Workflow?</h2>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        Join forward-thinking agencies who are scaling their client portfolio without growing their team proportionally.
+      </p>
+      <Button href="/about" variant="primary">
+        Learn More About Our Approach
+      </Button>
+    </div>
+  </Section>
+</MainLayout>
+
+<style>
+  .text-center {
+    text-align: center;
+  }
+
+  .mb-12 {
+    margin-bottom: 3rem;
+  }
+
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+
+  .mb-6 {
+    margin-bottom: 1.5rem;
+  }
+
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .mb-1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .mt-0.5 {
+    margin-top: 0.125rem;
+  }
+
+  .mr-2 {
+    margin-right: 0.5rem;
+  }
+
+  .max-w-3xl {
+    max-width: 48rem;
+  }
+
+  .max-w-2xl {
+    max-width: 42rem;
+  }
+
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .grid {
+    display: grid;
+  }
+
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .gap-8 {
+    gap: 2rem;
+  }
+
+  .gap-12 {
+    gap: 3rem;
+  }
+
+  .items-center {
+    align-items: center;
+  }
+
+  .items-start {
+    align-items: flex-start;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .space-y-3 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+
+  .bg-white {
+    background-color: #fff;
+  }
+
+  .p-8 {
+    padding: 2rem;
+  }
+
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+
+  .rounded-full {
+    border-radius: 9999px;
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .w-6 {
+    width: 1.5rem;
+  }
+
+  .h-2 {
+    height: 0.5rem;
+  }
+
+  .h-6 {
+    height: 1.5rem;
+  }
+
+  .text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  .font-medium {
+    font-weight: 500;
+  }
+
+  .text-gray-900 {
+    color: #111827;
+  }
+
+  .text-gray-700 {
+    color: #374151;
+  }
+
+  .text-gray-600 {
+    color: #4b5563;
+  }
+
+  .text-green-500 {
+    color: #10b981;
+  }
+
+  .bg-gray-200 {
+    background-color: #e5e7eb;
+  }
+
+  .bg-blue-600 {
+    background-color: #2563eb;
+  }
+
+  .bg-green-600 {
+    background-color: #16a34a;
+  }
+
+  .bg-purple-600 {
+    background-color: #9333ea;
+  }
+
+  @media (min-width: 768px) {
+    .md\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .md\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

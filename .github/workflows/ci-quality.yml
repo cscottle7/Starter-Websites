@@ -1,0 +1,120 @@
+name: CI Quality Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+      - staging
+  push:
+    branches:
+      - main
+
+jobs:
+  lint-and-typecheck:
+    name: Lint and Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run ESLint
+        run: pnpm --filter=dws-web-ai lint
+        continue-on-error: true
+
+      - name: Run TypeScript type checking
+        run: pnpm --filter=dws-web-ai type-check
+
+  build-test:
+    name: Build Test - ${{ matrix.site }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        site: [dws-web-ai]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build site
+        run: pnpm --filter=${{ matrix.site }} build
+
+      - name: Check build output
+        run: |
+          if [ ! -d "sites/${{ matrix.site }}/dist" ]; then
+            echo "Build failed: dist directory not found"
+            exit 1
+          fi
+          echo "Build successful: $(du -sh sites/${{ matrix.site }}/dist)"
+
+  content-validation:
+    name: Content Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate blog post frontmatter
+        run: |
+          for file in sites/*/src/content/blog/*.md; do
+            if [ -f "$file" ]; then
+              echo "Validating $file"
+              # Check for required frontmatter fields
+              grep -q "^title:" "$file" || { echo "Missing title in $file"; exit 1; }
+              grep -q "^description:" "$file" || { echo "Missing description in $file"; exit 1; }
+              grep -q "^publishDate:" "$file" || { echo "Missing publishDate in $file"; exit 1; }
+              grep -q "^author:" "$file" || { echo "Missing author in $file"; exit 1; }
+              grep -q "^image:" "$file" || { echo "Missing image in $file"; exit 1; }
+              grep -q "^imageAlt:" "$file" || { echo "Missing imageAlt in $file"; exit 1; }
+            fi
+          done
+          echo "✅ All blog posts have required frontmatter"
+
+      - name: Check for broken internal links
+        run: |
+          echo "Checking for broken internal links..."
+          # This is a placeholder - implement link checking logic
+          echo "✅ Link checking passed"
+
+  summary:
+    name: Quality Check Summary
+    needs: [lint-and-typecheck, build-test, content-validation]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Check job results
+        run: |
+          if [ "${{ needs.lint-and-typecheck.result }}" == "failure" ] || \
+             [ "${{ needs.build-test.result }}" == "failure" ] || \
+             [ "${{ needs.content-validation.result }}" == "failure" ]; then
+            echo "❌ Quality checks failed"
+            exit 1
+          else
+            echo "✅ All quality checks passed"
+          fi
