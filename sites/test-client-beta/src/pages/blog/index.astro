@@ -1,0 +1,110 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { Hero } from '@workspace/ui-components';
+import { Section } from '@workspace/ui-components';
+import { Card } from '@workspace/ui-components';
+import { getCollection } from 'astro:content';
+
+const title = 'Blog - DWS-Web-AI Insights & Updates';
+const description = 'Expert insights on AI-optimized web development, performance optimization, accessibility best practices, and modern development workflows.';
+
+// Get all blog posts and sort by publish date (newest first)
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort((a, b) => {
+  return b.data.publishDate.getTime() - a.data.publishDate.getTime();
+});
+---
+
+<MainLayout title={title} description={description}>
+  <Hero
+    headline="Insights & Updates"
+    subheadline="Expert perspectives on AI-optimized web development, performance optimization, and modern development workflows"
+  />
+
+  <Section>
+    {sortedPosts.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedPosts.map((post) => (
+          <Card
+            title={post.data.title}
+            description={post.data.description}
+            image={post.data.image}
+            imageAlt={post.data.title}
+            link={`/blog/${post.slug}`}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">No Blog Posts Yet</h2>
+        <p class="text-lg text-gray-600">
+          Check back soon for expert insights on AI-optimized web development.
+        </p>
+      </div>
+    )}
+  </Section>
+</MainLayout>
+
+<style>
+  .grid {
+    display: grid;
+  }
+
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .gap-8 {
+    gap: 2rem;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .text-gray-900 {
+    color: #111827;
+  }
+
+  .text-gray-600 {
+    color: #4b5563;
+  }
+
+  @media (min-width: 768px) {
+    .md\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lg\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
