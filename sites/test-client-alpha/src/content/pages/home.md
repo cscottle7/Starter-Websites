@@ -1,39 +1,38 @@
 ---
-title: "Revolutionary Multi-Site Development System"
-description: "Launch AI-optimized client websites in under one week with automated quality gates and visual editing"
+title: "Premier Estate Planning Law Firm in Seattle"
+description: "Experienced estate planning attorneys protecting your family's future with wills, trusts, and probate services"
 publishDate: 2025-11-02
 slug: "home"
 ---
 
 ## Hero Section
 
-**Headline:** Launch Client Websites in Under One Week
+**Headline:** Protecting Your Family's Future
 
-**Subheadline:** Transform your agency workflow with our multi-site development platform. Combine Astro's blazing-fast performance with intelligent automation through Claude Code agents, empowering clients to manage their own content while maintaining consistent excellence across your entire portfolio.
+**Subheadline:** Seattle's trusted estate planning attorneys with over 25 years of experience. We provide compassionate, comprehensive legal services for wills, trusts, probate, and elder law.
 
-**CTA Text:** Get Started Today
+**CTA Text:** Schedule Free Consultation
 
 ---
 
 ## Features
 
-### Rapid Deployment
-From template to production in less than one week—down from the industry standard of 3-4 weeks. Our automated scaffolding scripts and pre-built component libraries eliminate weeks of manual work.
+### Estate Planning
+Comprehensive estate planning services tailored to your unique family situation. We help you create a plan that protects your assets and ensures your wishes are honored.
 
-### AI-First Optimization
-Built from the ground up for AI crawler optimization. Server-side rendering ensures all content is accessible to GPTBot, ClaudeBot, and other AI search engines, while automated schema markup provides machine-readable structured data.
+### Wills & Trusts
+Expert guidance on wills, living trusts, and testamentary trusts. We'll help you understand the differences and choose the right solution for your needs.
 
-### Automated Quality Assurance
-Reduce manual audit work by 70% through Claude Code agent automation. Every site automatically validates SEO compliance, accessibility standards, and Core Web Vitals before deployment.
+### Probate Services
+Efficient probate administration and court representation. We guide families through the probate process with compassion and expertise.
 
 ---
 
-## Client Independence
+## Why Choose Us
 
-**90% of content updates handled by clients** without developer assistance through intuitive Sveltia CMS visual editing. All changes are version-controlled in Git with automatic quality validation before deployment.
+**25+ Years of Experience** serving Seattle families with estate planning, wills, trusts, and probate services. Our attorneys are committed to providing personalized service and clear communication.
 
-### Success Metrics
-- **Time to Launch:** <1 week per client site
-- **Quality Standards:** 100% WCAG 2.1 AA compliance
-- **Client Self-Service:** 90%+ content updates independent
-- **Performance:** Core Web Vitals "Good" scores across all sites
+### Our Promise
+- **Personalized Service:** Every family is unique, and we tailor our approach to your specific needs
+- **Clear Communication:** We explain complex legal concepts in plain English
+- **Compassionate Guidance:** We understand this can be an emotional process and treat every client with respect

@@ -1,39 +1,38 @@
 ---
-title: "Revolutionary Multi-Site Development System"
-description: "Launch AI-optimized client websites in under one week with automated quality gates and visual editing"
+title: "Creative Design Agency - Bold Ideas, Beautiful Results"
+description: "Award-winning design agency specializing in branding, web design, and digital experiences that captivate audiences"
 publishDate: 2025-11-02
 slug: "home"
 ---
 
 ## Hero Section
 
-**Headline:** Launch Client Websites in Under One Week
+**Headline:** Design That Inspires Action
 
-**Subheadline:** Transform your agency workflow with our multi-site development platform. Combine Astro's blazing-fast performance with intelligent automation through Claude Code agents, empowering clients to manage their own content while maintaining consistent excellence across your entire portfolio.
+**Subheadline:** We're a creative design agency that transforms bold ideas into stunning visual experiences. From branding to web design, we create work that doesn't just look good—it drives results.
 
-**CTA Text:** Get Started Today
+**CTA Text:** View Our Work
 
 ---
 
 ## Features
 
-### Rapid Deployment
-From template to production in less than one week—down from the industry standard of 3-4 weeks. Our automated scaffolding scripts and pre-built component libraries eliminate weeks of manual work.
+### Brand Identity
+We craft memorable brand identities that tell your story and connect with your audience. Logo design, brand guidelines, and complete visual systems.
 
-### AI-First Optimization
-Built from the ground up for AI crawler optimization. Server-side rendering ensures all content is accessible to GPTBot, ClaudeBot, and other AI search engines, while automated schema markup provides machine-readable structured data.
+### Web Design
+Beautiful, responsive websites that combine stunning aesthetics with seamless user experience. Every pixel matters, every interaction delights.
 
-### Automated Quality Assurance
-Reduce manual audit work by 70% through Claude Code agent automation. Every site automatically validates SEO compliance, accessibility standards, and Core Web Vitals before deployment.
+### Digital Experiences
+From mobile apps to interactive campaigns, we design digital experiences that engage users and achieve your business goals.
 
 ---
 
-## Client Independence
+## Our Approach
 
-**90% of content updates handled by clients** without developer assistance through intuitive Sveltia CMS visual editing. All changes are version-controlled in Git with automatic quality validation before deployment.
+**Design with Purpose** - Every project starts with understanding your goals, your audience, and your unique value. We don't just make things pretty—we solve problems with creative solutions.
 
-### Success Metrics
-- **Time to Launch:** <1 week per client site
-- **Quality Standards:** 100% WCAG 2.1 AA compliance
-- **Client Self-Service:** 90%+ content updates independent
-- **Performance:** Core Web Vitals "Good" scores across all sites
+### What Sets Us Apart
+- **Award-Winning Work:** Recognized for excellence in design and creativity
+- **Strategic Thinking:** We combine beautiful design with business strategy
+- **Collaborative Process:** Your input shapes every decision from concept to launch

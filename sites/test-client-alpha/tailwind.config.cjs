@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1a202c',
-        secondary: '#2d3748',
-        accent: '#4a5568',
+        primary: '#065f46',      // Green 800 - Professional law firm
+        secondary: '#047857',    // Green 700
+        accent: '#10b981',       // Green 500
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

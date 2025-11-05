@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1a202c',
-        secondary: '#2d3748',
-        accent: '#4a5568',
+        primary: '#7c3aed',      // Purple 600 - Creative design agency
+        secondary: '#6d28d9',    // Purple 700
+        accent: '#a78bfa',       // Purple 400
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
