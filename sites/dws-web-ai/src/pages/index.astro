@@ -7,12 +7,10 @@ import { Button } from '@workspace/ui-components';
 import { generateWebsiteSchema, generateOrganizationSchema } from '@workspace/seo-utils';
 import { getEntry } from 'astro:content';
 
-// Load page content from CMS
+// Load page content from CMS (optional - fallback if not found)
 const homeContent = await getEntry('pages', 'home');
-const { Content } = await homeContent.render();
-
-const title = homeContent.data.title;
-const description = homeContent.data.description;
+const title = homeContent?.data?.title || 'DWS-Web-AI - Multi-Site Development System';
+const description = homeContent?.data?.description || 'Launch AI-optimized client websites in under one week';
 
 // Generate schema markup
 const websiteSchema = generateWebsiteSchema({
