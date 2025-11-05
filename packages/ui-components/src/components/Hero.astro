@@ -62,7 +62,7 @@ const { headline, subheadline, ctaText, ctaUrl, backgroundImage } = Astro.props;
   .headline {
     font-size: 3rem;
     font-weight: 800;
-    color: #111827;
+    color: theme('colors.primary');
     margin-bottom: 1rem;
     line-height: 1.2;
   }
@@ -80,13 +80,13 @@ const { headline, subheadline, ctaText, ctaUrl, backgroundImage } = Astro.props;
     font-weight: 600;
     text-decoration: none;
     color: #fff;
-    background-color: #3b82f6;
+    background-color: theme('colors.primary');
     border-radius: 0.5rem;
     transition: background-color 0.2s;
   }
 
   .cta-button:hover {
-    background-color: #2563eb;
+    background-color: theme('colors.secondary');
   }
 
   @media (max-width: 768px) {

@@ -413,13 +413,31 @@ Authorization callback URL: https://creative-design-studio.com/api/auth/callback
 ### Yes! You Can Edit Multiple Sites with Agents
 
 **Available Agents:**
+
+**Orchestrators (Multi-Agent Coordinators):**
+- `@website-project-orchestrator` - Full project coordination
+- `@multi-site-deployment-orchestrator` - Multi-site deployments
+- `@design-workflow-orchestrator` - **NEW** Design improvements (coordinates multiple design agents)
+
+**Website Specialists:**
 - `@seo-optimizer` - SEO audits
 - `@accessibility-auditor` - WCAG compliance
 - `@content-optimizer` - Content quality
 - `@keyword-researcher` - Keyword research
 - `@ai-readiness-auditor` - AI crawler optimization
-- `@website-project-orchestrator` - Full project coordination
-- `@multi-site-deployment-orchestrator` - Multi-site deployments
+
+**Design Specialists (used by design-workflow-orchestrator):**
+- `@user-centric-designer` - Usability/accessibility focused designs
+- `@brand-design-strategist` - Brand-aligned designs
+- `@innovation-designer` - Cutting-edge design concepts
+- `@ux-heuristic-evaluator` - UX principles audit
+- `@design_specifier` - Developer-ready component specifications
+- `@design-system-reviewer` - Design system compliance
+
+**Research Specialists:**
+- `@web-intelligence-analyst` - Competitive research and trends
+- `@user-empath-analyst` - Qualitative user feedback analysis
+- `@data-miner` - Quantitative behavioral data analysis
 
 ### Example Workflows
 
@@ -454,6 +472,30 @@ Authorization callback URL: https://creative-design-studio.com/api/auth/callback
 
 # Design agency keywords
 @keyword-researcher "Research keywords for creative design agency specializing in branding and web design"
+```
+
+**Design Improvements (NEW - Comprehensive Multi-Agent Design Workflow):**
+```bash
+# Improve homepage hero across all 3 sites
+@design-workflow-orchestrator "Improve the homepage hero section - make it more engaging and better reflect each site's brand identity"
+
+# This orchestrator will:
+# 1. Analyze the request and plan workflow
+# 2. Research design trends (optional)
+# 3. Generate 3 design concepts per site:
+#    - Usability-focused (@user-centric-designer)
+#    - Brand-aligned (@brand-design-strategist)
+#    - Innovative (@innovation-designer)
+# 4. Synthesize best direction
+# 5. Create technical specifications (@design_specifier)
+# 6. Validate with UX audit (@ux-heuristic-evaluator)
+# 7. Deliver complete design package
+
+# Redesign specific component
+@design-workflow-orchestrator "Redesign the blog post layout for test-client-alpha to improve readability and engagement"
+
+# Navigation improvement
+@design-workflow-orchestrator "Simplify the navigation menu for test-client-beta while keeping all necessary links"
 ```
 
 ---

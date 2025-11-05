@@ -45,35 +45,35 @@ const Element = href ? 'a' : 'button';
 
   .button-primary {
     color: #fff;
-    background-color: #3b82f6;
-    border-color: #3b82f6;
+    background-color: theme('colors.primary');
+    border-color: theme('colors.primary');
   }
 
   .button-primary:hover {
-    background-color: #2563eb;
-    border-color: #2563eb;
+    background-color: theme('colors.secondary');
+    border-color: theme('colors.secondary');
   }
 
   .button-secondary {
     color: #fff;
-    background-color: #6b7280;
-    border-color: #6b7280;
+    background-color: theme('colors.accent');
+    border-color: theme('colors.accent');
   }
 
   .button-secondary:hover {
-    background-color: #4b5563;
-    border-color: #4b5563;
+    background-color: theme('colors.primary');
+    border-color: theme('colors.primary');
   }
 
   .button-outline {
-    color: #3b82f6;
+    color: theme('colors.primary');
     background-color: transparent;
-    border-color: #3b82f6;
+    border-color: theme('colors.primary');
   }
 
   .button-outline:hover {
     color: #fff;
-    background-color: #3b82f6;
+    background-color: theme('colors.primary');
   }
 
   .button:disabled {
