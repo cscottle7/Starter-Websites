@@ -5,14 +5,18 @@ backend:
   name: github
   repo: cscottle7/Starter-Websites
   branch: main
+  base: sites/dws-web-ai  # Monorepo: this site's subfolder
   # Using Sveltia's built-in OAuth (no external service needed)
   # Visit /admin and click "Login with GitHub" to authenticate
+
+# Enable local development mode (bypasses GitHub auth)
+local_backend: true
 
 # Use editorial workflow for content review
 publish_mode: editorial_workflow
 
-# Media configuration
-media_folder: "sites/dws-web-ai/src/assets/images"
+# Media configuration (relative to monorepo root when using local_backend)
+media_folder: "sites/dws-web-ai/public/images"
 public_folder: "/images"
 
 # File slugs
@@ -21,7 +25,7 @@ slug:
   clean_accents: true
   sanitize_replacement: "-"
 
-# Collections
+# Collections (paths relative to monorepo root)
 collections:
   - name: "pages"
     label: "Pages"

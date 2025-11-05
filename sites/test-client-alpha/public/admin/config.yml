@@ -1,18 +1,22 @@
-# Sveltia CMS Configuration for DWS-Web-AI
+# Sveltia CMS Configuration for Test Client Alpha
 # Based on base configuration from packages/cms-config
 
 backend:
   name: github
   repo: cscottle7/Starter-Websites
   branch: main
+  base: sites/test-client-alpha  # Monorepo: this site's subfolder
   # Using Sveltia's built-in OAuth (no external service needed)
   # Visit /admin and click "Login with GitHub" to authenticate
+
+# Enable local development mode (bypasses GitHub auth)
+local_backend: true
 
 # Use editorial workflow for content review
 publish_mode: editorial_workflow
 
-# Media configuration
-media_folder: "sites/dws-web-ai/src/assets/images"
+# Media configuration (relative to monorepo root when using local_backend)
+media_folder: "sites/test-client-alpha/public/images"
 public_folder: "/images"
 
 # File slugs
@@ -21,11 +25,11 @@ slug:
   clean_accents: true
   sanitize_replacement: "-"
 
-# Collections
+# Collections (paths relative to monorepo root)
 collections:
   - name: "pages"
     label: "Pages"
-    folder: "sites/dws-web-ai/src/content/pages"
+    folder: "sites/test-client-alpha/src/content/pages"
     create: true
     slug: "{{slug}}"
     fields:
@@ -37,7 +41,7 @@ collections:
 
   - name: "blog"
     label: "Blog Posts"
-    folder: "sites/dws-web-ai/src/content/blog"
+    folder: "sites/test-client-alpha/src/content/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -55,7 +59,7 @@ collections:
     files:
       - name: "navigation"
         label: "Navigation"
-        file: "sites/dws-web-ai/src/content/config/navigation.json"
+        file: "sites/test-client-alpha/src/content/config/navigation.json"
         fields:
           - label: "Main Navigation"
             name: "mainNav"
