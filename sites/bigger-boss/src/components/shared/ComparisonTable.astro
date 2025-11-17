@@ -1,0 +1,127 @@
+---
+/**
+ * ComparisonTable Component
+ * Responsive comparison table for Concept 1
+ * Displays as table on desktop, cards on mobile
+ */
+
+interface ComparisonData {
+  feature: string;
+  biggerBoss: string | boolean;
+  agency: string | boolean;
+  freelancer: string | boolean;
+  diy: string | boolean;
+}
+
+interface Props {
+  data: ComparisonData[];
+  class?: string;
+}
+
+const { data, class: className = '' } = Astro.props;
+
+// Helper function to render cell content
+const renderCell = (value: string | boolean, isHighlight: boolean = false) => {
+  if (typeof value === 'boolean') {
+    return value ? '✓' : '✗';
+  }
+  return value;
+};
+
+// Helper function to get cell styling
+const getCellStyle = (value: string | boolean, isHighlight: boolean = false) => {
+  const baseStyle = 'px-6 py-4 text-sm';
+
+  if (typeof value === 'boolean') {
+    return `${baseStyle} text-center ${
+      value
+        ? 'text-green-600 font-bold text-xl'
+        : 'text-red-500 font-bold text-xl'
+    }`;
+  }
+
+  if (isHighlight) {
+    return `${baseStyle} font-semibold text-gray-900`;
+  }
+
+  return `${baseStyle} text-gray-600`;
+};
+---
+
+<!-- Desktop Table View (hidden on mobile) -->
+<div class={`hidden md:block overflow-x-auto ${className}`}>
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Feature
+        </th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider bg-blue-50">
+          Bigger Boss
+        </th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Traditional Agency
+        </th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Freelancer
+        </th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          DIY (ChatGPT)
+        </th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      {data.map((row) => (
+        <tr class="hover:bg-gray-50 transition-colors">
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            {row.feature}
+          </td>
+          <td class={`${getCellStyle(row.biggerBoss, true)} bg-blue-50`}>
+            {renderCell(row.biggerBoss, true)}
+          </td>
+          <td class={getCellStyle(row.agency)}>
+            {renderCell(row.agency)}
+          </td>
+          <td class={getCellStyle(row.freelancer)}>
+            {renderCell(row.freelancer)}
+          </td>
+          <td class={getCellStyle(row.diy)}>
+            {renderCell(row.diy)}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<!-- Mobile Card View (shown on mobile, hidden on desktop) -->
+<div class={`md:hidden space-y-4 ${className}`}>
+  {data.map((row) => (
+    <div class="bg-white rounded-lg shadow-md p-4">
+      <h3 class="font-bold text-gray-900 mb-3">{row.feature}</h3>
+      <div class="space-y-2">
+        <!-- Bigger Boss (Highlighted) -->
+        <div class="flex justify-between items-center bg-blue-50 rounded p-2">
+          <span class="text-sm font-medium text-blue-900">Bigger Boss</span>
+          <span class="text-sm font-semibold text-gray-900">
+            {renderCell(row.biggerBoss, true)}
+          </span>
+        </div>
+
+        <!-- Others -->
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-600">Traditional Agency</span>
+          <span class="text-sm text-gray-600">{renderCell(row.agency)}</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-600">Freelancer</span>
+          <span class="text-sm text-gray-600">{renderCell(row.freelancer)}</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-600">DIY (ChatGPT)</span>
+          <span class="text-sm text-gray-600">{renderCell(row.diy)}</span>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

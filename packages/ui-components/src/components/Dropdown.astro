@@ -1,0 +1,60 @@
+---
+/**
+ * Dropdown - astro-headless-ui Menu with DaisyUI styling
+ *
+ * @example
+ * ```astro
+ * <Dropdown buttonText="Account" client:load>
+ *   <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+ *   <Dropdown.Item href="/settings">Settings</Dropdown.Item>
+ *   <Dropdown.Item href="/logout">Logout</Dropdown.Item>
+ * </Dropdown>
+ * ```
+ */
+
+import { Menu } from 'astro-headless-ui';
+
+interface Props {
+  buttonText: string;
+  buttonVariant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  class?: string;
+}
+
+const {
+  buttonText,
+  buttonVariant = 'ghost',
+  class: className = '',
+} = Astro.props;
+
+const buttonClasses = {
+  primary: 'btn btn-primary',
+  secondary: 'btn btn-secondary',
+  ghost: 'btn btn-ghost',
+  outline: 'btn btn-outline',
+};
+---
+
+<Menu class:list={['dropdown', className]}>
+  <Menu.Button class={buttonClasses[buttonVariant]}>
+    {buttonText}
+    <svg
+      class="w-4 h-4 ml-2"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </Menu.Button>
+
+  <Menu.Items class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-xl">
+    <slot />
+  </Menu.Items>
+</Menu>
+
+<!-- Export Menu.Item as Dropdown.Item for cleaner API -->
+<script>
+  // This is a workaround to allow <Dropdown.Item> syntax
+  // Users should use <Menu.Item> directly from astro-headless-ui
+</script>

@@ -1,0 +1,93 @@
+---
+/**
+ * PersonaCard Component
+ * Displays 4-persona quality system expert cards
+ * Used across all 3 homepage concepts
+ */
+
+interface Props {
+  name: string;
+  role: string;
+  image: string;
+  expertise: string;
+  criteria: string[];
+  score: number;
+  maxScore?: number;
+  exampleFeedback?: string;
+}
+
+const {
+  name,
+  role,
+  image,
+  expertise,
+  criteria,
+  score,
+  maxScore = 25,
+  exampleFeedback,
+} = Astro.props;
+
+// Calculate percentage for visual display
+const percentage = (score / maxScore) * 100;
+---
+
+<div class="bg-white rounded-lg shadow-md p-6 transition-all duration-200 hover:shadow-xl">
+  <!-- Avatar and Header -->
+  <div class="flex items-center mb-4">
+    <img
+      src={image}
+      alt={`${name} - ${role}`}
+      class="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
+    />
+    <div class="ml-4">
+      <h3 class="text-lg font-bold text-gray-900">{name}</h3>
+      <p class="text-sm text-gray-600">{role}</p>
+    </div>
+  </div>
+
+  <!-- Expertise Badge -->
+  <div class="mb-4">
+    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
+      {expertise}
+    </span>
+  </div>
+
+  <!-- Review Criteria -->
+  <div class="mb-4">
+    <h4 class="text-sm font-semibold text-gray-700 mb-2">Reviews For:</h4>
+    <ul class="space-y-1">
+      {criteria.map((criterion) => (
+        <li class="text-sm text-gray-600 flex items-start">
+          <svg class="w-4 h-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          {criterion}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Score Display -->
+  <div class="mb-4">
+    <div class="flex items-center justify-between mb-2">
+      <span class="text-sm font-medium text-gray-700">Quality Score</span>
+      <span class="text-lg font-bold text-gray-900">{score}/{maxScore}</span>
+    </div>
+    <!-- Progress Bar -->
+    <div class="w-full bg-gray-200 rounded-full h-2.5">
+      <div
+        class="bg-green-500 h-2.5 rounded-full transition-all duration-500"
+        style={`width: ${percentage}%`}
+      ></div>
+    </div>
+  </div>
+
+  <!-- Example Feedback (Optional) -->
+  {exampleFeedback && (
+    <div class="pt-4 border-t border-gray-200">
+      <p class="text-xs text-gray-500 italic">
+        Example: "{exampleFeedback}"
+      </p>
+    </div>
+  )}
+</div>

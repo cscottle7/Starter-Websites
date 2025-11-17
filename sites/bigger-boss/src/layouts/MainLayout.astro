@@ -1,0 +1,112 @@
+---
+import { BaseLayout } from '@workspace/ui-components';
+import { Header } from '@workspace/ui-components';
+import { Navigation } from '@workspace/ui-components';
+import { Footer } from '@workspace/ui-components';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const { title, description, canonicalUrl, ogImage, noindex = false } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  ogImage={ogImage}
+  noindex={noindex}
+>
+  <Header siteName="The Bigger Boss">
+    <Navigation>
+      <a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>Home</a>
+      <a href="/how-it-works" aria-current={Astro.url.pathname === '/how-it-works' ? 'page' : undefined}>How It Works</a>
+      <a href="/pricing" aria-current={Astro.url.pathname === '/pricing' ? 'page' : undefined}>Pricing</a>
+      <a href="/blog" aria-current={Astro.url.pathname.startsWith('/blog') ? 'page' : undefined}>Blog</a>
+      <a href="#contact" class="cta-nav">Book Free Assessment</a>
+    </Navigation>
+  </Header>
+
+  <main>
+    <slot />
+  </main>
+
+  <Footer copyright="© {{year}} The Bigger Boss. All rights reserved. Australian-Owned & Operated.">
+    <div class="footer-links">
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/how-it-works">How It Works</a></li>
+          <li><a href="/pricing">Pricing & Packages</a></li>
+          <li><a href="/quality-guarantee">Quality Guarantee</a></li>
+          <li><a href="/compliance">Compliance Framework</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries/agencies">Digital Agencies</a></li>
+          <li><a href="/industries/professional-services">Professional Services</a></li>
+          <li><a href="/industries/in-house">In-House Teams</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </Footer>
+</BaseLayout>
+
+<style>
+  main {
+    flex: 1;
+    width: 100%;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-column h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-column a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-column a:hover {
+    color: #fff;
+  }
+</style>

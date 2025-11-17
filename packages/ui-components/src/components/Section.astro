@@ -1,45 +1,68 @@
 ---
 /**
- * Section - Content section wrapper
+ * Section - DaisyUI section wrapper with background variants
  *
  * @example
  * ```astro
- * <Section>
+ * <Section variant="default">
  *   <h2>Section Title</h2>
  *   <p>Section content</p>
+ * </Section>
+ *
+ * <Section variant="accent" spacing="lg">
+ *   <h2>Highlighted Section</h2>
  * </Section>
  * ```
  */
 
 interface Props {
+  variant?: 'default' | 'accent' | 'muted' | 'primary' | 'secondary';
+  spacing?: 'sm' | 'md' | 'lg' | 'xl';
+  containerWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
   class?: string;
-  backgroundColor?: string;
 }
 
-const { class: className = '', backgroundColor = '#fff' } = Astro.props;
+const {
+  variant = 'default',
+  spacing = 'md',
+  containerWidth = 'lg',
+  class: className = '',
+} = Astro.props;
+
+const variantClasses = {
+  default: 'bg-base-100',
+  accent: 'bg-accent text-accent-content',
+  muted: 'bg-base-200',
+  primary: 'bg-primary text-primary-content',
+  secondary: 'bg-secondary text-secondary-content',
+};
+
+const spacingClasses = {
+  sm: 'py-8 md:py-12',
+  md: 'py-12 md:py-16',
+  lg: 'py-16 md:py-24',
+  xl: 'py-24 md:py-32',
+};
+
+const containerClasses = {
+  sm: 'max-w-screen-sm',
+  md: 'max-w-screen-md',
+  lg: 'max-w-screen-lg',
+  xl: 'max-w-screen-xl',
+  full: 'max-w-full',
+};
 ---
 
-<section class:list={['section', className]} style={`background-color: ${backgroundColor}`}>
-  <div class="container">
+<section class:list={[
+  'w-full',
+  variantClasses[variant],
+  spacingClasses[spacing],
+  className,
+]}>
+  <div class:list={[
+    'mx-auto px-4',
+    containerClasses[containerWidth],
+  ]}>
     <slot />
   </div>
 </section>
-
-<style>
-  .section {
-    width: 100%;
-    padding: 4rem 0;
-  }
-
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .section {
-      padding: 2rem 0;
-    }
-  }
-</style>

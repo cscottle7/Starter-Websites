@@ -1,0 +1,229 @@
+---
+/**
+ * Bigger Boss Homepage
+ * Design System: Softened Bold (Precision Engine Metaphor)
+ * Components: 6 sections following creative-meta-prompt.md specifications
+ *
+ * Anti-AI Design Constraints:
+ * - Spatial Rhythm: 5rem/6rem alternating section padding
+ * - Intentional Asymmetry: Icon positions cycle (left, center, right, left)
+ * - Unexpected Hierarchy: Metrics BEFORE CTA
+ * - Color Nuance: Muted Orange #D97642
+ * - Constraint-Driven Geometry: Progressive radius 0.375-0.75rem
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import DifferentiatorCards from '../components/DifferentiatorCards.astro';
+import AudienceCards from '../components/AudienceCards.astro';
+import TestimonialCards from '../components/TestimonialCards.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+
+// SEO Meta
+const title = 'Complete Marketing Strategies in 90 Minutes | The Bigger Boss';
+const description = 'AI-orchestrated research, strategy, and content planning with built-in compliance for Australian businesses. 85+ quality score guaranteed.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Header with Navigation (Navy background, follows Precision Engine design) -->
+  <SiteHeader />
+
+  <!-- Section 1: Hero (Meta-Prompt Section 6, Page 248-270) -->
+  <Hero
+    headline="Complete Marketing Strategies in 90 Minutes"
+    subheadline="AI-orchestrated research, strategy, and content planning with built-in compliance for Australian businesses. 85+ quality score guaranteed."
+    primaryCTA="Join Beta Waitlist"
+    secondaryCTA="Watch 3-Minute Demo"
+    trustSignals={[
+      'AHPRA/ASIC Compliant',
+      '30-Day Guarantee',
+      'Australian-Owned'
+    ]}
+    limitedAvailability="Limited Availability: 5 discovery calls available this week"
+  />
+
+  <!-- Section 2: Value Proposition Comparison (Meta-Prompt Section 6, Page 272-306) -->
+  <!-- Anti-AI Constraint: Alternating spacing - this section gets py-section-y (5rem) -->
+  <ComparisonTable
+    title="A Complete Marketing Strategy System"
+    subtitle="Stop wasting weeks waiting for agency deliverables or hours wrestling with AI tools that require you to do all the strategic thinking. The Bigger Boss delivers complete marketing strategies—research, planning, content briefs, and implementation frameworks—in under 2 hours, not 8-12 weeks."
+    rows={[
+      {
+        feature: 'Delivery Time',
+        traditional: '8-12 weeks',
+        aiTools: 'Ongoing manual work',
+        diyChatGPT: '40-60 hours',
+        biggerBoss: '90 minutes',
+        highlight: true
+      },
+      {
+        feature: 'Cost',
+        traditional: '$15,000-$35,000',
+        aiTools: '$99-$499/month',
+        diyChatGPT: '$0-$20/month',
+        biggerBoss: '$2,997-$8,997',
+        highlight: true
+      },
+      {
+        feature: 'Research Depth',
+        traditional: 'Variable',
+        aiTools: 'Manual (you do it)',
+        diyChatGPT: 'Your expertise',
+        biggerBoss: 'Comprehensive (automated)',
+        highlight: true
+      },
+      {
+        feature: 'Quality Assurance',
+        traditional: 'Inconsistent',
+        aiTools: 'None',
+        diyChatGPT: 'Your responsibility',
+        biggerBoss: '4-persona system (85+ score)',
+        highlight: true
+      },
+      {
+        feature: 'Compliance (AHPRA/ASIC)',
+        traditional: 'Extra cost ($2,000+)',
+        aiTools: 'Your risk',
+        diyChatGPT: 'Your risk',
+        biggerBoss: 'Built-in',
+        highlight: true
+      }
+    ]}
+    ctaText="View detailed pricing and packages"
+    ctaLink="/pricing"
+  />
+
+  <!-- Section 3: Primary Differentiators (Meta-Prompt Section 6, Page 308-353) -->
+  <!-- Anti-AI Constraint: Alternating spacing - this section gets py-section-y-lg (6rem) -->
+  <DifferentiatorCards
+    title="Why Australian Marketing Teams Choose The Bigger Boss"
+    differentiators={[
+      {
+        icon: 'clock',
+        title: 'Same-Day Delivery',
+        shortDescription: 'Complete marketing strategies delivered in 90 minutes vs 8-12 weeks. Execute faster than competitors and respond to market opportunities immediately.',
+        ctaText: 'Discover our AI-powered marketing strategy process',
+        ctaLink: '/how-it-works'
+      },
+      {
+        icon: 'award',
+        title: '85+ Quality Score Guaranteed',
+        shortDescription: '4-persona automated review system ensures every deliverable scores 85/100+ across SEO, conversion, UX, and content quality dimensions.',
+        ctaText: 'Learn about our quality assurance system',
+        ctaLink: '/quality-guarantee'
+      },
+      {
+        icon: 'shield',
+        title: 'Built-In Compliance',
+        shortDescription: 'AHPRA, ASIC, and Law Society frameworks built-in. Zero compliance violations across 50+ professional services projects.',
+        ctaText: 'View AHPRA and ASIC compliance framework',
+        ctaLink: '/compliance'
+      },
+      {
+        icon: 'chart',
+        title: 'Up to 85% Cost Savings',
+        shortDescription: 'Scale to 50+ clients without hiring. Deliver enterprise strategies at $2,997-$8,997 vs $15-35k traditional agency costs.',
+        ctaText: 'See pricing and packages',
+        ctaLink: '/pricing'
+      }
+    ]}
+  />
+
+  <!-- Section 4: Audience Segmentation (Meta-Prompt Section 6, Page 355-376) -->
+  <!-- Anti-AI Constraint: Alternating spacing - this section gets py-section-y (5rem) -->
+  <AudienceCards
+    title="Built for Australian Marketing Teams"
+    subtitle="Choose your industry to see how The Bigger Boss transforms your marketing delivery:"
+    segments={[
+      {
+        emoji: '🏢',
+        title: 'Digital Marketing Agencies',
+        description: 'Scale from 12 to 50+ clients without hiring strategists. Under 2 hours vs 8 weeks per client strategy. Maintain $15,000 client pricing with $4,997 delivery cost.',
+        ctaText: 'Explore agency scalability solutions',
+        ctaLink: '/industries/agencies'
+      },
+      {
+        emoji: '💼',
+        title: 'In-House Marketing Teams',
+        description: 'Enterprise capability without enterprise budget. 75-85% agency cost reduction. Execute 4x more campaigns with your existing team.',
+        ctaText: 'View in-house team solutions',
+        ctaLink: '/industries/in-house'
+      },
+      {
+        emoji: '⚕️',
+        title: 'Professional Services (Medical, Financial, Legal)',
+        description: 'Zero compliance violations. AHPRA/ASIC/Law Society compliant content with automated checking. Eliminate $500-$1,500 legal review costs per article.',
+        ctaText: 'View AHPRA and ASIC compliance solutions',
+        ctaLink: '/industries/professional-services'
+      },
+      {
+        emoji: '🔍',
+        title: 'SEO Consultancies',
+        description: 'Deliver comprehensive audits under 2 hours instead of 8 hours. 10-20x monthly capacity increase. Maintain $2,500-$5,000 premium pricing.',
+        ctaText: 'Explore SEO consultancy solutions',
+        ctaLink: '/industries/seo-consultancies'
+      }
+    ]}
+  />
+
+  <!-- Section 5: Trust Signals / Testimonials (Meta-Prompt Section 6, Page 378-408) -->
+  <!-- Anti-AI Constraint: Alternating spacing - this section gets py-section-y-lg (6rem) -->
+  <TestimonialCards
+    title="Powering 50+ Australian Agencies and Professional Services"
+    testimonials={[
+      {
+        quote: 'We went from 12 clients to 65 clients in 18 months without hiring a single strategist—70% margin improvement and 542% client capacity increase. The Bigger Boss delivers the same quality we\'d produce internally, but in under 2 hours instead of 6 weeks.',
+        name: 'Marcus T.',
+        role: 'Digital Marketing Agency Owner',
+        location: 'Sydney (22-person agency)',
+        metrics: '542% capacity increase'
+      },
+      {
+        quote: '$51,003 saved in year 1 whilst quadrupling campaign output from 2 to 8 per year. Our CFO was sceptical until I showed him the ROI. The Bigger Boss gave us enterprise capability without the enterprise budget.',
+        name: 'Jennifer L.',
+        role: 'Marketing Manager, Financial Services',
+        location: 'Melbourne',
+        metrics: '$51,003 saved'
+      },
+      {
+        quote: 'We\'ve published 72 AHPRA-compliant articles with zero violations, and patient enquiries have increased 327%. The legal review savings alone paid for the service. As a medical practice owner, I was terrified of compliance risks—now I publish confidently.',
+        name: 'Dr. Amanda P.',
+        role: 'Endourology Specialist',
+        location: 'Brisbane',
+        metrics: '327% patient enquiry increase'
+      },
+      {
+        quote: 'From $18K/month to $94K/month revenue working 35-hour weeks instead of 60. The quality scores average 88/100, and I\'ve 10x\'d my client capacity. I was sceptical—how could AI match my 12 years of SEO expertise? But the results speak for themselves.',
+        name: 'David R.',
+        role: 'SEO Consultant',
+        location: 'Perth (12 years experience)',
+        metrics: '10x client capacity, $76K/month revenue increase'
+      }
+    ]}
+    metricsShowcase={{
+      projects: '50+',
+      compliance: '100%',
+      qualityScore: '87-91',
+      delivery: '<2 hrs'
+    }}
+  />
+
+  <!-- Section 6: Final CTA (Meta-Prompt Section 6, Page 410-425) -->
+  <!-- Anti-AI Constraint: Alternating spacing - this section gets py-section-y-lg (6rem) -->
+  <FinalCTA
+    headline="Ready to Deliver Marketing Strategies 16x Faster?"
+    subheadline="Book a 20-minute discovery call to discuss your specific needs. See sample deliverables. No obligation. No credit card required."
+    primaryCTA="Book Your Free Strategy Assessment"
+    primaryCTALink="/contact"
+    secondaryCTA="Download: 'The Agency Scalability Playbook' (17-page guide)"
+    secondaryCTALink="/resources/agency-scalability-playbook"
+    trustSignals={[
+      'No credit card required',
+      '30-day guarantee',
+      '85+ quality guaranteed',
+      'Australian-owned'
+    ]}
+  />
+</BaseLayout>

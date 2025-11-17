@@ -1,0 +1,72 @@
+---
+/**
+ * Modal - astro-headless-ui Dialog with DaisyUI modal styling
+ *
+ * @example
+ * ```astro
+ * <Modal
+ *   triggerText="Open Modal"
+ *   title="Confirm Action"
+ *   client:load
+ * >
+ *   <p>Are you sure you want to proceed?</p>
+ *   <div class="modal-action">
+ *     <button class="btn btn-primary">Confirm</button>
+ *     <button class="btn btn-ghost">Cancel</button>
+ *   </div>
+ * </Modal>
+ * ```
+ */
+
+import { Dialog } from 'astro-headless-ui';
+
+interface Props {
+  triggerText: string;
+  triggerVariant?: 'primary' | 'secondary' | 'accent' | 'ghost';
+  title?: string;
+  class?: string;
+}
+
+const {
+  triggerText,
+  triggerVariant = 'primary',
+  title,
+  class: className = '',
+} = Astro.props;
+
+const triggerClasses = {
+  primary: 'btn btn-primary',
+  secondary: 'btn btn-secondary',
+  accent: 'btn btn-accent',
+  ghost: 'btn btn-ghost',
+};
+---
+
+<Dialog class={className}>
+  <Dialog.Trigger class={triggerClasses[triggerVariant]}>
+    {triggerText}
+  </Dialog.Trigger>
+
+  <Dialog.Overlay class="modal modal-open">
+    <Dialog.Panel class="modal-box">
+      {title && (
+        <Dialog.Title class="font-bold text-lg mb-4">
+          {title}
+        </Dialog.Title>
+      )}
+
+      <Dialog.Description class="py-4">
+        <slot />
+      </Dialog.Description>
+
+      <!-- Close button (X in top-right corner) -->
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Close modal">
+            ✕
+          </button>
+        </form>
+      </div>
+    </Dialog.Panel>
+  </Dialog.Overlay>
+</Dialog>

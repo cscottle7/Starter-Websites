@@ -15,6 +15,11 @@
     "astro": "^5.0.0"
   },
   "devDependencies": {
+    "daisyui": "^5.4.7",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5.2.0"
+  },
+  "dependencies": {
+    "astro-headless-ui": "^0.0.30"
   }
 }

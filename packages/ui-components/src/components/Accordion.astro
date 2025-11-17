@@ -1,0 +1,44 @@
+---
+/**
+ * Accordion - astro-headless-ui Disclosure with DaisyUI collapse styling
+ *
+ * @example
+ * ```astro
+ * <Accordion
+ *   title="What is your return policy?"
+ *   client:load
+ * >
+ *   <p>We offer a 30-day money-back guarantee on all purchases.</p>
+ * </Accordion>
+ * ```
+ */
+
+import { Disclosure } from 'astro-headless-ui';
+
+interface Props {
+  title: string;
+  defaultOpen?: boolean;
+  class?: string;
+}
+
+const {
+  title,
+  defaultOpen = false,
+  class: className = '',
+} = Astro.props;
+---
+
+<Disclosure
+  defaultOpen={defaultOpen}
+  class:list={['collapse collapse-arrow bg-base-200 mb-2', className]}
+>
+  <Disclosure.Button class="collapse-title text-lg font-medium">
+    {title}
+  </Disclosure.Button>
+
+  <Disclosure.Panel class="collapse-content">
+    <div class="pt-4">
+      <slot />
+    </div>
+  </Disclosure.Panel>
+</Disclosure>

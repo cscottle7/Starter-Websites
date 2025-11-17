@@ -1,0 +1,132 @@
+---
+/**
+ * ConceptLayout - Base layout for all 3 homepage concepts
+ * Provides consistent HTML structure, SEO meta tags, and concept-specific styling
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  concept: '1' | '2' | '3';
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  concept,
+  ogImage = '/images/og-image.jpg',
+} = Astro.props;
+
+// Concept-specific body classes
+const conceptClasses = {
+  '1': 'concept-1 data-driven',
+  '2': 'concept-2 minimal',
+  '3': 'concept-3 balanced',
+};
+
+const bodyClass = conceptClasses[concept];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- TODO: Add Google Analytics 4 tracking code here when ready -->
+  </head>
+  <body class={`font-sans text-gray-900 ${bodyClass}`}>
+    <slot />
+
+    <!-- Optional: Sticky Email Capture Footer (can be added per concept) -->
+    <slot name="sticky-footer" />
+
+    <style is:global>
+      /* Custom color palette */
+      :root {
+        --navy-900: #1a202c;
+        --gray-700: #2d3748;
+        --blue-500: #3B82F6;
+        --green-500: #10B981;
+        --gray-50: #F3F4F6;
+      }
+
+      /* Custom utilities for navy color (not in default Tailwind) */
+      .bg-navy-900 {
+        background-color: var(--navy-900);
+      }
+      .text-navy-900 {
+        color: var(--navy-900);
+      }
+      .border-navy-900 {
+        border-color: var(--navy-900);
+      }
+
+      /* Concept-specific typography defaults */
+      .concept-1 {
+        /* Data-Driven Authority: Merriweather headlines */
+      }
+      .concept-1 h1,
+      .concept-1 h2 {
+        font-family: 'Merriweather', serif;
+      }
+
+      .concept-2 {
+        /* Sophisticated Simplicity: Playfair Display headlines */
+      }
+      .concept-2 h1,
+      .concept-2 h2 {
+        font-family: 'Playfair Display', serif;
+      }
+
+      .concept-3 {
+        /* Human + AI Collaboration: Merriweather headlines */
+      }
+      .concept-3 h1,
+      .concept-3 h2 {
+        font-family: 'Merriweather', serif;
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Focus visible styles for accessibility */
+      *:focus-visible {
+        outline: 2px solid var(--blue-500);
+        outline-offset: 2px;
+      }
+    </style>
+  </body>
+</html>

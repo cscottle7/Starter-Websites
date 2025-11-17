@@ -1,16 +1,18 @@
-# Technical Architecture Reference
+# Project Architecture & File Structure
 
-This document contains detailed technical specifications extracted from the Project Constitution (CLAUDE.md) for quick reference during development.
+**Last Updated:** November 17, 2025
 
-## Table of Contents
-1. [Project File Structure](#project-file-structure)
-2. [Key Commands](#key-commands)
-3. [Code Style Examples](#code-style-examples)
-4. [Development Standards](#development-standards)
+This document provides a comprehensive overview of the monorepo structure for the Multi-Site Website Development System.
 
----
+## High-Level Architecture
 
-## Project File Structure
+The system uses an **Nx-powered monorepo** with three main organizational layers:
+
+1. **`packages/`** - Shared workspace packages (reusable components, utilities, configurations)
+2. **`sites/`** - Individual client websites (each with isolated content and customization)
+3. **`.claude/`** - Claude Code agents and skills (automation and quality assurance)
+
+## Complete File Structure
 
 ```
 starter-template/                      # Root monorepo (Git repository root)
@@ -126,8 +128,9 @@ starter-template/                      # Root monorepo (Git repository root)
 │   ├── new-client-site.sh             # Scaffold new client from template
 │   └── sync-shared-deps.sh            # Update shared package dependencies
 │
-├── docs/                              # Comprehensive documentation (BiggerBoss-inspired)
+├── docs/                              # Comprehensive documentation
 │   ├── QUICK_START.md                 # Get started in 5 minutes
+│   ├── ARCHITECTURE.md                # This file
 │   ├── AGENT_GUIDE.md                 # How to use and create agents
 │   ├── ORCHESTRATOR_WORKFLOWS.md      # How orchestrators coordinate work
 │   ├── CLIENT_ONBOARDING.md           # Add new client process
@@ -135,7 +138,12 @@ starter-template/                      # Root monorepo (Git repository root)
 │   ├── DEPLOYMENT_GUIDE.md            # Server/Vercel/Netlify deployment
 │   ├── QUALITY_GATES.md               # Understanding quality validation
 │   ├── TROUBLESHOOTING.md             # Common issues and solutions
-│   └── AUTOMATION_SETUP.md            # Webhook and CI/CD automation
+│   ├── AUTOMATION_SETUP.md            # Webhook and CI/CD automation
+│   ├── SUCCESS_METRICS.md             # KPIs and measurement methodology
+│   ├── COMMANDS_REFERENCE.md          # CLI commands reference
+│   ├── CODE_STYLE_GUIDE.md            # Code conventions and examples
+│   ├── PROJECT_VISION.md              # Strategic vision and FAQs
+│   └── TECH_STACK.md                  # Technology choices and rationale
 │
 ├── nx.json                            # Nx monorepo configuration
 ├── package.json                       # Root workspace dependencies
@@ -148,246 +156,111 @@ starter-template/                      # Root monorepo (Git repository root)
 └── README.md                          # Setup and contribution guide
 ```
 
----
+## Directory Structure Explained
 
-## Key Commands
+### `packages/` - Shared Workspace Packages
 
-### Initial Setup
-```bash
-# Clone repository and install dependencies
-git clone <repository-url> starter-template
-cd starter-template
-pnpm install
+**Purpose:** DRY principle - write once, use across all client sites.
+
+- **`ui-components/`**: Reusable Astro components (buttons, cards, navigation, heroes, footers)
+  - Import via: `import { Button } from '@workspace/ui-components';`
+  - Customizable per client via props and Tailwind config
+
+- **`seo-utils/`**: SEO and schema markup generators
+  - Schema.org JSON-LD generation
+  - Meta tag utilities
+  - Sitemap and robots.txt builders
+  - AI crawler optimization helpers
+
+- **`cms-config/`**: Shared Sveltia CMS configurations
+  - Base configuration templates
+  - Reusable content type schemas (blog posts, pages, navigation)
+
+### `sites/` - Client Websites
+
+**Purpose:** Isolated client sites with shared infrastructure benefits.
+
+Each client site has:
+- **Independent deployment** (own domain, own hosting config)
+- **Brand customization** (Tailwind config, component variants)
+- **Content isolation** (Git-based via Sveltia CMS)
+- **Shared quality standards** (inherits monorepo linting, testing, build tools)
+
+### `.claude/` - Automation Intelligence
+
+**Purpose:** Claude Code agents for automated quality assurance and development assistance.
+
+- **`agents/orchestrators/`**: Master coordinators for complex workflows
+- **`agents/website/`**: Specialist agents for SEO, accessibility, content optimization
+- **`skills/`**: Reusable knowledge modules (loaded contextually by agents)
+
+## Three-Tier Customization Model
+
+### Tier 1: Template Core (NEVER customized per client)
+- Build tooling: `nx.json`, `pnpm-workspace.yaml`, GitHub Actions workflows
+- Core utilities: `packages/seo-utils/`
+- Quality standards: ESLint, Prettier, TypeScript configs
+
+### Tier 2: Design System (Customizable per client)
+- Color tokens: `sites/client-a/tailwind.config.cjs`
+- Component variants: `sites/client-a/src/components/`
+- Brand-specific layouts: `sites/client-a/src/layouts/`
+
+### Tier 3: Content & Configuration (Fully client-specific)
+- Editable content: `sites/client-a/src/content/`
+- Brand guidelines: `sites/client-a/BRAND_GUIDELINES.md`
+- Client-specific plugins: `sites/client-a/astro.config.mjs`
+
+## Data Flow Architecture
+
+### Content Editing Flow
+```
+Client logs into Sveltia CMS (/admin)
+  ↓
+Authenticates via GitHub OAuth
+  ↓
+Edits content visually (WYSIWYG)
+  ↓
+Saves changes → Git commit via GitHub API
+  ↓
+GitHub webhook triggers CI/CD pipeline
+  ↓
+Claude Code agents run quality checks
+  ↓
+Astro builds static site
+  ↓
+Deploys to staging for preview
+  ↓
+Manual approval → production deployment
 ```
 
-### Development
-```bash
-# Start development server for specific client site
-pnpm dev --filter=client-a
-
-# Start all client sites concurrently (for multi-site preview)
-pnpm dev
-
-# Build specific client site
-nx build client-a
-
-# Build all sites
-nx run-many --target=build --all
+### Build Process
+```
+pnpm install (monorepo dependencies)
+  ↓
+Nx analyzes dependency graph
+  ↓
+Builds affected packages first (ui-components, seo-utils)
+  ↓
+Client sites build (imports from packages/)
+  ↓
+Astro generates static HTML/CSS/JS
+  ↓
+Output: dist/ folder ready for deployment
 ```
 
-### New Client Site Creation
-```bash
-# Scaffold new client site from template
-pnpm create-client --name="acme-corp"
+## Key Architectural Benefits
 
-# Alternative with full options
-pnpm create-client --name="acme-corp" --domain="acmecorp.com"
-```
+1. **Scalability**: Add new client sites in <1 week using shared infrastructure
+2. **Consistency**: Shared components ensure uniform quality across portfolio
+3. **Automation**: Claude Code agents enforce quality gates on every change
+4. **Maintainability**: Update shared package once → affects all client sites
+5. **Isolation**: Client content and branding remains separate despite shared tooling
+6. **AI-First**: All content accessible to AI crawlers (static HTML, schema markup)
 
-### Quality Checks
-```bash
-# Run linting across workspace
-nx run-many --target=lint --all
+## Related Documentation
 
-# Run type checking
-nx run-many --target=type-check --all
-
-# Run accessibility audits via Playwright
-nx run-many --target=test:a11y --all
-
-# Run all quality gates (full validation)
-pnpm quality-gates --site=client-a
-```
-
-### Claude Code Agent Invocation
-```bash
-# Invoke SEO optimizer on specific client site
-claude-code --agent=seo-optimizer --project=sites/client-a
-
-# Run quality gate orchestrator (automated multi-agent workflow)
-claude-code --agent=quality-gate-orchestrator --project=sites/client-a
-```
-
-### Deployment
-```bash
-# Deploy to staging (automated via GitHub Actions on push)
-git push origin staging
-
-# Deploy specific site to production (manual trigger)
-pnpm deploy:production --site=client-a
-
-# Deploy all sites to production
-pnpm deploy:production --all
-```
-
-### Maintenance
-```bash
-# Update shared dependencies across all sites
-pnpm sync-shared-deps
-
-# Update Nx cache
-nx reset
-
-# Analyze bundle sizes
-nx run client-a:analyze
-```
-
----
-
-## Code Style Examples
-
-### Astro Component Structure
-
-```astro
----
-// 1. Imports
-import { SomeUtility } from '@workspace/seo-utils';
-
-// 2. Props interface
-interface Props {
-  title: string;
-  description?: string;
-}
-
-// 3. Props destructuring
-const { title, description } = Astro.props;
-
-// 4. Logic (data fetching, transformations)
-const processedTitle = title.toUpperCase();
----
-
-<!-- 5. Template -->
-<section>
-  <h1>{processedTitle}</h1>
-  {description && <p>{description}</p>}
-</section>
-
-<!-- 6. Scoped styles (if needed) -->
-<style>
-  section {
-    @apply container mx-auto px-4;
-  }
-</style>
-```
-
-### Tailwind CSS Configuration
-
-```javascript
-// sites/client-a/tailwind.config.cjs
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#1a202c',   // Client brand primary color
-        secondary: '#2d3748', // Client brand secondary color
-      },
-    },
-  },
-};
-```
-
-### Content Frontmatter
-
-```yaml
----
-title: "Page Title"
-description: "SEO meta description"
-publishDate: 2025-10-29
-author: "Client Name"
----
-```
-
-### Git Commit Messages
-
-Follow Conventional Commits specification:
-- `feat(client-a): add contact form to homepage`
-- `fix(seo-utils): correct schema markup for Article type`
-- `docs(readme): update deployment instructions`
-- `chore(deps): update Astro to 5.0.1`
-
-Scope should reference affected package/site: `(client-a)`, `(ui-components)`, `(seo-utils)`
-
----
-
-## Development Standards
-
-### Naming Conventions
-
-**Files:**
-- Utility files: `snake_case` → `schema_generator.ts`, `meta_tags.ts`
-- Component files: `PascalCase` → `Button.astro`, `HeroSection.astro`
-
-**Code:**
-- Functions/variables: `camelCase` → `generateSchema()`, `metaTitle`
-- Types/interfaces: `PascalCase` → `BlogPost`, `SEOMetadata`
-
-### TypeScript Rules
-
-- Prefer `interface` over `type` for object shapes (better error messages)
-- Always define explicit return types for public functions
-- Prefer `const` over `let`; avoid `var` entirely
-- Use template literals for string concatenation: `` `${base}/${path}` ``
-
-### Content Rules
-
-- Use semantic heading hierarchy (single H1 per page, progressive H2 → H3 → H4)
-- Always include alt text for images: `![Descriptive alt text](./image.jpg)`
-- Use relative links for internal pages: `[About](/about)` not `[About](https://site.com/about)`
-
-### Astro Best Practices
-
-- Use PascalCase for component filenames: `HeroSection.astro`, `BlogPostCard.astro`
-- Keep components small and focused (single responsibility principle)
-- Extract reusable logic to utility functions in TypeScript files
-- Use Astro's Content Collections API for all content (never hardcode content in components)
-- Prefer static rendering by default; add `client:*` directives only when interactivity is required
-
-### Tailwind CSS Guidelines
-
-- Use Tailwind utility classes directly in Astro templates (avoid custom CSS unless necessary)
-- Use `@apply` directive in `<style>` blocks only for frequently repeated complex patterns
-- Prefer responsive modifiers (`md:`, `lg:`) over media queries
-- Order utility classes consistently: layout → sizing → spacing → typography → colors → effects
-
-### Claude Code Agent Definitions
-
-- Store agent definitions in `.claude/agents/` directory
-- Use kebab-case for agent filenames: `seo-optimizer.md`, `accessibility-auditor.md`
-- Follow agent template structure: name, description, system prompt, tools, model selection
-- Document agent purpose and expected outputs clearly
-- Version control agent prompts with changelog comments
-
----
-
-## Performance Budgets
-
-- **Bundle Size:** <500KB total JavaScript per page (measured at build time)
-- **Time to Interactive (TTI):** <3.5 seconds on 3G mobile connection
-- **Lighthouse Performance Score:** >90 for all pages
-- **Build Time:** <60 seconds per client site (measured in CI/CD)
-- **Image Optimization:** All images converted to WebP with responsive sizes
-
----
-
-## Security Requirements
-
-- All dependencies must pass `npm audit` with zero high/critical vulnerabilities
-- NO hardcoded secrets or API keys in repository (use environment variables via `.env` files, gitignored)
-- ALL forms must include CSRF protection if server-side handling added
-- Content Security Policy (CSP) headers configured to prevent XSS attacks
-- HTTPS enforced for all production deployments
-
----
-
-## Accessibility Requirements (WCAG 2.1 AA)
-
-- All interactive elements keyboard-accessible (tab navigation functional)
-- Color contrast ratios meet minimum standards (4.5:1 for normal text, 3:1 for large text)
-- All images include descriptive alt text (validated by `accessibility-auditor` agent)
-- Proper ARIA attributes for custom interactive components
-- Semantic HTML structure (nav, main, aside, footer, article, section elements used appropriately)
-- Focus indicators visible on all interactive elements
-
----
-
-**Reference:** This document extracts detailed technical specifications from CLAUDE.md for development reference. For strategic context and architectural decisions, refer to the main constitution.
+- [Quick Start Guide](QUICK_START.md) - Get started in 5 minutes
+- [Client Onboarding](CLIENT_ONBOARDING.md) - How to add a new client site
+- [Commands Reference](COMMANDS_REFERENCE.md) - CLI commands for development
+- [Tech Stack Details](TECH_STACK.md) - Technology choices and rationale

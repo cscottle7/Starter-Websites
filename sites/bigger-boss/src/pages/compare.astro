@@ -1,0 +1,348 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const pageTitle = "Compare Homepage Concepts - Bigger Boss";
+const pageDescription = "Help us choose the best homepage design by providing your feedback on 3 distinct concepts.";
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Header Section -->
+  <section class="bg-gradient-to-br from-navy-900 to-navy-800 text-white py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">
+        Help Us Choose the Best Homepage
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        We've created 3 distinct homepage concepts for Bigger Boss and need your expert feedback. Review each concept, then tell us which resonates most with you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Concept Cards Grid -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <!-- Concept 1: Data-Driven Authority -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-200 hover:shadow-2xl">
+          <div class="bg-navy-900 text-white p-6">
+            <h2 class="font-serif text-2xl font-bold mb-2">Concept 1</h2>
+            <p class="text-gray-300 text-sm font-semibold uppercase tracking-wide">Data-Driven Authority</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-700 mb-6 leading-relaxed">
+              McKinsey-style analytical approach with heavy emphasis on metrics, comparison tables, ROI calculator, and data visualization.
+            </p>
+
+            <h3 class="font-semibold text-navy-900 mb-3">Key Features:</h3>
+            <ul class="space-y-2 text-sm text-gray-700 mb-6">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Quality score dashboard visualization</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Detailed comparison table vs alternatives</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Interactive ROI calculator</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Compliance trust badges</span>
+              </li>
+            </ul>
+
+            <h3 class="font-semibold text-navy-900 mb-2">Best For:</h3>
+            <p class="text-sm text-gray-600 mb-6">
+              Analytical decision-makers, large agencies, corporate managers who need ROI justification
+            </p>
+
+            <a
+              href="/concept-1"
+              target="_blank"
+              class="block w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200"
+            >
+              View Concept 1 →
+            </a>
+          </div>
+        </div>
+
+        <!-- Concept 2: Sophisticated Simplicity -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-200 hover:shadow-2xl">
+          <div class="bg-navy-900 text-white p-6">
+            <h2 class="font-serif text-2xl font-bold mb-2">Concept 2</h2>
+            <p class="text-gray-300 text-sm font-semibold uppercase tracking-wide">Sophisticated Simplicity</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-700 mb-6 leading-relaxed">
+              Stripe-inspired minimalist aesthetic with generous white space, elegant typography, and premium positioning through restraint.
+            </p>
+
+            <h3 class="font-semibold text-navy-900 mb-3">Key Features:</h3>
+            <ul class="space-y-2 text-sm text-gray-700 mb-6">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Maximum white space (60-70% viewport)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Typography-driven design (no heavy graphics)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Single-column focus (minimal distraction)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Elegant inline email form</span>
+              </li>
+            </ul>
+
+            <h3 class="font-semibold text-navy-900 mb-2">Best For:</h3>
+            <p class="text-sm text-gray-600 mb-6">
+              Boutique agencies, premium professional services, design-conscious marketers
+            </p>
+
+            <a
+              href="/concept-2"
+              target="_blank"
+              class="block w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200"
+            >
+              View Concept 2 →
+            </a>
+          </div>
+        </div>
+
+        <!-- Concept 3: Human + AI Collaboration -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-200 hover:shadow-2xl border-2 border-blue-500">
+          <div class="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-6 relative">
+            <div class="absolute top-2 right-2 bg-white text-blue-600 text-xs font-bold px-3 py-1 rounded-full">
+              RECOMMENDED
+            </div>
+            <h2 class="font-serif text-2xl font-bold mb-2">Concept 3</h2>
+            <p class="text-blue-100 text-sm font-semibold uppercase tracking-wide">Human + AI Collaboration</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-700 mb-6 leading-relaxed">
+              Balanced approach combining professional imagery with systematic AI credibility. Broadest persona appeal.
+            </p>
+
+            <h3 class="font-semibold text-navy-900 mb-3">Key Features:</h3>
+            <ul class="space-y-2 text-sm text-gray-700 mb-6">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Professional human imagery + system diagrams</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>4-persona quality review emphasis</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Representative testimonials (persona-based)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Comprehensive FAQ addressing objections</span>
+              </li>
+            </ul>
+
+            <h3 class="font-semibold text-navy-900 mb-2">Best For:</h3>
+            <p class="text-sm text-gray-600 mb-6">
+              All three audiences (agencies, corporate, professional services), especially those concerned about AI quality
+            </p>
+
+            <a
+              href="/concept-3"
+              target="_blank"
+              class="block w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200"
+            >
+              View Concept 3 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-8 mb-12 max-w-4xl mx-auto">
+        <h2 class="font-serif text-2xl font-bold text-navy-900 mb-4">How to Provide Feedback</h2>
+        <ol class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">1</span>
+            <span>Open each concept in a new tab (click "View Concept X →" buttons above)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">2</span>
+            <span>Scroll through the entire page for each concept to see all sections</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">3</span>
+            <span>Complete the feedback survey below with your honest assessment</span>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Feedback Survey Form -->
+      <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-xl p-8 md:p-12">
+        <h2 class="font-serif text-3xl font-bold text-navy-900 mb-8 text-center">
+          Your Feedback
+        </h2>
+
+        <form action="/thank-you" method="GET" class="space-y-8">
+          <!-- Question 1: Overall Preference -->
+          <div>
+            <label class="block text-lg font-semibold text-navy-900 mb-4">
+              1. Which concept is your overall favorite?
+              <span class="text-red-500">*</span>
+            </label>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="favorite" value="concept-1" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 1: Data-Driven Authority</span>
+              </label>
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="favorite" value="concept-2" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 2: Sophisticated Simplicity</span>
+              </label>
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="favorite" value="concept-3" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 3: Human + AI Collaboration</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 2: Trustworthiness -->
+          <div>
+            <label class="block text-lg font-semibold text-navy-900 mb-4">
+              2. Which concept feels most trustworthy?
+              <span class="text-red-500">*</span>
+            </label>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="trustworthy" value="concept-1" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 1</span>
+              </label>
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="trustworthy" value="concept-2" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 2</span>
+              </label>
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="trustworthy" value="concept-3" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 3</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 3: Conversion Likelihood -->
+          <div>
+            <label class="block text-lg font-semibold text-navy-900 mb-4">
+              3. Which concept would make you most likely to join the beta waitlist?
+              <span class="text-red-500">*</span>
+            </label>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="conversion" value="concept-1" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 1</span>
+              </label>
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="conversion" value="concept-2" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 2</span>
+              </label>
+              <label class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 cursor-pointer transition-all">
+                <input type="radio" name="conversion" value="concept-3" required class="w-5 h-5 text-blue-600" />
+                <span class="font-medium">Concept 3</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 4: Qualitative Feedback -->
+          <div>
+            <label class="block text-lg font-semibold text-navy-900 mb-4">
+              4. What did you like most about your favorite concept?
+              <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              name="liked_most"
+              required
+              rows="4"
+              placeholder="Be specific about what elements, messaging, or design resonated with you..."
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Question 5: Improvement Suggestions -->
+          <div>
+            <label class="block text-lg font-semibold text-navy-900 mb-4">
+              5. What would you improve about any of the concepts?
+            </label>
+            <textarea
+              name="improvements"
+              rows="4"
+              placeholder="Optional: Suggestions for design, messaging, or content improvements..."
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Question 6: Your Role -->
+          <div>
+            <label class="block text-lg font-semibold text-navy-900 mb-4">
+              6. Which best describes your role?
+              <span class="text-red-500">*</span>
+            </label>
+            <select
+              name="role"
+              required
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+            >
+              <option value="">Select your role...</option>
+              <option value="agency-owner">Agency Owner/Principal</option>
+              <option value="agency-strategist">Agency Strategist/Director</option>
+              <option value="corporate-manager">Corporate Marketing Manager</option>
+              <option value="corporate-director">Corporate Marketing Director</option>
+              <option value="professional-healthcare">Healthcare Professional (AHPRA)</option>
+              <option value="professional-financial">Financial Services (ASIC)</option>
+              <option value="professional-legal">Legal Professional (Law Society)</option>
+              <option value="freelancer">Freelance Marketer</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-4">
+            <button
+              type="submit"
+              class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-lg text-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              Submit Feedback
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</MainLayout>

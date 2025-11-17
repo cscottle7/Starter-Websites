@@ -27,6 +27,8 @@ Gate 5: AI Readiness & Content
   ↓ (pass) →
 Gate 6: Security
   ↓ (pass) →
+Gate 7: Creative Quality (CONDITIONAL - only if creative-director-orchestrator was invoked)
+  ↓ (pass OR skipped) →
 ✅ DEPLOYMENT APPROVED
 ```
 
@@ -126,6 +128,41 @@ Gate 6: Security
 - Provide vulnerability details and patch recommendations
 - Auto-create security issues in GitHub with CVSS scores
 
+### Gate 7: Creative Quality (CONDITIONAL)
+**Agent:** @metaphor-grounding-verifier
+**Execution Condition:** ONLY runs if `@creative-director-orchestrator` was invoked for this project
+
+**Pass Criteria:**
+- Metaphor grounding rate ≥95% (design elements traceable to research)
+- Anti-AI Design Checklist: 5/5 constraints pass
+  1. Spatial Rhythm: ≥3 unique spacing values, intentional progression
+  2. Intentional Asymmetry: Hero NOT centered, ≥1 asymmetric split (60/40 or 70/30)
+  3. Unexpected Hierarchy: ≥1 hierarchy inversion maintaining semantic HTML
+  4. Color Nuance: ZERO default blues/grays, ≥2 custom colors defined
+  5. Constraint-Driven Creativity: Creative puzzle solution integrated + documented
+- Zero generic AI defaults (bg-blue-500, centered mx-auto layouts, uniform spacing)
+
+**Execution Check:**
+```markdown
+IF exists(.claude/agents/design/creative/outputs/{project}/creative-meta-prompt.md):
+  RUN Gate 7
+ELSE:
+  SKIP Gate 7 (creative orchestrator not used)
+```
+
+**Failure Actions:**
+- Grounding rate <95%: Block deployment + provide grounding-report.md with ungrounded elements
+- Any Anti-AI constraint fails: Block deployment + provide specific fix recommendations
+- Maximum 2 retries: Refine implementation → re-run Gate 7
+- After 2 failures: Escalate to manual design review OR re-run creative-director-orchestrator with refined queries
+
+**Skip Conditions (Gate 7 Not Applicable):**
+- Client supplied finalized designs (no creative orchestrator used)
+- Template-based project (no creative research needed)
+- Urgent deployment (creative quality deferred to post-launch refinement)
+
+**Documentation:** See [CREATIVE_WORKFLOW_GUIDE.md](../../../docs/CREATIVE_WORKFLOW_GUIDE.md) for when to use creative orchestrator.
+
 ## Orchestration Workflow
 
 ### Step 1: Pre-Flight Checks
@@ -159,6 +196,28 @@ for gate in [1, 2, 3, 4, 5, 6]:
     else:
       escalate_to_manual_review(gate, result)
       STOP DEPLOYMENT
+
+# CONDITIONAL Gate 7: Creative Quality (only if creative orchestrator used)
+if exists(.claude/agents/design/creative/outputs/{project}/creative-meta-prompt.md):
+  result_gate_7 = execute_gate(7)  # Invoke @metaphor-grounding-verifier
+
+  if result_gate_7.status == "PASS":
+    log_success(7, result_gate_7)
+    # Proceed to deployment
+
+  elif result_gate_7.status == "FAIL":
+    log_failure(7, result_gate_7)
+    create_blocking_issue(7, result_gate_7)
+
+    if retry_count < 2:  # Max 2 retries for Gate 7
+      retry_count += 1
+      retry_gate(7)  # Refine implementation → re-verify
+    else:
+      escalate_to_manual_design_review(7, result_gate_7)
+      STOP DEPLOYMENT
+else:
+  log_skip(7, "Creative orchestrator not used - Gate 7 not applicable")
+  # Proceed to deployment
 ```
 
 ### Step 3: Final Validation
@@ -182,7 +241,8 @@ After all gates pass:
     "gate_3_accessibility": { "status": "PASS", "score": 98 },
     "gate_4_performance": { "status": "PASS", "score": 92 },
     "gate_5_content": { "status": "WARNING", "score": 85 },
-    "gate_6_security": { "status": "PASS", "score": 100 }
+    "gate_6_security": { "status": "PASS", "score": 100 },
+    "gate_7_creative_quality": { "status": "PASS", "grounding_rate": 96.5, "checklist_passed": "5/5", "note": "Optional gate (creative orchestrator used)" }
   },
   "warnings": [
     "Gate 5: Content quality score 85 (acceptable but below ideal 90+)"

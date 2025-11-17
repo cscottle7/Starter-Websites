@@ -1,0 +1,49 @@
+---
+/**
+ * Section Component
+ * Consistent section wrapper with spacing and container management
+ * Used across all 3 homepage concepts
+ */
+
+interface Props {
+  background?: 'white' | 'gray' | 'navy';
+  padding?: 'sm' | 'md' | 'lg';
+  container?: boolean;
+  class?: string;
+  id?: string;
+}
+
+const {
+  background = 'white',
+  padding = 'md',
+  container = true,
+  class: className = '',
+  id,
+} = Astro.props;
+
+// Background styles
+const backgroundStyles = {
+  white: 'bg-white',
+  gray: 'bg-gray-50',
+  navy: 'bg-navy-900 text-white',
+};
+
+// Padding styles
+const paddingStyles = {
+  sm: 'py-12',
+  md: 'py-20',
+  lg: 'py-32',
+};
+
+// Container style
+const containerStyle = container ? 'container mx-auto px-4 max-w-7xl' : '';
+
+// Combine styles
+const sectionStyles = `${backgroundStyles[background]} ${paddingStyles[padding]} ${className}`;
+---
+
+<section class={sectionStyles} id={id}>
+  <div class={containerStyle}>
+    <slot />
+  </div>
+</section>

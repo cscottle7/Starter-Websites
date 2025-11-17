@@ -1,0 +1,431 @@
+# Sveltia CMS Configuration for Bigger Boss
+# Full page editability: images, icons, content, global theme settings
+# Requirements: Edit all aspects including header/footer sections
+
+backend:
+  name: github
+  repo: cscottle7/Starter-Websites
+  branch: main
+  base: sites/bigger-boss  # Monorepo: this site's subfolder
+  # Using Sveltia's built-in OAuth (no external service needed)
+  # Visit /admin and click "Login with GitHub" to authenticate
+
+# Enable local development mode (bypasses GitHub auth)
+local_backend: true
+
+# Use editorial workflow for content review
+publish_mode: editorial_workflow
+
+# Media configuration (relative to monorepo root when using local_backend)
+media_folder: "sites/bigger-boss/public/images/uploads"
+public_folder: "/images/uploads"
+
+# File slugs
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# Collections (paths relative to monorepo root)
+collections:
+  # ====================================
+  # GLOBAL THEME SETTINGS
+  # Requirement: Change fonts, colors, H1/H2/H3 sizes globally
+  # ====================================
+  - name: "settings"
+    label: "🎨 Global Settings"
+    files:
+      - label: "Theme Configuration"
+        name: "theme"
+        file: "sites/bigger-boss/src/content/settings/theme.json"
+        fields:
+          - { label: "Site Title", name: "site_title", widget: "string" }
+          - { label: "Site Description", name: "site_description", widget: "text" }
+
+          # Color Scheme (Global)
+          - label: "🎨 Color Scheme"
+            name: "colors"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Primary Color", name: "primary", widget: "color", default: "#1a202c", hint: "Main brand color (Deep Navy)" }
+              - { label: "Secondary Color", name: "secondary", widget: "color", default: "#2d3748", hint: "Secondary brand color (Charcoal)" }
+              - { label: "Accent Color", name: "accent", widget: "color", default: "#3B82F6", hint: "CTA buttons and links (Electric Blue)" }
+              - { label: "Success Color", name: "success", widget: "color", default: "#10B981", hint: "Quality badges and positive indicators" }
+              - { label: "Text Color", name: "text", widget: "color", default: "#1a202c", hint: "Body text color" }
+              - { label: "Background Color", name: "background", widget: "color", default: "#ffffff", hint: "Page background" }
+              - { label: "Background Alt Color", name: "background_alt", widget: "color", default: "#F3F4F6", hint: "Alternate section backgrounds" }
+
+          # Typography (Global)
+          - label: "✍️ Typography"
+            name: "typography"
+            widget: "object"
+            collapsed: false
+            fields:
+              - label: "Font Families"
+                name: "fonts"
+                widget: "object"
+                fields:
+                  - { label: "Sans Serif Font", name: "sans", widget: "string", default: "Inter", hint: "Body text font" }
+                  - { label: "Serif Font", name: "serif", widget: "string", default: "Merriweather", hint: "Heading font" }
+                  - { label: "Monospace Font", name: "mono", widget: "string", default: "JetBrains Mono", hint: "Code/data font" }
+
+              - label: "H1 (Main Heading) Style"
+                name: "h1"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Font Size (rem)", name: "size", widget: "number", default: 3, step: 0.125, hint: "Desktop size: 3rem = 48px" }
+                  - { label: "Font Size Mobile (rem)", name: "size_mobile", widget: "number", default: 2, step: 0.125, hint: "Mobile size: 2rem = 32px" }
+                  - { label: "Font Weight", name: "weight", widget: "select", options: ["400", "500", "600", "700", "800"], default: "700" }
+                  - { label: "Line Height", name: "lineHeight", widget: "number", default: 1.2, step: 0.1 }
+                  - { label: "Color", name: "color", widget: "color", default: "#1a202c" }
+
+              - label: "H2 (Section Heading) Style"
+                name: "h2"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Font Size (rem)", name: "size", widget: "number", default: 2.25, step: 0.125, hint: "Desktop: 2.25rem = 36px" }
+                  - { label: "Font Size Mobile (rem)", name: "size_mobile", widget: "number", default: 1.5, step: 0.125, hint: "Mobile: 1.5rem = 24px" }
+                  - { label: "Font Weight", name: "weight", widget: "select", options: ["400", "500", "600", "700"], default: "600" }
+                  - { label: "Line Height", name: "lineHeight", widget: "number", default: 1.3, step: 0.1 }
+                  - { label: "Color", name: "color", widget: "color", default: "#1a202c" }
+
+              - label: "H3 (Subsection Heading) Style"
+                name: "h3"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Font Size (rem)", name: "size", widget: "number", default: 1.875, step: 0.125, hint: "Desktop: 1.875rem = 30px" }
+                  - { label: "Font Size Mobile (rem)", name: "size_mobile", widget: "number", default: 1.25, step: 0.125, hint: "Mobile: 1.25rem = 20px" }
+                  - { label: "Font Weight", name: "weight", widget: "select", options: ["400", "500", "600", "700"], default: "600" }
+                  - { label: "Line Height", name: "lineHeight", widget: "number", default: 1.4, step: 0.1 }
+                  - { label: "Color", name: "color", widget: "color", default: "#2d3748" }
+
+  # ====================================
+  # HEADER & NAVIGATION
+  # Requirement: Header has its own CMS section
+  # ====================================
+  - name: "header"
+    label: "🔝 Header & Navigation"
+    files:
+      - label: "Header Settings"
+        name: "header"
+        file: "sites/bigger-boss/src/content/settings/header.json"
+        fields:
+          - { label: "Logo Image", name: "logo", widget: "image", hint: "Recommended: SVG format for crisp display" }
+          - { label: "Logo Alt Text", name: "logo_alt", widget: "string", default: "Bigger Boss Logo" }
+          - { label: "Logo Width (px)", name: "logo_width", widget: "number", default: 180 }
+          - { label: "Enable Sticky Navigation", name: "sticky", widget: "boolean", default: true, hint: "Keep header visible when scrolling" }
+
+          - label: "Navigation Links"
+            name: "nav_links"
+            widget: "list"
+            hint: "Main navigation menu items"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Open in New Tab", name: "new_tab", widget: "boolean", default: false }
+
+          - label: "CTA Button (Header)"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Show CTA Button", name: "show", widget: "boolean", default: true }
+              - { label: "Button Text", name: "text", widget: "string", default: "Join Beta Waitlist" }
+              - { label: "Button URL", name: "url", widget: "string", default: "#beta-form" }
+              - { label: "Button Style", name: "style", widget: "select", options: ["primary", "secondary", "outline"], default: "primary" }
+
+  # ====================================
+  # FOOTER
+  # Requirement: Footer has its own CMS section
+  # ====================================
+  - name: "footer"
+    label: "🔻 Footer"
+    files:
+      - label: "Footer Settings"
+        name: "footer"
+        file: "sites/bigger-boss/src/content/settings/footer.json"
+        fields:
+          - label: "Column 1: About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Show Logo", name: "show_logo", widget: "boolean", default: true }
+              - { label: "Logo Image", name: "logo", widget: "image", required: false, hint: "Leave blank to use header logo" }
+              - { label: "Heading", name: "heading", widget: "string", default: "About Bigger Boss" }
+              - { label: "Description", name: "description", widget: "text", hint: "Short company description (2-3 sentences)" }
+
+          - label: "Column 2: Quick Links"
+            name: "quick_links"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", default: "Quick Links" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+
+          - label: "Column 3: Resources"
+            name: "resources"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", default: "Resources" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+
+          - label: "Column 4: Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", default: "Contact" }
+              - { label: "Email", name: "email", widget: "string", hint: "hello@biggerboss.com.au" }
+              - { label: "Phone", name: "phone", widget: "string", required: false }
+              - label: "Social Links"
+                name: "social"
+                widget: "list"
+                hint: "Social media profiles"
+                fields:
+                  - { label: "Platform", name: "platform", widget: "select", options: ["LinkedIn", "Twitter", "Facebook", "Instagram", "YouTube"] }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Icon Image", name: "icon", widget: "image", hint: "Social media icon (SVG recommended)" }
+
+          - { label: "Copyright Text", name: "copyright", widget: "string", default: "© 2025 Bigger Boss. All rights reserved." }
+          - label: "Legal Links"
+            name: "legal"
+            widget: "list"
+            hint: "Privacy policy, terms, etc."
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+  # ====================================
+  # HOMEPAGE CONCEPTS (3 versions for A/B testing)
+  # Requirement: Edit all aspects including images and icons
+  # ====================================
+  - name: "homepage"
+    label: "🏠 Homepage Concepts"
+    folder: "sites/bigger-boss/src/content/homepage"
+    create: false
+    slug: "{{concept}}"
+    identifier_field: "concept"
+    summary: "{{concept}}: {{title}}"
+    fields:
+      - { label: "Concept ID", name: "concept", widget: "select", options: ["concept-1-data-driven", "concept-2-minimalist", "concept-3-human-ai"], hint: "Which design concept this represents" }
+      - { label: "Page Title", name: "title", widget: "string" }
+      - { label: "Meta Description", name: "description", widget: "text", pattern: [".{50,160}", "Must be between 50-160 characters for SEO"] }
+
+      # Hero Section (Fully Editable)
+      - label: "🦸 Hero Section"
+        name: "hero"
+        widget: "object"
+        collapsed: false
+        fields:
+          - { label: "Eyebrow Text", name: "eyebrow", widget: "string", required: false, hint: "Small text above headline (optional)" }
+          - { label: "Headline", name: "headline", widget: "string", hint: "Main H1 heading" }
+          - { label: "Subheadline", name: "subheadline", widget: "text", hint: "Supporting text below headline" }
+          - { label: "Hero Image/Graphic", name: "image", widget: "image" }
+          - { label: "Image Alt Text", name: "image_alt", widget: "string", hint: "Describe image for accessibility" }
+          - { label: "Full Width Background", name: "full_width", widget: "boolean", default: false, hint: "Make hero section full viewport width" }
+
+          - label: "Key Metrics (3 items)"
+            name: "metrics"
+            widget: "list"
+            min: 3
+            max: 3
+            hint: "Speed, Quality, Cost metrics"
+            fields:
+              - { label: "Icon", name: "icon", widget: "image", hint: "Metric icon/illustration" }
+              - { label: "Value", name: "value", widget: "string", hint: "e.g., '3-5 Days'" }
+              - { label: "Label", name: "label", widget: "string", hint: "e.g., 'vs 8-12 weeks'" }
+
+          - label: "Primary CTA Button"
+            name: "cta_primary"
+            widget: "object"
+            fields:
+              - { label: "Button Text", name: "text", widget: "string", default: "Join Beta Waitlist" }
+              - { label: "Button URL", name: "url", widget: "string", default: "#beta-form" }
+
+          - label: "Secondary CTA Button (Optional)"
+            name: "cta_secondary"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Button Text", name: "text", widget: "string", default: "See How It Works" }
+              - { label: "Button URL", name: "url", widget: "string", default: "#process" }
+
+      # 4-Persona Quality System (Fully Editable)
+      - label: "⭐ Quality System Section"
+        name: "quality_system"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "Four Specialist Perspectives Review Every Strategy" }
+          - { label: "Section Subheading", name: "subheading", widget: "text", required: false }
+
+          - label: "Personas (Exactly 4)"
+            name: "personas"
+            widget: "list"
+            min: 4
+            max: 4
+            hint: "Sarah, Marcus, Jennifer, David"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role Title", name: "role", widget: "string" }
+              - { label: "Avatar Image", name: "avatar", widget: "image", hint: "Professional illustration or photo" }
+              - { label: "Expertise Badge", name: "expertise", widget: "string", hint: "e.g., '10+ years SEO'" }
+              - label: "Review Criteria (4-5 items)"
+                name: "criteria"
+                widget: "list"
+                hint: "What this persona checks"
+                fields:
+                  - { label: "Criterion", name: "text", widget: "string" }
+              - { label: "Score (0-25 points)", name: "score", widget: "number", min: 0, max: 25, default: 22 }
+              - { label: "Example Output Quote", name: "example", widget: "string", hint: "e.g., '✓ 100% schema markup valid'" }
+
+          - { label: "Publication Threshold Text", name: "threshold_text", widget: "string", default: "Publication threshold: 85+ or automatic refinement" }
+
+      # Compliance Badges Section
+      - label: "✅ Compliance & Trust Badges"
+        name: "compliance_badges"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Show Section", name: "show", widget: "boolean", default: true }
+          - label: "Badges (3-5 items)"
+            name: "badges"
+            widget: "list"
+            hint: "AHPRA, ASIC, etc."
+            fields:
+              - { label: "Badge Icon", name: "icon", widget: "image", hint: "Compliance badge image" }
+              - { label: "Badge Text", name: "text", widget: "string" }
+              - { label: "Tooltip/Description", name: "tooltip", widget: "text", required: false }
+
+      # Beta Program Section
+      - label: "🚀 Beta Program Section"
+        name: "beta_program"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "Join Our Exclusive Beta Program" }
+          - { label: "Section Description", name: "description", widget: "text" }
+          - { label: "Background Style", name: "background", widget: "select", options: ["white", "light-gray", "accent-light"], default: "accent-light" }
+
+          - label: "Benefits List"
+            name: "benefits"
+            widget: "list"
+            hint: "3-5 key benefits"
+            fields:
+              - { label: "Benefit Icon", name: "icon", widget: "image" }
+              - { label: "Benefit Title", name: "title", widget: "string" }
+              - { label: "Benefit Description", name: "description", widget: "text" }
+
+          - label: "Email Capture Form"
+            name: "form"
+            widget: "object"
+            fields:
+              - { label: "Form Heading", name: "heading", widget: "string", default: "Reserve Your Spot" }
+              - { label: "Email Placeholder", name: "email_placeholder", widget: "string", default: "Your work email" }
+              - { label: "Button Text", name: "button_text", widget: "string", default: "Join Beta Waitlist" }
+              - { label: "Privacy Notice", name: "privacy", widget: "text", default: "We respect your privacy. Unsubscribe anytime." }
+              - { label: "ConvertKit Form ID", name: "convertkit_id", widget: "string", hint: "ConvertKit form embed ID" }
+
+      # Testimonials Section
+      - label: "💬 Testimonials Section"
+        name: "testimonials"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "What Our Beta Users Say" }
+          - { label: "Section Subheading", name: "subheading", widget: "text", required: false }
+
+          - label: "Testimonials (3-4 items)"
+            name: "items"
+            widget: "list"
+            hint: "Client success stories"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text", hint: "Client testimonial text" }
+              - { label: "Author Name", name: "author", widget: "string" }
+              - { label: "Author Role", name: "role", widget: "string", hint: "e.g., 'Marketing Director'" }
+              - { label: "Company", name: "company", widget: "string" }
+              - { label: "Author Photo", name: "photo", widget: "image", hint: "Professional headshot" }
+              - { label: "Key Metric", name: "metric", widget: "string", required: false, hint: "e.g., '85% cost savings'" }
+
+      # Process/How It Works Section
+      - label: "⚙️ Process Section"
+        name: "process"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "How It Works" }
+          - { label: "Section Subheading", name: "subheading", widget: "text", required: false }
+
+          - label: "Steps (4-6 items)"
+            name: "steps"
+            widget: "list"
+            hint: "Process workflow steps"
+            fields:
+              - { label: "Step Number", name: "number", widget: "number", min: 1, max: 10 }
+              - { label: "Step Icon", name: "icon", widget: "image" }
+              - { label: "Step Title", name: "title", widget: "string" }
+              - { label: "Step Description", name: "description", widget: "text" }
+              - { label: "Time Duration", name: "duration", widget: "string", required: false, hint: "e.g., '20-25 minutes'" }
+
+      # FAQ Section
+      - label: "❓ FAQ Section"
+        name: "faq"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "Frequently Asked Questions" }
+
+          - label: "Questions (5-10 items)"
+            name: "questions"
+            widget: "list"
+            hint: "Common customer questions"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+              - { label: "Category", name: "category", widget: "select", options: ["General", "Pricing", "Technical", "Compliance"], default: "General" }
+
+      # Final CTA Section
+      - label: "🎯 Final CTA Section"
+        name: "final_cta"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "Ready to Get Started?" }
+          - { label: "Section Subheading", name: "subheading", widget: "text" }
+          - { label: "Background Style", name: "background", widget: "select", options: ["primary", "accent", "gradient"], default: "primary" }
+
+          - label: "Primary CTA Button"
+            name: "cta_primary"
+            widget: "object"
+            fields:
+              - { label: "Button Text", name: "text", widget: "string", default: "Join Beta Waitlist" }
+              - { label: "Button URL", name: "url", widget: "string", default: "#beta-form" }
+
+          - label: "Secondary CTA Button (Optional)"
+            name: "cta_secondary"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Button Text", name: "text", widget: "string", default: "Learn More" }
+              - { label: "Button URL", name: "url", widget: "string", default: "/about" }
+
+          - label: "Trust Signals"
+            name: "trust_signals"
+            widget: "list"
+            hint: "Final trust elements"
+            fields:
+              - { label: "Icon", name: "icon", widget: "image" }
+              - { label: "Text", name: "text", widget: "string" }
+
+This file has been truncated. Read it again to see the full content.

@@ -1,83 +1,49 @@
 ---
 /**
- * Button - Styled button with variants
+ * Button - DaisyUI-based button component
  *
  * @example
  * ```astro
  * <Button variant="primary" href="/contact">Contact Us</Button>
- * <Button variant="secondary" type="button">Learn More</Button>
+ * <Button variant="secondary" size="lg">Learn More</Button>
+ * <Button variant="ghost">Cancel</Button>
  * ```
  */
 
 interface Props {
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'accent' | 'ghost' | 'link';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   type?: 'button' | 'submit' | 'reset';
   href?: string;
+  disabled?: boolean;
+  loading?: boolean;
   class?: string;
 }
 
-const { variant = 'primary', type = 'button', href, class: className = '' } = Astro.props;
+const {
+  variant = 'primary',
+  size = 'md',
+  type = 'button',
+  href,
+  disabled = false,
+  loading = false,
+  class: className = '',
+} = Astro.props;
+
 const Element = href ? 'a' : 'button';
 ---
 
 <Element
   href={href}
   type={!href ? type : undefined}
-  class:list={['button', `button-${variant}`, className]}
+  disabled={!href && disabled}
+  class:list={[
+    'btn',
+    `btn-${variant}`,
+    size !== 'md' && `btn-${size}`,
+    loading && 'loading',
+    className,
+  ]}
 >
   <slot />
 </Element>
-
-<style>
-  .button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    border: 2px solid transparent;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: inherit;
-  }
-
-  .button-primary {
-    color: #fff;
-    background-color: theme('colors.primary');
-    border-color: theme('colors.primary');
-  }
-
-  .button-primary:hover {
-    background-color: theme('colors.secondary');
-    border-color: theme('colors.secondary');
-  }
-
-  .button-secondary {
-    color: #fff;
-    background-color: theme('colors.accent');
-    border-color: theme('colors.accent');
-  }
-
-  .button-secondary:hover {
-    background-color: theme('colors.primary');
-    border-color: theme('colors.primary');
-  }
-
-  .button-outline {
-    color: theme('colors.primary');
-    background-color: transparent;
-    border-color: theme('colors.primary');
-  }
-
-  .button-outline:hover {
-    color: #fff;
-    background-color: theme('colors.primary');
-  }
-
-  .button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-</style>

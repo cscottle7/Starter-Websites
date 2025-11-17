@@ -1,0 +1,122 @@
+---
+/**
+ * SiteHeader - Bigger Boss Custom Header
+ * Design System: Navy background (#0F2C59) with white text
+ * Follows Precision Engine metaphor from creative-meta-prompt.md
+ */
+---
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">
+      The Bigger Boss
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/how-it-works">How It Works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/industries">Industries</a>
+      <a href="/contact" class="cta-button">Book Discovery Call</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 1.25rem 0;
+    background-color: #0F2C59; /* Deep Navy - Engine casing */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: #ffffff;
+    transition: opacity 0.2s;
+  }
+
+  .logo:hover {
+    opacity: 0.9;
+  }
+
+  .nav {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.2s;
+  }
+
+  .nav a:hover {
+    color: #D97642; /* Burnt Orange - Engine heat */
+  }
+
+  .nav a[aria-current='page'] {
+    color: #D97642;
+  }
+
+  .cta-button {
+    background-color: #D97642; /* Burnt Orange */
+    color: #ffffff !important;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.375rem; /* Machined edge - constraint-driven geometry */
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  .cta-button:hover {
+    background-color: #C26638;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .nav {
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+    }
+
+    .cta-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .nav a:not(.cta-button) {
+      display: none;
+    }
+
+    .nav {
+      gap: 0;
+    }
+  }
+</style>

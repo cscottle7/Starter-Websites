@@ -1,0 +1,168 @@
+---
+/**
+ * EmailCaptureForm Component
+ * Email capture form with validation for beta waitlist
+ * Supports inline and stacked layouts
+ * Used across all 3 homepage concepts
+ */
+
+interface Props {
+  variant?: 'inline' | 'stacked';
+  showName?: boolean;
+  showCompany?: boolean;
+  showIndustry?: boolean;
+  showPainPoint?: boolean;
+  ctaText?: string;
+  formId?: string;
+  class?: string;
+}
+
+const {
+  variant = 'stacked',
+  showName = true,
+  showCompany = false,
+  showIndustry = false,
+  showPainPoint = false,
+  ctaText = 'Join Beta Waitlist',
+  formId = 'beta-form',
+  class: className = '',
+} = Astro.props;
+
+// Layout styles
+const layoutStyles = variant === 'inline'
+  ? 'flex flex-col sm:flex-row gap-3'
+  : 'flex flex-col gap-4';
+
+// Input base styles
+const inputStyles = 'w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent';
+---
+
+<form id={formId} class={`${layoutStyles} ${className}`}>
+  <!-- Name Field (Optional) -->
+  {showName && (
+    <div class="flex-1">
+      <label for="name" class="sr-only">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your Name"
+        required
+        class={inputStyles}
+      />
+    </div>
+  )}
+
+  <!-- Email Field (Always Required) -->
+  <div class="flex-1">
+    <label for="email" class="sr-only">Email Address</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Your Email Address"
+      required
+      class={inputStyles}
+    />
+  </div>
+
+  <!-- Company Field (Optional) -->
+  {showCompany && (
+    <div class="flex-1">
+      <label for="company" class="sr-only">Company Name</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        placeholder="Company Name"
+        class={inputStyles}
+      />
+    </div>
+  )}
+
+  <!-- Industry Dropdown (Optional) -->
+  {showIndustry && (
+    <div class="flex-1">
+      <label for="industry" class="sr-only">Industry</label>
+      <select
+        id="industry"
+        name="industry"
+        class={inputStyles}
+      >
+        <option value="">Select Industry</option>
+        <option value="agency">Marketing Agency</option>
+        <option value="corporate">Corporate</option>
+        <option value="professional">Professional Services</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  )}
+
+  <!-- Primary Pain Point Dropdown (Optional) -->
+  {showPainPoint && (
+    <div class="flex-1">
+      <label for="pain-point" class="sr-only">Primary Pain Point</label>
+      <select
+        id="pain-point"
+        name="pain-point"
+        class={inputStyles}
+      >
+        <option value="">Primary Challenge</option>
+        <option value="cant-scale">Can't scale without hiring strategists</option>
+        <option value="compliance">Need AHPRA/ASIC compliant content</option>
+        <option value="agency-slow">Agency timelines too slow (8-12 weeks)</option>
+        <option value="ai-quality">DIY AI tools produce low quality</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  )}
+
+  <!-- Submit Button -->
+  <div class={variant === 'inline' ? 'flex-shrink-0' : ''}>
+    <button
+      type="submit"
+      class="w-full px-8 py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    >
+      {ctaText}
+    </button>
+  </div>
+
+  <!-- Success Message (Hidden by default) -->
+  <div id="form-success" class="hidden p-4 bg-green-50 border border-green-200 rounded-md">
+    <p class="text-green-800 text-sm font-medium">
+      ✓ Success! Check your email for confirmation.
+    </p>
+  </div>
+
+  <!-- Error Message (Hidden by default) -->
+  <div id="form-error" class="hidden p-4 bg-red-50 border border-red-200 rounded-md">
+    <p class="text-red-800 text-sm font-medium">
+      ✗ Something went wrong. Please try again.
+    </p>
+  </div>
+</form>
+
+<script>
+  // Form submission handler (client-side)
+  document.getElementById('beta-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    // TODO: Replace with actual ConvertKit/Mailchimp API integration
+    // For now, just show success message
+    console.log('Form submitted:', Object.fromEntries(formData));
+
+    // Show success message
+    const successEl = document.getElementById('form-success');
+    if (successEl) {
+      successEl.classList.remove('hidden');
+      form.reset();
+
+      // Redirect to thank you page after 2 seconds
+      setTimeout(() => {
+        window.location.href = '/thank-you';
+      }, 2000);
+    }
+  });
+</script>
