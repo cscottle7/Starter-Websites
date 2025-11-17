@@ -1,0 +1,56 @@
+---
+/**
+ * Badge Component
+ * Compliance, quality, and trust badges
+ * Used across all 3 homepage concepts
+ */
+
+interface Props {
+  type: 'compliance' | 'quality' | 'trust';
+  text: string;
+  icon?: string;
+  description?: string;
+  class?: string;
+}
+
+const {
+  type,
+  text,
+  icon,
+  description,
+  class: className = '',
+} = Astro.props;
+
+// Type-specific styles
+const typeStyles = {
+  compliance: 'bg-blue-50 border-blue-200 text-blue-900',
+  quality: 'bg-green-50 border-green-200 text-green-900',
+  trust: 'bg-gray-50 border-gray-200 text-gray-900',
+};
+
+// Combine styles
+const badgeStyles = `inline-flex flex-col items-center p-4 rounded-lg border-2 ${typeStyles[type]} ${className}`;
+---
+
+<div class={badgeStyles}>
+  <!-- Icon (if image provided) -->
+  {icon && (
+    <img
+      src={icon}
+      alt={text}
+      class="w-16 h-16 mb-3 object-contain"
+    />
+  )}
+
+  <!-- Badge Text -->
+  <span class="text-sm font-bold text-center">
+    {text}
+  </span>
+
+  <!-- Description (Optional) -->
+  {description && (
+    <p class="text-xs text-center mt-2 opacity-80">
+      {description}
+    </p>
+  )}
+</div>

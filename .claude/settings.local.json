@@ -45,7 +45,20 @@
       "Bash(node:*)",
       "Bash(npm --version)",
       "Bash(pnpm:*)",
-      "Bash(npx nx graph:*)"
+      "Bash(npx nx graph:*)",
+      "Bash(git log:*)",
+      "Bash(dir:*)",
+      "Bash(timeout:*)",
+      "Bash(taskkill:*)",
+      "Bash(find:*)",
+      "Bash(nx build:*)",
+      "Bash(curl:*)",
+      "Bash(grep:*)",
+      "Bash(if not exist \".claude\\skills\\design\" mkdir \".claude\\skills\\design\")",
+      "Bash(if not exist:*)",
+      "Bash(claude mcp:*)",
+      "Bash(npx:*)",
+      "Bash(del nul)"
     ],
     "deny": [],
     "ask": []

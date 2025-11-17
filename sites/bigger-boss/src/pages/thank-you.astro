@@ -1,0 +1,219 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const pageTitle = "Thank You - Bigger Boss";
+const pageDescription = "Thank you for your valuable feedback on our homepage concepts.";
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Thank You Section -->
+  <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-navy-900 to-navy-800 text-white px-6 py-20">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- Success Icon -->
+      <div class="mb-8">
+        <div class="w-24 h-24 mx-auto bg-green-500 rounded-full flex items-center justify-center">
+          <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        Thank You for Your Feedback!
+      </h1>
+
+      <!-- Message -->
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+        Your insights are invaluable in helping us create the best possible experience for agencies and professional services.
+      </p>
+
+      <!-- What Happens Next -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-10 text-left">
+        <h2 class="font-serif text-2xl font-bold mb-6 text-center">What Happens Next</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center font-bold">
+              1
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">We Analyze Your Feedback</h3>
+              <p class="text-gray-300 text-sm">
+                Your responses will be combined with other stakeholder feedback to identify the strongest concept.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center font-bold">
+              2
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">We Refine the Winner</h3>
+              <p class="text-gray-300 text-sm">
+                The selected concept will be enhanced based on improvement suggestions from all reviewers.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center font-bold">
+              3
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Beta Launch (February 2026)</h3>
+              <p class="text-gray-300 text-sm">
+                The final homepage goes live with the beta waitlist for founding agencies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Options -->
+      <div class="space-y-4">
+        <p class="text-lg text-gray-300 mb-6">
+          Want to stay updated on our progress and be notified when beta launches?
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#beta-waitlist"
+            class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-10 py-4 rounded-lg text-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+          >
+            Join Beta Waitlist
+          </a>
+          <a
+            href="/compare"
+            class="inline-block border-2 border-white hover:bg-white hover:text-navy-900 text-white font-semibold px-10 py-4 rounded-lg text-lg transition-all duration-200"
+          >
+            Review Concepts Again
+          </a>
+        </div>
+      </div>
+
+      <!-- Social Proof -->
+      <div class="mt-16 pt-8 border-t border-white/20">
+        <p class="text-sm text-gray-400 mb-4">
+          Join 50+ agencies already on the waitlist
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>No credit card required</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+            </svg>
+            <span>February 2026 launch</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
+            </svg>
+            <span>20 founding spots</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional Beta Waitlist Form Section -->
+  <section class="py-20 bg-white" id="beta-waitlist">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-center text-navy-900 mb-4">
+        Reserve Your Beta Spot
+      </h2>
+      <p class="text-xl text-gray-600 text-center mb-10">
+        50% lifetime discount • Priority support • Shape the product
+      </p>
+
+      <form class="bg-gray-50 rounded-2xl shadow-lg p-8 md:p-12">
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              Name <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              required
+              placeholder="Your name"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              Email <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              required
+              placeholder="you@company.com"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              Company Name <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              required
+              placeholder="Your company"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              Industry <span class="text-red-500">*</span>
+            </label>
+            <select
+              required
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+            >
+              <option value="">Select...</option>
+              <option value="agency">Marketing Agency</option>
+              <option value="corporate">Corporate/In-House</option>
+              <option value="professional-healthcare">Professional Services - Healthcare</option>
+              <option value="professional-financial">Professional Services - Financial</option>
+              <option value="professional-legal">Professional Services - Legal</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-sm font-semibold text-gray-700 mb-2">
+            Current Pain Point <span class="text-red-500">*</span>
+          </label>
+          <select
+            required
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+          >
+            <option value="">Select your biggest challenge...</option>
+            <option value="scaling">Can't scale without hiring strategists</option>
+            <option value="compliance">Need AHPRA/ASIC compliant content</option>
+            <option value="timelines">Agency timelines too slow (8-12 weeks)</option>
+            <option value="quality">DIY AI tools produce low quality</option>
+            <option value="cost">Strategy costs too high</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-lg text-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+        >
+          Reserve Your Beta Spot
+        </button>
+
+        <p class="text-sm text-gray-500 text-center mt-4">
+          No credit card required • 30-day satisfaction guarantee
+        </p>
+      </form>
+    </div>
+  </section>
+</MainLayout>

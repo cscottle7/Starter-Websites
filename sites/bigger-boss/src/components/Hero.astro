@@ -1,0 +1,189 @@
+---
+// Hero Component - Bigger Boss Homepage
+// Design: Softened Bold Hybrid (Precision Engine Metaphor)
+// Layout: 50/50 split with metrics and quality dashboard
+
+interface Props {
+  headline: string;
+  subheadline: string;
+  primaryCTA: string;
+  secondaryCTA?: string;
+  trustSignals: string[];
+  limitedAvailability?: string;
+}
+
+const {
+  headline,
+  subheadline,
+  primaryCTA,
+  secondaryCTA,
+  trustSignals,
+  limitedAvailability,
+} = Astro.props;
+---
+
+<section class="relative bg-gradient-navy text-white overflow-hidden">
+  <div class="max-w-section mx-auto px-6 py-section-y-lg lg:py-24">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left Column: Headline & CTAs -->
+      <div class="space-y-8">
+        <!-- Headline (Anti-AI: Inter 800, 56px) -->
+        <h1 class="text-h1 md:text-[3.5rem] font-extrabold text-white">
+          {headline}
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-body-lg text-white/90 max-w-2xl">
+          {subheadline}
+        </p>
+
+        <!-- Metrics Row (Anti-AI: Metrics BEFORE CTA) -->
+        <div class="grid grid-cols-3 gap-4 py-6 border-t border-b border-white/20">
+          <div class="text-center">
+            <div class="text-metric-hero text-orange-muted">90</div>
+            <div class="text-body-sm text-white/80 uppercase tracking-wide font-semibold">Minutes</div>
+          </div>
+          <div class="text-center">
+            <div class="text-metric-hero text-orange-muted">85+</div>
+            <div class="text-body-sm text-white/80 uppercase tracking-wide font-semibold">Quality Score</div>
+          </div>
+          <div class="text-center">
+            <div class="text-metric-hero text-green-success">100%</div>
+            <div class="text-body-sm text-white/80 uppercase tracking-wide font-semibold">Compliance</div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center bg-orange-muted text-white text-btn-primary font-bold px-10 py-4 rounded-btn hover:bg-orange-light hover:-translate-y-1 hover:shadow-hover transition-all duration-200 focus:ring-2 focus:ring-orange-muted focus:ring-offset-2"
+          >
+            {primaryCTA}
+          </a>
+          {secondaryCTA && (
+            <a
+              href="#demo"
+              class="inline-flex items-center justify-center border-2 border-white/30 text-white text-btn-secondary font-semibold px-8 py-4 rounded-btn hover:border-white/60 hover:bg-white/10 transition-all duration-200 focus:ring-2 focus:ring-white focus:ring-offset-2"
+            >
+              {secondaryCTA} →
+            </a>
+          )}
+        </div>
+
+        <!-- Trust Signals -->
+        <div class="flex flex-wrap gap-x-6 gap-y-3 text-body-sm text-white/80">
+          {trustSignals.map((signal) => (
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-success" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>{signal}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Limited Availability -->
+        {limitedAvailability && (
+          <div class="flex items-center gap-2 text-orange-light text-body-sm font-semibold">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            <span>{limitedAvailability}</span>
+          </div>
+        )}
+      </div>
+
+      <!-- Right Column: Quality Dashboard -->
+      <div class="relative">
+        <!-- Dashboard Card (Frosted Glass) -->
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-container p-component-lg shadow-large">
+          <div class="space-y-6">
+            <!-- Dashboard Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-white/20">
+              <h3 class="text-h5 font-bold text-white">Deliverables Overview</h3>
+              <span class="text-body-xs text-green-success font-semibold bg-green-success/20 px-3 py-1 rounded-full">
+                Quality Verified
+              </span>
+            </div>
+
+            <!-- 4-Phase Process -->
+            <div class="space-y-4">
+              <!-- Phase 1 -->
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-orange-muted/20 rounded-card flex items-center justify-center">
+                  <span class="text-orange-muted font-bold">1</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="text-body font-semibold text-white">Foundation Research</h4>
+                    <span class="text-body-sm text-white/60">20-25 min</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-2">
+                    <div class="bg-green-success h-2 rounded-full" style="width: 100%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phase 2 -->
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-orange-muted/20 rounded-card flex items-center justify-center">
+                  <span class="text-orange-muted font-bold">2</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="text-body font-semibold text-white">Market Intelligence</h4>
+                    <span class="text-body-sm text-white/60">20-25 min</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-2">
+                    <div class="bg-green-success h-2 rounded-full" style="width: 100%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phase 3 -->
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-orange-muted/20 rounded-card flex items-center justify-center">
+                  <span class="text-orange-muted font-bold">3</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="text-body font-semibold text-white">Keyword Strategy</h4>
+                    <span class="text-body-sm text-white/60">15-20 min</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-2">
+                    <div class="bg-green-success h-2 rounded-full" style="width: 100%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phase 4 -->
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-orange-muted/20 rounded-card flex items-center justify-center">
+                  <span class="text-orange-muted font-bold">4</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="text-body font-semibold text-white">Content Planning</h4>
+                    <span class="text-body-sm text-white/60">20-30 min</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-2">
+                    <div class="bg-green-success h-2 rounded-full" style="width: 100%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dashboard Footer -->
+            <div class="flex items-center justify-between pt-4 border-t border-white/20">
+              <div class="text-body-sm text-white/80">
+                Average Score:
+              </div>
+              <div class="text-metric-card text-orange-muted">87-91</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

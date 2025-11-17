@@ -1,0 +1,132 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Hero } from '@workspace/ui-components';
+import { Section } from '@workspace/ui-components';
+import { generateOrganizationSchema } from '@workspace/seo-utils';
+
+const title = 'About DWS-Web-AI - AI-Optimized Web Development';
+const description = 'Learn about our mission to transform web development through AI-powered automation, enabling agencies to scale quality website delivery efficiently.';
+
+const organizationSchema = generateOrganizationSchema({
+  name: 'DWS-Web-AI',
+  url: 'https://dws-web-ai.com',
+  logo: 'https://dws-web-ai.com/logo.png',
+  description: 'AI-Optimized Web Development Platform',
+});
+---
+
+<MainLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+  <Hero
+    headline="Building the Future of Web Development"
+    subheadline="Our mission is to empower web agencies with AI-powered tools that scale quality without proportional team growth"
+  />
+
+  <Section>
+    <div class="prose max-w-4xl mx-auto">
+      <h2>Our Story</h2>
+      <p>
+        DWS-Web-AI was born from a simple observation: modern web agencies struggle to scale quality website delivery
+        without growing their teams proportionally. Traditional CMS platforms are expensive, client editing workflows
+        are cumbersome, and manual quality assurance consumes valuable developer time.
+      </p>
+
+      <p>
+        We built DWS-Web-AI to solve these challenges through three core innovations:
+      </p>
+
+      <h3>1. AI-First Architecture</h3>
+      <p>
+        Every site we build is optimized from the ground up for AI crawler indexing. With AI search engines like
+        ChatGPT and Claude becoming primary discovery mechanisms, we ensure your content is technically accessible
+        through server-side rendering, semantic HTML, and comprehensive schema markup.
+      </p>
+
+      <h3>2. Automated Quality Gates</h3>
+      <p>
+        Our 6-gate quality validation system automates 70% of manual audit work. Every deployment must pass SEO compliance,
+        accessibility standards, performance benchmarks, AI readiness checks, and security audits before reaching production.
+      </p>
+
+      <h3>3. True Client Independence</h3>
+      <p>
+        We empower non-technical clients to manage their own content through Sveltia CMS - a modern, Git-based visual editor
+        that requires zero licensing costs. Clients edit content, upload images, and publish changes without developer assistance,
+        achieving 90% self-service for routine updates.
+      </p>
+
+      <h2>Our Technology Stack</h2>
+      <ul>
+        <li><strong>Astro 5.0:</strong> Islands architecture for optimal performance (zero JavaScript by default)</li>
+        <li><strong>Sveltia CMS:</strong> Free, Git-based visual content editing</li>
+        <li><strong>Nx Monorepo:</strong> Scalable infrastructure supporting 10+ client sites with shared component libraries</li>
+        <li><strong>GitHub Actions:</strong> Automated CI/CD with quality gate enforcement</li>
+        <li><strong>Claude Code Agents:</strong> AI-powered automation for SEO, accessibility, and content optimization</li>
+      </ul>
+
+      <h2>Our Commitment</h2>
+      <p>
+        We're committed to maintaining this platform as open-source foundation for modern web development. Every component,
+        utility, and agent definition is version-controlled, documented, and designed for reusability across client projects.
+      </p>
+
+      <p>
+        <strong>Core Web Vitals "Good" scores:</strong> Every site we launch meets Google's performance thresholds<br>
+        <strong>WCAG 2.1 AA Compliance:</strong> Accessibility is non-negotiable<br>
+        <strong>100% Schema Markup Coverage:</strong> Machine-readable structured data on every key page<br>
+        <strong>Zero CMS Licensing Costs:</strong> Sustainable economics for small agencies
+      </p>
+    </div>
+  </Section>
+</MainLayout>
+
+<style>
+  .prose {
+    color: #374151;
+    line-height: 1.75;
+  }
+
+  .prose h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose p {
+    margin-bottom: 1rem;
+  }
+
+  .prose ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose strong {
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .max-w-4xl {
+    max-width: 56rem;
+  }
+
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

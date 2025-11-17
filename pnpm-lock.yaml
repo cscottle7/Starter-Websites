@@ -72,12 +72,147 @@ importers:
       astro:
         specifier: ^5.0.0
         version: 5.15.3(@types/node@24.9.2)(jiti@1.21.7)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)
+      astro-headless-ui:
+        specifier: ^0.0.30
+        version: 0.0.30
     devDependencies:
+      daisyui:
+        specifier: ^5.4.7
+        version: 5.4.7
+      tailwindcss:
+        specifier: ^4.1.17
+        version: 4.1.17
+      typescript:
+        specifier: ^5.2.0
+        version: 5.9.3
+
+  sites/bigger-boss:
+    dependencies:
+      '@astrojs/tailwind':
+        specifier: ^5.1.0
+        version: 5.1.5(astro@5.15.3(@types/node@24.9.2)(jiti@1.21.7)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1))(tailwindcss@3.4.18(yaml@2.8.1))
+      '@fontsource/ibm-plex-serif':
+        specifier: ^5.2.7
+        version: 5.2.7
+      '@fontsource/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@sveltia/cms':
+        specifier: ^0.113.6
+        version: 0.113.6
+      '@workspace/cms-config':
+        specifier: workspace:*
+        version: link:../../packages/cms-config
+      '@workspace/seo-utils':
+        specifier: workspace:*
+        version: link:../../packages/seo-utils
+      '@workspace/ui-components':
+        specifier: workspace:*
+        version: link:../../packages/ui-components
+      astro:
+        specifier: ^5.0.0
+        version: 5.15.3(@types/node@24.9.2)(jiti@1.21.7)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.18(yaml@2.8.1)
+    devDependencies:
+      '@astrojs/check':
+        specifier: ^0.9.5
+        version: 0.9.5(prettier@3.6.2)(typescript@5.9.3)
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.15.0
+        version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
+      '@typescript-eslint/parser':
+        specifier: ^6.15.0
+        version: 6.21.0(eslint@8.57.1)(typescript@5.9.3)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.1
       typescript:
         specifier: ^5.2.0
         version: 5.9.3
 
   sites/dws-web-ai:
+    dependencies:
+      '@astrojs/tailwind':
+        specifier: ^5.1.0
+        version: 5.1.5(astro@5.15.3(@types/node@24.9.2)(jiti@1.21.7)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1))(tailwindcss@3.4.18(yaml@2.8.1))
+      '@sveltia/cms':
+        specifier: ^0.113.6
+        version: 0.113.6
+      '@workspace/cms-config':
+        specifier: workspace:*
+        version: link:../../packages/cms-config
+      '@workspace/seo-utils':
+        specifier: workspace:*
+        version: link:../../packages/seo-utils
+      '@workspace/ui-components':
+        specifier: workspace:*
+        version: link:../../packages/ui-components
+      astro:
+        specifier: ^5.0.0
+        version: 5.15.3(@types/node@24.9.2)(jiti@1.21.7)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.18(yaml@2.8.1)
+    devDependencies:
+      '@astrojs/check':
+        specifier: ^0.9.5
+        version: 0.9.5(prettier@3.6.2)(typescript@5.9.3)
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.15.0
+        version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
+      '@typescript-eslint/parser':
+        specifier: ^6.15.0
+        version: 6.21.0(eslint@8.57.1)(typescript@5.9.3)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.1
+      typescript:
+        specifier: ^5.2.0
+        version: 5.9.3
+
+  sites/test-client-alpha:
+    dependencies:
+      '@astrojs/tailwind':
+        specifier: ^5.1.0
+        version: 5.1.5(astro@5.15.3(@types/node@24.9.2)(jiti@1.21.7)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1))(tailwindcss@3.4.18(yaml@2.8.1))
+      '@sveltia/cms':
+        specifier: ^0.113.6
+        version: 0.113.6
+      '@workspace/cms-config':
+        specifier: workspace:*
+        version: link:../../packages/cms-config
+      '@workspace/seo-utils':
+        specifier: workspace:*
+        version: link:../../packages/seo-utils
+      '@workspace/ui-components':
+        specifier: workspace:*
+        version: link:../../packages/ui-components
+      astro:
+        specifier: ^5.0.0
+        version: 5.15.3(@types/node@24.9.2)(jiti@1.21.7)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.18(yaml@2.8.1)
+    devDependencies:
+      '@astrojs/check':
+        specifier: ^0.9.5
+        version: 0.9.5(prettier@3.6.2)(typescript@5.9.3)
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.15.0
+        version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
+      '@typescript-eslint/parser':
+        specifier: ^6.15.0
+        version: 6.21.0(eslint@8.57.1)(typescript@5.9.3)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.1
+      typescript:
+        specifier: ^5.2.0
+        version: 5.9.3
+
+  sites/test-client-beta:
     dependencies:
       '@astrojs/tailwind':
         specifier: ^5.1.0
@@ -524,6 +659,12 @@ packages:
   '@eslint/js@8.57.1':
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fontsource/ibm-plex-serif@5.2.7':
+    resolution: {integrity: sha512-04owmc2OQQ/DAMjXjEMJc+7V4dBVmR01aIFOg4cuqS8pQ4HbvtlYs/u6+O0vCt21EMx5M/azIbgx43iKyisEOA==}
+
+  '@fontsource/inter@5.2.8':
+    resolution: {integrity: sha512-P6r5WnJoKiNVV+zvW2xM13gNdFhAEpQ9dQJHt3naLvfg+LkF2ldgSLiF4T41lf1SQCM9QmkqPTn4TH568IRagg==}
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -1151,6 +1292,9 @@ packages:
   assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
 
+  astro-headless-ui@0.0.30:
+    resolution: {integrity: sha512-Txj0uoZBa2kY+3Uqcc+fSGpCZpxZkHd2zGo24Nac3r2TDrbEYNAGQH3BiUcUhQzTSpeDvqAvr1S5vcM96sviLQ==}
+
   astro@5.15.3:
     resolution: {integrity: sha512-wUO/isJrcUoduRoKacKB9jpO6TxTlPV1zw8UqQx39jSNY7z9IxusJAiib3AiNvqK+dCWhqXx+OnExCCwELmcUw==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
@@ -1360,6 +1504,9 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+
+  daisyui@5.4.7:
+    resolution: {integrity: sha512-2wYO61vTPCXk7xEBgnzLZAYoE0xS5IRLu/GSq0vORpB+cTrtubdx69NnA0loc0exvCY1s2fYL4lGZtFHe2ohNQ==}
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -2758,6 +2905,9 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
+  tailwindcss@4.1.17:
+    resolution: {integrity: sha512-j9Ee2YjuQqYT9bbRTfTZht9W/ytp5H+jJpZKiYdP/bpnXARAuELt9ofP0lPnmHjbga7SNQIxdTAXCmtKVYjN+Q==}
+
   tar-stream@2.2.0:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
     engines: {node: '>=6'}
@@ -3622,6 +3772,10 @@ snapshots:
 
   '@eslint/js@8.57.1': {}
 
+  '@fontsource/ibm-plex-serif@5.2.7': {}
+
+  '@fontsource/inter@5.2.8': {}
+
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
@@ -4204,6 +4358,8 @@ snapshots:
 
   assertion-error@1.1.0: {}
 
+  astro-headless-ui@0.0.30: {}
+
   astro@5.15.3(@types/node@24.9.2)(jiti@1.21.7)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
@@ -4508,6 +4664,8 @@ snapshots:
       source-map-js: 1.2.1
 
   cssesc@3.0.0: {}
+
+  daisyui@5.4.7: {}
 
   debug@4.4.3:
     dependencies:
@@ -6263,6 +6421,8 @@ snapshots:
     transitivePeerDependencies:
       - tsx
       - yaml
+
+  tailwindcss@4.1.17: {}
 
   tar-stream@2.2.0:
     dependencies:

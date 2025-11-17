@@ -1,12 +1,13 @@
 ---
 /**
- * Hero - Hero section with headline, subheadline, and CTA
+ * Hero - DaisyUI hero with archetype variants
  *
  * @example
  * ```astro
  * <Hero
- *   headline="Welcome to Our Site"
- *   subheadline="We build amazing things"
+ *   archetype="bold"
+ *   headline="Transform Your Business"
+ *   subheadline="AI-powered solutions for modern agencies"
  *   ctaText="Get Started"
  *   ctaUrl="/contact"
  * />
@@ -14,88 +15,73 @@
  */
 
 interface Props {
+  archetype?: 'bold' | 'elegant' | 'approachable';
   headline: string;
   subheadline?: string;
   ctaText?: string;
   ctaUrl?: string;
-  backgroundImage?: string;
+  secondaryCtaText?: string;
+  secondaryCtaUrl?: string;
+  class?: string;
 }
 
-const { headline, subheadline, ctaText, ctaUrl, backgroundImage } = Astro.props;
+const {
+  archetype = 'bold',
+  headline,
+  subheadline,
+  ctaText,
+  ctaUrl,
+  secondaryCtaText,
+  secondaryCtaUrl,
+  class: className = '',
+} = Astro.props;
+
+const archetypeClasses = {
+  bold: 'hero min-h-screen bg-gradient-to-br from-secondary via-accent to-primary',
+  elegant: 'hero min-h-[70vh] bg-base-200',
+  approachable: 'hero min-h-[80vh] bg-base-100',
+};
+
+const contentClasses = {
+  bold: 'hero-content text-center',
+  elegant: 'hero-content text-center',
+  approachable: 'hero-content flex-col lg:flex-row',
+};
+
+const headingClasses = {
+  bold: 'text-6xl md:text-7xl lg:text-8xl font-black mb-6 text-base-100 leading-tight',
+  elegant: 'text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary mb-6',
+  approachable: 'text-4xl md:text-5xl font-bold text-primary mb-4',
+};
+
+const subheadingClasses = {
+  bold: 'text-xl md:text-2xl lg:text-3xl font-extrabold mb-10 text-base-100/95 max-w-4xl mx-auto',
+  elegant: 'text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto',
+  approachable: 'text-lg md:text-xl text-gray-700 mb-6',
+};
 ---
 
-<section class="hero" style={backgroundImage ? `background-image: url(${backgroundImage})` : ''}>
-  <div class="container">
-    <div class="content">
-      <h1 class="headline">{headline}</h1>
-      {subheadline && <p class="subheadline">{subheadline}</p>}
-      {ctaText && ctaUrl && (
-        <a href={ctaUrl} class="cta-button">
-          {ctaText}
-        </a>
+<div class:list={[archetypeClasses[archetype], className]}>
+  <div class={contentClasses[archetype]}>
+    <div class="max-w-5xl">
+      <h1 class={headingClasses[archetype]}>{headline}</h1>
+      {subheadline && (
+        <p class={subheadingClasses[archetype]}>{subheadline}</p>
+      )}
+      {(ctaText || secondaryCtaText) && (
+        <div class="flex flex-wrap gap-4 justify-center">
+          {ctaText && ctaUrl && (
+            <a href={ctaUrl} class="btn btn-accent btn-lg font-black text-lg px-10">
+              {ctaText}
+            </a>
+          )}
+          {secondaryCtaText && secondaryCtaUrl && (
+            <a href={secondaryCtaUrl} class="btn btn-ghost btn-lg font-bold text-base-100 border-2 border-base-100/30 hover:border-base-100 hover:bg-base-100/10">
+              {secondaryCtaText}
+            </a>
+          )}
+        </div>
       )}
     </div>
   </div>
-</section>
-
-<style>
-  .hero {
-    width: 100%;
-    padding: 4rem 0;
-    background-color: #f9fafb;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  .content {
-    max-width: 48rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .headline {
-    font-size: 3rem;
-    font-weight: 800;
-    color: theme('colors.primary');
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-
-  .subheadline {
-    font-size: 1.25rem;
-    color: #6b7280;
-    margin-bottom: 2rem;
-  }
-
-  .cta-button {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    text-decoration: none;
-    color: #fff;
-    background-color: theme('colors.primary');
-    border-radius: 0.5rem;
-    transition: background-color 0.2s;
-  }
-
-  .cta-button:hover {
-    background-color: theme('colors.secondary');
-  }
-
-  @media (max-width: 768px) {
-    .headline {
-      font-size: 2rem;
-    }
-
-    .subheadline {
-      font-size: 1rem;
-    }
-  }
-</style>
+</div>

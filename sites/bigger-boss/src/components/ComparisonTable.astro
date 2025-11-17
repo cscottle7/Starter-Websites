@@ -1,0 +1,108 @@
+---
+// Comparison Table Component - Bigger Boss Homepage
+// Design: Responsive table → mobile cards
+// Metaphor: Data-driven credibility (technical readouts)
+
+interface ComparisonRow {
+  feature: string;
+  traditional: string;
+  aiTools: string;
+  diyChatGPT: string;
+  biggerBoss: string;
+  highlight?: boolean;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  rows: ComparisonRow[];
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const { title, subtitle, rows, ctaText, ctaLink } = Astro.props;
+---
+
+<section class="py-section-y bg-bg-primary">
+  <div class="max-w-wide mx-auto px-6">
+    <!-- Section Header -->
+    <div class="max-w-content mx-auto text-center mb-12">
+      <h2 class="text-h2 font-bold text-text-primary mb-4">{title}</h2>
+      <p class="text-body-lg text-text-secondary">{subtitle}</p>
+    </div>
+
+    <!-- Desktop Table (hidden on mobile) -->
+    <div class="hidden md:block overflow-x-auto">
+      <table class="w-full border-collapse bg-white rounded-container shadow-card overflow-hidden">
+        <thead>
+          <tr class="bg-navy-dark text-white">
+            <th class="text-left text-body font-bold px-6 py-4 border-r border-white/10">Feature</th>
+            <th class="text-center text-body font-bold px-6 py-4 border-r border-white/10">Traditional Agencies</th>
+            <th class="text-center text-body font-bold px-6 py-4 border-r border-white/10">AI Content Tools</th>
+            <th class="text-center text-body font-bold px-6 py-4 border-r border-white/10">DIY ChatGPT</th>
+            <th class="text-center text-body font-bold px-6 py-4 bg-orange-muted/20">The Bigger Boss</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr class={`${index % 2 === 0 ? 'bg-bg-secondary' : 'bg-white'} hover:bg-orange-muted/5 transition-colors`}>
+              <td class="text-body font-semibold text-text-primary px-6 py-4 border-r border-border">{row.feature}</td>
+              <td class="text-body text-text-secondary px-6 py-4 text-center border-r border-border">{row.traditional}</td>
+              <td class="text-body text-text-secondary px-6 py-4 text-center border-r border-border">{row.aiTools}</td>
+              <td class="text-body text-text-secondary px-6 py-4 text-center border-r border-border">{row.diyChatGPT}</td>
+              <td class={`text-body px-6 py-4 text-center ${row.highlight ? 'font-bold text-orange-muted bg-orange-muted/10' : 'font-semibold text-text-primary'}`}>
+                {row.biggerBoss}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile Cards (visible on mobile only) -->
+    <div class="md:hidden space-y-6">
+      {rows.map((row) => (
+        <div class="bg-white border border-border rounded-card shadow-card overflow-hidden">
+          <!-- Feature Header -->
+          <div class="bg-navy-dark text-white px-6 py-4">
+            <h3 class="text-h5 font-bold">{row.feature}</h3>
+          </div>
+
+          <!-- Comparison Rows -->
+          <div class="divide-y divide-border">
+            <div class="flex justify-between items-center px-6 py-4">
+              <span class="text-body-sm font-semibold text-text-secondary">Traditional Agencies</span>
+              <span class="text-body text-text-primary">{row.traditional}</span>
+            </div>
+            <div class="flex justify-between items-center px-6 py-4">
+              <span class="text-body-sm font-semibold text-text-secondary">AI Content Tools</span>
+              <span class="text-body text-text-primary">{row.aiTools}</span>
+            </div>
+            <div class="flex justify-between items-center px-6 py-4">
+              <span class="text-body-sm font-semibold text-text-secondary">DIY ChatGPT</span>
+              <span class="text-body text-text-primary">{row.diyChatGPT}</span>
+            </div>
+            <div class={`flex justify-between items-center px-6 py-4 ${row.highlight ? 'bg-orange-muted/10' : 'bg-bg-secondary'}`}>
+              <span class="text-body-sm font-bold text-text-primary">The Bigger Boss</span>
+              <span class={`text-body ${row.highlight ? 'font-bold text-orange-muted' : 'font-semibold text-text-primary'}`}>
+                {row.biggerBoss}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    {ctaText && ctaLink && (
+      <div class="mt-12 text-center">
+        <a
+          href={ctaLink}
+          class="inline-flex items-center text-blue-vibrant text-body-lg font-semibold hover:underline transition-all duration-150"
+        >
+          {ctaText} →
+        </a>
+      </div>
+    )}
+  </div>
+</section>

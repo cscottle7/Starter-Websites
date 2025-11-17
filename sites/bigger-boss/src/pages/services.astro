@@ -1,0 +1,274 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Hero } from '@workspace/ui-components';
+import { Section } from '@workspace/ui-components';
+import { Card } from '@workspace/ui-components';
+
+const title = 'Services - DWS-Web-AI Platform Capabilities';
+const description = 'Explore our comprehensive web development services: rapid site deployment, automated quality gates, AI optimization, and client content management.';
+---
+
+<MainLayout title={title} description={description}>
+  <Hero
+    headline="Comprehensive Web Development Solutions"
+    subheadline="From rapid deployment to ongoing optimization, we provide everything agencies need to scale quality website delivery"
+  />
+
+  <Section>
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        A complete platform for modern web development, designed for agencies who demand excellence at scale.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <Card
+        title="Rapid Site Deployment"
+        description="Launch new client websites in under one week using our automated scaffolding scripts and shared component libraries. Each site inherits quality standards while maintaining unique client branding."
+      />
+      <Card
+        title="Automated Quality Gates"
+        description="6-gate validation system enforces SEO compliance, WCAG 2.1 AA accessibility, Core Web Vitals performance, AI readiness, and security standards on every deployment."
+      />
+      <Card
+        title="AI Crawler Optimization"
+        description="Every site is technically optimized for AI search engines through server-side rendering, semantic HTML, comprehensive schema markup, and AI-friendly robots.txt configuration."
+      />
+      <Card
+        title="Visual Content Editing"
+        description="Sveltia CMS provides non-technical clients with intuitive visual editing, Git-based version control, and mobile-friendly interface - all with zero licensing costs."
+      />
+      <Card
+        title="Performance Excellence"
+        description="Astro Islands architecture ships zero JavaScript by default, delivering 40% faster page loads than comparable frameworks while maintaining Core Web Vitals 'Good' scores."
+      />
+      <Card
+        title="Scalable Infrastructure"
+        description="Nx monorepo architecture with shared packages enables support for 10+ client sites with your current team size through centralized component libraries and CI/CD pipelines."
+      />
+    </div>
+  </Section>
+
+  <Section backgroundColor="#f9fafb">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Service Packages</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Choose the package that best fits your agency's needs.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="pricing-card">
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Foundation</h3>
+        <div class="price mb-4">
+          <span class="text-4xl font-bold">$10k</span>
+          <span class="text-gray-600">one-time</span>
+        </div>
+        <ul class="features mb-6">
+          <li>Nx monorepo setup</li>
+          <li>3 shared packages</li>
+          <li>1 pilot client site</li>
+          <li>Core documentation</li>
+          <li>GitHub repository structure</li>
+        </ul>
+        <div class="text-sm text-gray-600">Phase 1 + Phase 2 Complete</div>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="badge">Recommended</div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Complete Platform</h3>
+        <div class="price mb-4">
+          <span class="text-4xl font-bold">$25k</span>
+          <span class="text-gray-600">one-time</span>
+        </div>
+        <ul class="features mb-6">
+          <li>Everything in Foundation</li>
+          <li>Automated quality gates (6 gates)</li>
+          <li>CI/CD pipeline (GitHub Actions)</li>
+          <li>3 Tier 1 agents (SEO, A11y, Content)</li>
+          <li>Client scaffolding script</li>
+          <li>Comprehensive documentation</li>
+        </ul>
+        <div class="text-sm text-gray-600">Phase 1-3 Complete (MVP)</div>
+      </div>
+
+      <div class="pricing-card">
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+        <div class="price mb-4">
+          <span class="text-4xl font-bold">Custom</span>
+          <span class="text-gray-600">pricing</span>
+        </div>
+        <ul class="features mb-6">
+          <li>Everything in Complete</li>
+          <li>Advanced orchestrator agents</li>
+          <li>Research & strategy agents</li>
+          <li>Custom integrations</li>
+          <li>Dedicated support</li>
+          <li>Training & onboarding</li>
+        </ul>
+        <div class="text-sm text-gray-600">Phase 4+ Advanced Features</div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        Contact us to discuss which package best fits your agency's needs and timeline.
+      </p>
+    </div>
+  </Section>
+</MainLayout>
+
+<style>
+  .text-center {
+    text-align: center;
+  }
+
+  .mb-12 {
+    margin-bottom: 3rem;
+  }
+
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+
+  .mb-6 {
+    margin-bottom: 1.5rem;
+  }
+
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .max-w-3xl {
+    max-width: 48rem;
+  }
+
+  .max-w-2xl {
+    max-width: 42rem;
+  }
+
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .grid {
+    display: grid;
+  }
+
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .gap-8 {
+    gap: 2rem;
+  }
+
+  .text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .text-gray-900 {
+    color: #111827;
+  }
+
+  .text-gray-600 {
+    color: #4b5563;
+  }
+
+  .pricing-card {
+    background-color: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    border-color: #3b82f6;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background-color: #3b82f6;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .features li:last-child {
+    border-bottom: none;
+  }
+
+  .features li::before {
+    content: '✓ ';
+    color: #10b981;
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .md\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .md\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

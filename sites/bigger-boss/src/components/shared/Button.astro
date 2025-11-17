@@ -1,0 +1,59 @@
+---
+/**
+ * Button Component
+ * Reusable button with multiple variants and sizes
+ * Used across all 3 homepage concepts
+ */
+
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  fullWidth?: boolean;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  class: className = '',
+  fullWidth = false,
+} = Astro.props;
+
+// Base styles
+const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+
+// Variant styles
+const variantStyles = {
+  primary: 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500',
+  secondary: 'bg-gray-700 text-white hover:bg-gray-800 focus:ring-gray-700',
+  outline: 'bg-transparent border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white focus:ring-navy-900',
+};
+
+// Size styles
+const sizeStyles = {
+  sm: 'px-4 py-2 text-sm h-8',
+  md: 'px-6 py-3 text-base h-10',
+  lg: 'px-8 py-4 text-lg h-12',
+};
+
+// Width style
+const widthStyle = fullWidth ? 'w-full' : '';
+
+// Combine all styles
+const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${widthStyle} ${className}`;
+
+// Render as link or button
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class={combinedStyles}
+  href={href}
+  type={!href ? type : undefined}
+>
+  <slot />
+</Tag>
