@@ -1,0 +1,179 @@
+# Sveltia CMS Configuration for Dr. Thomas Nguyen ENT
+# Comprehensive configuration matching website_instructions.md requirements
+
+backend:
+  name: github
+  repo: cscottle7/Starter-Websites
+  branch: main
+
+# Enable local development mode (bypasses GitHub auth)
+local_backend: true
+
+# Media configuration (paths relative to monorepo root)
+media_folder: "sites/nguyen-sample/public/images"
+public_folder: "/images"
+
+# File slugs
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# Collections (paths relative to monorepo root: C:\Apps\Websites\Starter-Websites)
+collections:
+  # ============================================
+  # GLOBAL SETTINGS - Fonts, Colors, Typography
+  # ============================================
+  - name: "global_settings"
+    label: "⚙️ Global Settings"
+    files:
+      - name: "design_tokens"
+        label: "Design Tokens (Colors, Fonts, Typography)"
+        file: "sites/nguyen-sample/src/content/config/design-tokens.json"
+        fields:
+          - label: "Typography"
+            name: "typography"
+            widget: "object"
+            fields:
+              - { label: "Heading Font Family", name: "headingFont", widget: "string", default: "DM Serif Text" }
+              - { label: "Body Font Family", name: "bodyFont", widget: "string", default: "Nunito Sans" }
+              - label: "H1 Size & Color"
+                name: "h1"
+                widget: "object"
+                fields:
+                  - { label: "Size (px)", name: "size", widget: "number", default: 64 }
+                  - { label: "Color (hex)", name: "color", widget: "string", default: "#262558", hint: "Example: #262558" }
+              - label: "H2 Size & Color"
+                name: "h2"
+                widget: "object"
+                fields:
+                  - { label: "Size (px)", name: "size", widget: "number", default: 48 }
+                  - { label: "Color (hex)", name: "color", widget: "string", default: "#262558" }
+              - label: "H3 Size & Color"
+                name: "h3"
+                widget: "object"
+                fields:
+                  - { label: "Size (px)", name: "size", widget: "number", default: 36 }
+                  - { label: "Color (hex)", name: "color", widget: "string", default: "#262558" }
+              - label: "Body Text"
+                name: "body"
+                widget: "object"
+                fields:
+                  - { label: "Size (px)", name: "size", widget: "number", default: 18 }
+                  - { label: "Color (hex)", name: "color", widget: "string", default: "#5F5F74" }
+          - label: "Color Palette"
+            name: "colors"
+            widget: "object"
+            fields:
+              - { label: "Primary Color", name: "primary", widget: "string", default: "#424189" }
+              - { label: "Secondary Color", name: "secondary", widget: "string", default: "#7E9BC5" }
+              - { label: "Dark Background", name: "darkBg", widget: "string", default: "#262558" }
+              - { label: "Light Background", name: "lightBg", widget: "string", default: "#ECF2FB" }
+              - { label: "Warm Background", name: "warmBg", widget: "string", default: "#FBF7F3" }
+
+  # ============================================
+  # HEADER / NAVIGATION
+  # ============================================
+  - name: "header"
+    label: "📋 Header & Navigation"
+    files:
+      - name: "navigation"
+        label: "Navigation Menu"
+        file: "sites/nguyen-sample/src/content/config/navigation.json"
+        fields:
+          - label: "Main Navigation Links"
+            name: "mainNav"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Footer Links"
+            name: "footerLinks"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+  # ============================================
+  # FOOTER
+  # ============================================
+  - name: "footer"
+    label: "🦶 Footer"
+    files:
+      - name: "footer_content"
+        label: "Footer Content"
+        file: "sites/nguyen-sample/src/content/config/footer.json"
+        fields:
+          - label: "Footer Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Link Text", name: "text", widget: "string" }
+                  - { label: "Link URL", name: "url", widget: "string" }
+          - label: "Locations"
+            name: "locations"
+            widget: "list"
+            fields:
+              - { label: "Location Name", name: "name", widget: "string" }
+              - { label: "Location URL", name: "url", widget: "string" }
+          - label: "Association Logos"
+            name: "logos"
+            widget: "list"
+            fields:
+              - { label: "Logo Image", name: "image", widget: "image" }
+              - { label: "Logo Alt Text", name: "alt", widget: "string" }
+              - { label: "Logo Height (px)", name: "height", widget: "number", default: 48 }
+          - { label: "Copyright Text", name: "copyright", widget: "string", default: "© 2025 Dr Thomas Nguyen. All rights reserved." }
+
+  # ============================================
+  # HOMEPAGE SECTIONS
+  # ============================================
+  - name: "homepage"
+    label: "🏠 Homepage Sections"
+    files:
+      - name: "hero"
+        label: "Hero Banner"
+        file: "sites/nguyen-sample/src/content/homepage/hero.json"
+        fields:
+          - { label: "Background Image", name: "backgroundImage", widget: "image", hint: "Can be full width" }
+          - { label: "Main Headline", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - { label: "CTA Button Text", name: "ctaText", widget: "string", default: "Book Your Consultation" }
+          - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "/contact" }
+
+  # ============================================
+  # PAGES
+  # ============================================
+  - name: "pages"
+    label: "📄 Pages"
+    folder: "sites/nguyen-sample/src/content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "SEO Description", name: "description", widget: "text", required: true }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ============================================
+  # BLOG POSTS
+  # ============================================
+  - name: "blog"
+    label: "✍️ Blog Posts"
+    folder: "sites/nguyen-sample/src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "SEO Description", name: "description", widget: "text", required: true }
+      - { label: "Author", name: "author", widget: "string", default: "Dr. Thomas Nguyen" }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image", required: true }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }

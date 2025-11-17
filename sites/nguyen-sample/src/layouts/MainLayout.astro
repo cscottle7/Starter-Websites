@@ -1,0 +1,74 @@
+---
+/**
+ * Main Layout - Dr. Thomas Nguyen Site
+ * Uses custom navigation, footer, and CSS file
+ */
+import Navigation from '../components/Navigation.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/nguyen.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  ogImage = '/images/og-image.jpg',
+  noindex = false
+} = Astro.props;
+
+const siteUrl = 'https://dr-nguyen-ent.com';
+const fullTitle = title.includes('Dr. Thomas Nguyen') ? title : `${title} | Dr. Thomas Nguyen ENT`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+
+  {/* Canonical URL */}
+  <link rel="canonical" href={canonicalUrl || `${siteUrl}${Astro.url.pathname}`} />
+
+  {/* Open Graph / Facebook */}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl || `${siteUrl}${Astro.url.pathname}`} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  {/* Robots */}
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+  {/* Favicon */}
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  {/* Google Fonts - DM Serif Text and Nunito Sans */}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <Navigation />
+
+  <main>
+    <slot />
+  </main>
+
+  <SiteFooter />
+</body>
+</html>

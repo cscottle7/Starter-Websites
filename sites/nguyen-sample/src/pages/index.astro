@@ -1,0 +1,426 @@
+---
+/**
+ * Homepage - Dr. Thomas Nguyen ENT
+ * Complete implementation matching Figma design
+ */
+import MainLayout from '../layouts/MainLayout.astro';
+import HeroBanner from '../components/HeroBanner.astro';
+import { generateWebsiteSchema, generateOrganizationSchema } from '@workspace/seo-utils';
+
+const title = 'Dr. Thomas Nguyen ENT - Expert ENT Care for All Ages';
+const description = 'Australian and internationally trained ENT specialist providing compassionate treatment for children and adults. Specializing in Paediatric ENT, Rhinology, and skull base surgery across Southwest Sydney and Forster.';
+
+// Generate schema markup
+const websiteSchema = generateWebsiteSchema({
+  name: 'Dr. Thomas Nguyen ENT',
+  url: 'https://dr-nguyen-ent.com',
+  description: description,
+});
+
+const organizationSchema = generateOrganizationSchema({
+  name: 'Dr. Thomas Nguyen ENT',
+  url: 'https://dr-nguyen-ent.com',
+  logo: 'https://dr-nguyen-ent.com/images/dr-nguyen-logo.png.webp',
+  description: 'Expert ENT Specialist - Ears, Nose & Throat Surgeon',
+});
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+  <!-- Hero Banner - Full Width -->
+  <HeroBanner
+    backgroundImage="/images/content/homepage-banner.png.webp"
+    title="Advanced ENT<br />Solutions for All Ages"
+    subtitle="Comprehensive ear, nose & throat care from pediatric sleep disorders to complex skull base surgery"
+    ctaText="BOOK YOUR CONSULTATION"
+    ctaUrl="/contact"
+  />
+
+  <!-- About Dr. Thomas Nguyen Section -->
+  <section class="section">
+    <div class="container">
+      <div class="two-column">
+        <div class="column-image">
+          <img src="/images/content/About-Dr-Thomas-Nguyen.jpg.jpg" alt="Dr. Thomas Nguyen" class="img-rounded img-shadow" />
+        </div>
+        <div class="column-content">
+          <p class="section-label">ABOUT</p>
+          <h2 class="mb-24">Dr Thomas Nguyen</h2>
+          <p class="body-large mb-24">
+            Your child's sleep problems, recurring ear infections, or your own chronic sinus issues deserve expert care. Dr Thomas Nguyen is an Australian and internationally trained ENT specialist providing compassionate treatment for children and adults across Southwest Sydney and Forster. He has a special interest in Paediatric ENT, Rhinology (nasal and sinus conditions), and skull base surgery.
+          </p>
+          <a href="/about" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Dr. Thomas Nguyen - 6 Cards -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="text-center mb-48">
+        <h2>Why Choose Dr Thomas Nguyen?</h2>
+        <p class="body-large mt-24" style="max-width: 900px; margin-left: auto; margin-right: auto;">
+          Finding the right specialist for your family is an important decision. We are dedicated to providing care that is not only expert but also patient-focused, combining advanced training with a truly compassionate approach.
+        </p>
+      </div>
+
+      <div class="card-grid card-grid-3">
+        <div class="card text-center">
+          <div style="width: 64px; height: 64px; background-color: #ECF2FB; border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#424189" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h4 class="card-title">Extensive Australian and International Training</h4>
+          <p class="card-text">Dr Nguyen is a fully qualified Australian ENT specialist. He also completed a fellowship in Rhinology and endoscopic skull base surgery at McMaster's University Medical Centre in Canada, bringing world-class expertise to your care.</p>
+        </div>
+
+        <div class="card text-center">
+          <div style="width: 64px; height: 64px; background-color: #ECF2FB; border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#424189" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h4 class="card-title">A Focus on Paediatric and Complex Conditions</h4>
+          <p class="card-text">With a subspecialty focus on Paediatric ENT, Rhinology, and skull base surgery, Dr Nguyen has deep expertise in managing everything from common childhood concerns to complex adult conditions.</p>
+        </div>
+
+        <div class="card text-center">
+          <div style="width: 64px; height: 64px; background-color: #ECF2FB; border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#424189" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <h4 class="card-title">A Patient Centred Philosophy</h4>
+          <p class="card-text">We believe in treating every patient with respect and compassion. We take the time to conduct a thorough examination and provide clear explanations, ensuring you are a partner in your treatment plan.</p>
+        </div>
+
+        <div class="card text-center">
+          <div style="width: 64px; height: 64px; background-color: #ECF2FB; border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#424189" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+              <line x1="9" y1="9" x2="9.01" y2="9"></line>
+              <line x1="15" y1="9" x2="15.01" y2="9"></line>
+            </svg>
+          </div>
+          <h4 class="card-title">Child Friendly Environment</h4>
+          <p class="card-text">We understand that a visit to a specialist can be stressful for young children. Our practice uses specialised techniques to reduce anxiety and create a welcoming atmosphere for our youngest patients.</p>
+        </div>
+
+        <div class="card text-center">
+          <div style="width: 64px; height: 64px; background-color: #ECF2FB; border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#424189" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h4 class="card-title">Convenient Dual Locations</h4>
+          <p class="card-text">Our clinics in Southwest Sydney (Liverpool, Gledswood Hills) and the Forster-Manning region provide accessible specialist care, reducing travel stress for families in these communities.</p>
+        </div>
+
+        <div class="card text-center">
+          <div style="width: 64px; height: 64px; background-color: #ECF2FB; border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#424189" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h4 class="card-title">Comprehensive Services</h4>
+          <p class="card-text">From diagnostic assessments to advanced surgical procedures, we offer a full spectrum of ENT services under one roof, ensuring continuity of care throughout your treatment journey.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Section - A Note From Dr. Nguyen -->
+  <section class="quote-section">
+    <div class="container">
+      <h2 class="quote-heading mb-32">A Note From Dr Nguyen</h2>
+      <div class="quote-content">
+        <p>"Every family's journey is different. As an Australian and internationally trained ENT specialist, my role is to thoroughly explore your medical condition, perform a comprehensive examination, and take time to explain your condition and offer different treatment options so you can make informed decisions. I believe in treating every patient with respect and compassion throughout their journey."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Concerns We Address -->
+  <section class="section">
+    <div class="container">
+      <div class="two-column">
+        <div class="column-content">
+          <h2 class="mb-24">Common Concerns We Address</h2>
+          <p class="body-large mb-48">
+            We understand that persistent ENT symptoms can be worrying. Here is how we can help you find answers for some of the most common issues we see.
+          </p>
+          <div class="concern-item mb-32">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <svg width="24" height="24" style="color: #424189; margin-right: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h4 style="margin: 0;">Your child's loud snoring or sleep problems</h4>
+            </div>
+            <p style="margin-left: 36px; color: #5F5F74;">We understand that a visit to a specialist can be stressful for young children. Our practice uses specialised techniques to reduce anxiety and create a welcoming atmosphere for our youngest patients.</p>
+          </div>
+
+          <div class="concern-item mb-32">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <svg width="24" height="24" style="color: #424189; margin-right: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h4 style="margin: 0;">Recurring ear infections</h4>
+            </div>
+            <p style="margin-left: 36px; color: #5F5F74;">Comprehensive ear infection treatment</p>
+          </div>
+
+          <div class="concern-item mb-32">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <svg width="24" height="24" style="color: #424189; margin-right: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h4 style="margin: 0;">A chronic stuffy nose or sinus pressure</h4>
+            </div>
+            <p style="margin-left: 36px; color: #5F5F74;">Advanced sinusitis diagnosis and treatment</p>
+          </div>
+
+          <div class="concern-item mb-32">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <svg width="24" height="24" style="color: #424189; margin-right: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h4 style="margin: 0;">Frequent throat infections</h4>
+            </div>
+            <p style="margin-left: 36px; color: #5F5F74;">Tonsillitis evaluation and treatment options</p>
+          </div>
+
+          <div class="concern-item">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <svg width="24" height="24" style="color: #424189; margin-right: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h4 style="margin: 0;">Speech delays or hearing concerns</h4>
+            </div>
+            <p style="margin-left: 36px; color: #5F5F74;">Hearing assessment and intervention</p>
+          </div>
+        </div>
+        <div class="column-image">
+          <img src="/images/content/common-concerns-we-address.jpg" alt="Dr. Nguyen examining patient" class="img-rounded img-shadow" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Child's Sleep Section -->
+  <section class="section" style="background-color: #EAE2D6;">
+    <div class="container">
+      <div class="two-column">
+        <div class="column-image">
+          <img src="/images/content/Paediatric Sleep Apnoea.jpg" alt="Pediatric Sleep Assessment" class="img-rounded img-shadow" />
+        </div>
+        <div class="column-content">
+          <h2 class="mb-24">Is Your Child's Sleep Affecting Their Health?</h2>
+          <p class="body-large mb-32">
+            Persistent snoring in children often signals sleep-disordered breathing that can impact behaviour, learning, and development. If you notice loud snoring, restless sleep, daytime tiredness, or changes in concentration, a specialist assessment is the first step. Dr Nguyen specialises in comprehensive paediatric sleep assessment and treatment to help your child thrive.
+          </p>
+          <a href="/specialist-services/paediatric-sleep" class="btn btn-primary">Learn More About Paediatric Sleep Solutions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chronic Sinus Section -->
+  <section class="section" style="background-color: #EAE2D6;">
+    <div class="container">
+      <div class="two-column">
+        <div class="column-content">
+          <h2 class="mb-24">Tired of Chronic Sinus and Nasal Problems?</h2>
+          <p class="body-large mb-32">
+            We understand the frustration of living with persistent sinus pressure and congestion. If you have tried multiple treatments without lasting relief, Dr Nguyen offers advanced diagnostic techniques and a full range of treatment options for chronic conditions, including chronic sinusitis, rhinitis, and nasal polyps.
+          </p>
+          <a href="/specialist-services/rhinology" class="btn btn-primary">Discover Advanced Sinus Solutions</a>
+        </div>
+        <div class="column-image">
+          <img src="/images/content/Sinusitis Treatment.jpg" alt="Sinus Treatment" class="img-rounded img-shadow" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Can You Expect From Your Visit -->
+  <section class="section" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="text-center mb-48">
+        <h2>What Can You Expect From Your Visit?</h2>
+        <p class="body-large mt-24" style="max-width: 900px; margin-left: auto; margin-right: auto;">
+          We want you to feel prepared and confident at every step. Here is what you can expect when you visit our practice.
+        </p>
+      </div>
+
+      <div class="visit-expectations">
+        <div class="visit-row">
+          <div class="visit-phase">
+            <h3>Before Your First Visit</h3>
+          </div>
+          <div class="visit-description">
+            <p>A referral from your GP is required to claim Medicare benefits. Please remember to bring your Medicare card, the referral letter, and a list of any current medications. We recommend arriving 15 minutes early to complete your paperwork without feeling rushed.</p>
+          </div>
+        </div>
+
+        <div class="visit-row">
+          <div class="visit-phase">
+            <h3>During Your Consultation</h3>
+          </div>
+          <div class="visit-description">
+            <p style="margin-bottom: 16px;">Your first appointment will last approximately 45-60 minutes. During this time, we will conduct a:</p>
+            <ul>
+              <li><strong>Detailed review</strong> of your medical history and symptoms.</li>
+              <li><strong>Thorough examination,</strong> which may include specialised ENT assessment procedures.</li>
+              <li><strong>Clear explanation</strong> of your condition and our findings in easy-to-understand terms.</li>
+              <li><strong>Discussion of treatment options</strong> to help you make an informed decision.</li>
+              <li><strong>Collaborative plan</strong> with clear next steps for your care.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="visit-row">
+          <div class="visit-phase">
+            <h3>After Your Visit</h3>
+          </div>
+          <div class="visit-description">
+            <p>Following your consultation, we will send a written summary of our recommendations to both you and your GP. If a procedure is required, our team will provide booking information and pre-operative guidance. You will have direct access to our team for any follow-up questions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" style="background-color: #EAE2D6;">
+    <div class="container">
+      <div class="faq-container">
+        <div class="faq-image">
+          <img src="/images/content/dr-nguyen-with-child-patient.jpg" alt="Dr. Nguyen with patient" class="img-rounded img-shadow" />
+        </div>
+        <div class="faq-accordion">
+          <h2 class="mb-32">Frequently Asked Questions</h2>
+          <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span>Do I need a referral to see Dr Nguyen?</span>
+            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Yes, a referral from your GP is required to access Medicare rebates. This also ensures Dr Nguyen has your relevant medical history to provide the most effective consultation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span>Will surgery always be necessary?</span>
+            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Not necessarily. Dr Nguyen believes in exploring all appropriate treatment options, from conservative management to advanced surgical solutions, and will work with you to determine the best approach for your specific condition.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span>What conditions does Dr Nguyen not treat?</span>
+            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Dr Nguyen specializes in ENT conditions. For concerns outside the ear, nose, throat, and related structures, he will refer you to the appropriate specialist to ensure you receive the best possible care.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span>How long are the current wait times?</span>
+            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Wait times vary depending on urgency and clinic location. Please contact our practice directly for current availability. We prioritize urgent cases and strive to see all patients as promptly as possible.</p>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section section-blue">
+    <div class="container text-center">
+      <h2 class="text-white mb-24">Ready to Get Expert ENT Care?</h2>
+      <p class="body-large text-white mb-32" style="max-width: 700px; margin-left: auto; margin-right: auto;">
+        Whether you are concerned about your child's sleep, recurring infections, or your own persistent ENT symptoms, Dr Nguyen provides expert assessment and treatment options for the whole family.
+      </p>
+      <a href="/contact" class="btn btn-light">Book Your Consultation</a>
+    </div>
+  </section>
+
+  <!-- Professional Associations -->
+  <section class="section association-logos-section">
+    <div class="container">
+      <div class="association-logos">
+        <img src="/images/logos/Association Logos/1755763399463010_190356114.png" alt="FRACS" class="association-logo" />
+        <img src="/images/logos/Association Logos/1755763435517018_190356114.png" alt="Australia & New Zealand Rhinologic Society" class="association-logo" />
+        <img src="/images/logos/Association Logos/1755763505559000_190356114.png" alt="Royal Australasian College of Surgeons" class="association-logo" />
+        <img src="/images/logos/Association Logos/1755763532298000_190356114.png" alt="The George Centre" class="association-logo" />
+        <img src="/images/logos/Association Logos/ANZRS-header-logo.png" alt="ASOHNS" class="association-logo" />
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  // FAQ Accordion Functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const accordionItem = header.parentElement;
+        const isActive = accordionItem?.classList.contains('active');
+
+        // Close all accordion items
+        document.querySelectorAll('.accordion-item').forEach(item => {
+          item.classList.remove('active');
+          const btn = item.querySelector('.accordion-header');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked item if it wasn't active
+        if (!isActive && accordionItem) {
+          accordionItem.classList.add('active');
+          header.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>

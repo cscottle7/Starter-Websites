@@ -82,155 +82,60 @@ When I need to launch and maintain multiple high-quality client websites, I want
 
 ### 5. Success Metrics & Measurement Plan
 
-**Primary Success Metrics:**
+**Primary Metrics:**
 
-1. **Time to Launch (Target: <1 week per client site)**
-   - **Measurement:** Track from `pnpm create-client` execution to production deployment
-   - **Baseline:** 3-4 weeks (current manual process)
-   - **Target:** <7 calendar days for new client sites after initial system setup
-   - **Validation:** GitHub commit timestamps, deployment logs
+1. **Time to Launch:** <1 week per client site (baseline: 3-4 weeks)
+2. **Automation ROI:** 70% reduction in manual audit time (<2.5 hours/site/month)
+3. **Client Independence:** 90% of content updates without developer
+4. **Portfolio Scalability:** 10+ client sites with current team
+5. **AI Crawler Indexing:** 90%+ of content successfully crawled
 
-2. **Automation ROI (Target: 70% reduction in manual audit time)**
-   - **Measurement:** Hours spent on SEO/accessibility/performance audits before vs. after automation
-   - **Baseline:** ~8 hours/site/month for manual audits
-   - **Target:** <2.5 hours/site/month (automated checks handle routine work)
-   - **Validation:** Time tracking, developer surveys
+**Quality Standards:**
 
-3. **Client Independence (Target: 90% of content updates without developer)**
-   - **Measurement:** Percentage of content changes made by clients via Sveltia CMS vs. requiring developer assistance
-   - **Baseline:** 0% (clients currently request all changes)
-   - **Target:** 90% of routine content updates (text, images, pages) self-service
-   - **Validation:** Git commit author analysis, support ticket tracking
+6. **Core Web Vitals:** LCP <2.5s, FID <100ms, CLS <0.1
+7. **Accessibility:** WCAG 2.1 AA (zero critical violations)
+8. **SEO Health:** 100% schema markup coverage
+9. **Build Performance:** <60 seconds per site
+10. **Security:** Zero high/critical vulnerabilities
 
-4. **Portfolio Scalability (Target: 10+ client sites with current team)**
-   - **Measurement:** Number of active client sites supported without team growth
-   - **Baseline:** 3-5 sites with current team size
-   - **Target:** 10+ sites maintaining quality standards
-   - **Validation:** Active client count, team size stability
-
-5. **AI Crawler Indexing (Target: 90%+ content crawled)**
-   - **Measurement:** Percentage of site content successfully crawled by GPTBot, ClaudeBot, and other AI crawlers
-   - **Baseline:** Unknown (not currently tracked)
-   - **Target:** 90%+ of pages indexed and accessible to AI crawlers
-   - **Validation:** Server log analysis (crawler user agents), llms.txt validation
-
-**Secondary Quality Metrics:**
-
-6. **Core Web Vitals (Target: All "Good" scores)**
-   - LCP (Largest Contentful Paint): <2.5 seconds
-   - FID (First Input Delay): <100 milliseconds
-   - CLS (Cumulative Layout Shift): <0.1
-   - **Measurement:** Google PageSpeed Insights API, Vercel Analytics
-   - **Validation:** Monthly automated audits per site
-
-7. **Accessibility Compliance (Target: WCAG 2.1 AA)**
-   - **Measurement:** Automated accessibility auditor agent + manual spot checks
-   - **Target:** Zero critical violations, <5 warnings per site
-   - **Validation:** axe-core tests, Playwright browser automation
-
-8. **SEO Health (Target: 100% schema markup coverage)**
-   - **Measurement:** Percentage of key pages with valid JSON-LD schema markup
-   - **Target:** 100% coverage on homepage, about, services, blog posts
-   - **Validation:** Google Rich Results Test, schema validation tools
-
-9. **Build Performance (Target: <60 seconds per site)**
-   - **Measurement:** CI/CD build time from commit to deployable artifact
-   - **Target:** <60 seconds for typical site builds
-   - **Validation:** GitHub Actions workflow duration logs
-
-10. **Security Posture (Target: Zero high/critical vulnerabilities)**
-    - **Measurement:** Dependency audit results, security agent scans
-    - **Target:** Zero high or critical severity vulnerabilities
-    - **Validation:** npm audit, security-auditor agent reports
+**Measurement methodology:** See [docs/METRICS.md](./docs/METRICS.md) (future)
 
 ### 6. Core Features & Scope
 
 ### 0. Current Project Status
 
-**As of October 31, 2025:**
+**As of November 2025:**
 
-This constitution represents the **target architecture** for a multi-site website development system. The document has been structured to guide implementation and serve as the single source of truth for architectural decisions.
+The multi-site infrastructure is **operational and ready for new client sites**. All foundational systems are in place.
 
-**Current Phase: Phase 0 - Strategic Planning & Architecture Definition**
+**Current Phase: Active Client Site Creation**
 
-**Completed:**
-- ✅ Project constitution and strategic vision documented
-- ✅ Tech stack evaluation and architectural design (Astro 5.0 + Nx + Sveltia CMS)
-- ✅ WordPress alternatives analysis
-- ✅ 32 SEO/content SOPs created (foundation for future agent knowledge)
-- ✅ 4 generic Claude Code skills established (code quality, security, documentation, testing)
+**Infrastructure Complete (Phases 1-3):**
+- ✅ Nx monorepo with shared packages (`ui-components`, `seo-utils`, `cms-config`)
+- ✅ Sveltia CMS integration with Git-based content workflow
+- ✅ Three pilot sites operational with distinct themes
+- ✅ Design workflow orchestrator and theme-aware components
+- ✅ GitHub repository with proper authentication
 
-**Next Steps:**
-- Phase 1: Foundation Infrastructure (Nx monorepo, shared packages)
-- Phase 2: Pilot Client Site (first functional implementation)
-- Phase 3: Automation Foundation (agents, quality gates, CI/CD)
+**Active Focus:**
+- Creating new client sites using established infrastructure
+- Customizing themes and brand guidelines per client
+- Implementing CMS content collections
+- Deploying sites to production
 
-All checkmarks below in "Phases 1-3" represent **planned features** that will validate this architecture, not completed work.
+**Reference Documentation:**
+- [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) - File structure, commands, code style
+- [docs/MULTI_SITE_GUIDE.md](./docs/MULTI_SITE_GUIDE.md) - Creating new sites
+- [docs/GETTING_STARTED.md](./docs/GETTING_STARTED.md) - Setup instructions
 
----
+#### Features Deferred to Phase 4+
 
-#### Planned Features (Phases 1-3, Estimated 6-8 Weeks)
+- Advanced orchestration agents (quality gates, deployment coordination)
+- Expanded Claude Code skills library
+- Automated GitHub Actions pipeline
+- Performance monitoring and analytics
 
-**Foundation Infrastructure:**
-- ⏱️ Nx monorepo setup with workspace configuration
-- ⏱️ Shared component library (`packages/ui-components/`) with 10-15 base Astro components
-- ⏱️ Shared SEO utilities (`packages/seo-utils/`) for schema markup and meta tag generation
-- ⏱️ First pilot client site in `sites/client-pilot/`
-
-**CMS Integration:**
-- ⏱️ Sveltia CMS installation and configuration
-- ⏱️ GitHub OAuth authentication for content editing
-- ⏱️ Editable content collections (pages, blog posts, navigation)
-- ⏱️ Preview templates for common page types
-- ⏱️ Git-based content workflow with full version history
-
-**Claude Code Agents (Tier 1 - Core):**
-- ⏱️ `seo-optimizer.md` - SEO auditing, schema markup validation, meta tag optimization
-- ⏱️ `accessibility-auditor.md` - WCAG 2.1 AA compliance checking, ARIA implementation
-- ⏱️ `content-optimizer.md` - Content quality assessment, AI readability optimization
-
-**Automation Pipeline:**
-- ⏱️ GitHub Actions workflow for content quality checks
-- ⏱️ Webhook integration (GitHub push events → agent invocation)
-- ⏱️ Staging deployment environment
-- ⏱️ Production deployment workflow
-
-**Documentation (Core):**
-- ⏱️ QUICK_START.md - 5-minute developer onboarding
-- ⏱️ CLIENT_ONBOARDING.md - New client site setup process
-- ⏱️ CMS_SETUP.md - Sveltia CMS configuration guide
-
-#### In Scope (for Phase 4+, Weeks 7-12)
-
-**Advanced Orchestration:**
-- ⏱️ `website-project-orchestrator.md` - Master project coordinator
-- ⏱️ `quality-gate-orchestrator.md` - 6-gate quality validation system
-- ⏱️ `multi-site-deployment-orchestrator.md` - Cross-site deployment coordination
-
-**Research & Strategy Agents (Tier 3):**
-- ⏱️ `keyword-researcher.md` - SEO keyword research and content strategy
-- ⏱️ `competitive-intelligence-analyst.md` - Competitor website analysis
-- ⏱️ `brand-sentiment-analyst.md` - Brand consistency validation
-- ⏱️ `content-auditor.md` - Cross-site content quality assessment
-
-**Specialized Analysis (Tier 4):**
-- ⏱️ `ai-readiness-auditor.md` - AI crawler optimization validation
-- ⏱️ `static-site-build-agent.md` - Build performance optimization
-
-**Skills Library:**
-- ⏱️ `skills/website/seo-checklist/` - SEO audit procedures
-- ⏱️ `skills/website/accessibility-wcag/` - WCAG guidelines with examples
-- ⏱️ `skills/website/astro-patterns/` - Astro best practices
-- ⏱️ `skills/orchestration/quality-gates/` - Multi-checkpoint validation workflows
-
-**Enhanced Documentation:**
-- ⏱️ AGENT_GUIDE.md - Complete agent usage and creation guide
-- ⏱️ ORCHESTRATOR_WORKFLOWS.md - Multi-agent coordination patterns
-- ⏱️ DEPLOYMENT_GUIDE.md - Server/Vercel/Netlify deployment
-- ⏱️ QUALITY_GATES.md - Quality validation system explanation
-- ⏱️ TROUBLESHOOTING.md - Common issues and solutions
-
-#### Out of Scope (for MVP)
+#### Out of Scope
 
 **Deferred to Future Versions:**
 - ❌ WordPress integration (analyzed separately, available as premium tier later)
@@ -324,332 +229,71 @@ All checkmarks below in "Phases 1-3" represent **planned features** that will va
 
 ### 9. Project File Structure
 
-```
-starter-template/                      # Root monorepo (Git repository root)
-├── .github/
-│   ├── workflows/
-│   │   ├── ci-quality.yml             # Linting, type-checking, tests
-│   │   ├── content-quality-check.yml  # Claude Code agent automation
-│   │   ├── deploy-staging.yml         # Automated staging deployments
-│   │   └── deploy-production.yml      # Production deployment per site
-│   └── CODEOWNERS                     # Define code review ownership
-│
-├── packages/                          # Shared workspace packages
-│   ├── ui-components/                 # Shared design system components
-│   │   ├── src/
-│   │   │   ├── components/
-│   │   │   │   ├── Button.astro       # Example: Reusable button component
-│   │   │   │   ├── Card.astro
-│   │   │   │   ├── Hero.astro
-│   │   │   │   ├── Navigation.astro
-│   │   │   │   └── Footer.astro
-│   │   │   └── index.ts               # Barrel export for all components
-│   │   ├── package.json               # Component library dependencies
-│   │   ├── tsconfig.json
-│   │   └── README.md
-│   │
-│   ├── seo-utils/                     # Shared SEO utilities
-│   │   ├── src/
-│   │   │   ├── schema-generator.ts    # JSON-LD schema markup helpers
-│   │   │   ├── meta-tags.ts           # Meta tag generation utilities
-│   │   │   ├── sitemap-builder.ts     # XML sitemap generation
-│   │   │   └── robots-txt.ts          # robots.txt generation (AI crawler friendly)
-│   │   ├── package.json
-│   │   └── README.md
-│   │
-│   └── cms-config/                    # Shared CMS configurations
-│       ├── sveltia-base-config.yml    # Base Sveltia CMS configuration template
-│       ├── content-schemas/           # Reusable content type schemas
-│       │   ├── blog-post.yml
-│       │   ├── page.yml
-│       │   └── navigation.yml
-│       └── README.md
-│
-├── sites/                             # Individual client websites
-│   ├── client-a/                      # Example client site
-│   │   ├── src/
-│   │   │   ├── pages/                 # Astro pages (file-based routing)
-│   │   │   │   ├── index.astro        # Homepage
-│   │   │   │   ├── about.astro
-│   │   │   │   └── blog/
-│   │   │   │       ├── index.astro
-│   │   │   │       └── [slug].astro   # Dynamic blog post pages
-│   │   │   ├── layouts/
-│   │   │   │   ├── BaseLayout.astro   # Base HTML structure
-│   │   │   │   └── BlogLayout.astro
-│   │   │   ├── content/               # Sveltia CMS editable content
-│   │   │   │   ├── config.ts          # Content collection schemas
-│   │   │   │   ├── pages/             # Page content (markdown)
-│   │   │   │   └── blog/              # Blog post content
-│   │   │   └── components/            # Client-specific component variants
-│   │   ├── public/
-│   │   │   ├── admin/
-│   │   │   │   ├── index.html         # Sveltia CMS entry point
-│   │   │   │   └── config.yml         # Sveltia CMS configuration
-│   │   │   ├── robots.txt             # Generated, AI crawler friendly
-│   │   │   └── favicon.ico
-│   │   ├── astro.config.mjs           # Astro configuration (client-specific)
-│   │   ├── tailwind.config.cjs        # Tailwind CSS config (brand colors)
-│   │   ├── tsconfig.json
-│   │   ├── package.json
-│   │   ├── BRAND_GUIDELINES.md        # Client brand identity documentation
-│   │   └── README.md
-│   ├── client-b/                      # Second client site (same structure)
-│   └── client-c/
-│
-├── .claude/                           # Claude Code agent definitions
-│   ├── agents/
-│   │   ├── orchestrators/             # Orchestrator agents (BiggerBoss pattern)
-│   │   │   ├── website-project-orchestrator.md
-│   │   │   ├── quality-gate-orchestrator.md
-│   │   │   └── multi-site-deployment-orchestrator.md
-│   │   └── website/                   # Website-specific specialist agents
-│   │       ├── seo-optimizer.md       # SEO auditing and optimization
-│   │       ├── accessibility-auditor.md  # WCAG compliance checking
-│   │       ├── content-optimizer.md   # Content quality and AI readiness
-│   │       ├── keyword-researcher.md  # SEO keyword research
-│   │       ├── competitive-intelligence-analyst.md
-│   │       ├── brand-sentiment-analyst.md
-│   │       ├── content-auditor.md
-│   │       └── ai-readiness-auditor.md
-│   └── skills/                        # Reusable agent knowledge
-│       ├── website/
-│       │   ├── seo-checklist/
-│       │   │   └── SKILL.md           # SEO audit procedures
-│       │   ├── accessibility-wcag/
-│       │   │   └── SKILL.md           # WCAG 2.1 guidelines with examples
-│       │   ├── astro-patterns/
-│       │   │   └── SKILL.md           # Astro best practices
-│       │   ├── sveltia-cms-config/
-│       │   │   └── SKILL.md           # CMS setup patterns
-│       │   ├── keyword-research-methodology/
-│       │   │   └── SKILL.md
-│       │   ├── competitive-analysis/
-│       │   │   └── SKILL.md
-│       │   └── performance-budgets/
-│       │       └── SKILL.md           # Core Web Vitals targets
-│       └── orchestration/
-│           ├── coordination-patterns/
-│           │   └── SKILL.md           # Agent delegation patterns
-│           └── quality-gates/
-│               └── SKILL.md           # Multi-checkpoint workflows
-│
-├── scripts/                           # Automation scripts
-│   ├── new-client-site.sh             # Scaffold new client from template
-│   └── sync-shared-deps.sh            # Update shared package dependencies
-│
-├── docs/                              # Comprehensive documentation (BiggerBoss-inspired)
-│   ├── QUICK_START.md                 # Get started in 5 minutes
-│   ├── AGENT_GUIDE.md                 # How to use and create agents
-│   ├── ORCHESTRATOR_WORKFLOWS.md      # How orchestrators coordinate work
-│   ├── CLIENT_ONBOARDING.md           # Add new client process
-│   ├── CMS_SETUP.md                   # Sveltia CMS configuration guide
-│   ├── DEPLOYMENT_GUIDE.md            # Server/Vercel/Netlify deployment
-│   ├── QUALITY_GATES.md               # Understanding quality validation
-│   ├── TROUBLESHOOTING.md             # Common issues and solutions
-│   └── AUTOMATION_SETUP.md            # Webhook and CI/CD automation
-│
-├── nx.json                            # Nx monorepo configuration
-├── package.json                       # Root workspace dependencies
-├── pnpm-workspace.yaml                # pnpm workspace configuration
-├── tsconfig.base.json                 # Base TypeScript configuration
-├── .eslintrc.js                       # ESLint configuration
-├── .prettierrc                        # Prettier configuration
-├── .gitignore
-├── CLAUDE.md                          # This file (project constitution)
-└── README.md                          # Setup and contribution guide
-```
+**High-Level Organization:**
+- `packages/` - Shared components, SEO utilities, CMS config
+- `sites/` - Individual client websites (each with Astro + Sveltia CMS)
+- `.claude/` - Agent definitions and reusable skills
+- `docs/` - Comprehensive documentation
+- `scripts/` - Automation utilities
+
+**Detailed structure:** See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)
 
 ### 10. Key Commands
 
-**Initial Setup:**
-```bash
-# Clone repository and install dependencies
-git clone <repository-url> starter-template
-cd starter-template
-pnpm install
-```
+**Essential Commands:**
+- `pnpm dev --filter=site-name` - Start development server
+- `nx build site-name` - Build specific site
+- Creating new sites - See [docs/MULTI_SITE_GUIDE.md](./docs/MULTI_SITE_GUIDE.md)
 
-**Development:**
-```bash
-# Start development server for specific client site
-pnpm dev --filter=client-a
-
-# Start all client sites concurrently (for multi-site preview)
-pnpm dev
-
-# Build specific client site
-nx build client-a
-
-# Build all sites
-nx run-many --target=build --all
-```
-
-**New Client Site Creation:**
-```bash
-# Scaffold new client site from template
-pnpm create-client --name="acme-corp"
-
-# Alternative with full options
-pnpm create-client --name="acme-corp" --domain="acmecorp.com"
-```
-
-**Quality Checks:**
-```bash
-# Run linting across workspace
-nx run-many --target=lint --all
-
-# Run type checking
-nx run-many --target=type-check --all
-
-# Run accessibility audits via Playwright
-nx run-many --target=test:a11y --all
-
-# Run all quality gates (full validation)
-pnpm quality-gates --site=client-a
-```
-
-**Claude Code Agent Invocation:**
-```bash
-# Invoke SEO optimizer on specific client site
-claude-code --agent=seo-optimizer --project=sites/client-a
-
-# Run quality gate orchestrator (automated multi-agent workflow)
-claude-code --agent=quality-gate-orchestrator --project=sites/client-a
-```
-
-**Deployment:**
-```bash
-# Deploy to staging (automated via GitHub Actions on push)
-git push origin staging
-
-# Deploy specific site to production (manual trigger)
-pnpm deploy:production --site=client-a
-
-# Deploy all sites to production
-pnpm deploy:production --all
-```
-
-**Maintenance:**
-```bash
-# Update shared dependencies across all sites
-pnpm sync-shared-deps
-
-# Update Nx cache
-nx reset
-
-# Analyze bundle sizes
-nx run client-a:analyze
-```
+**Complete command reference:** See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)
 
 ### 11. Code Style & Conventions
 
 **General Principles:**
-- All new code must be accompanied by appropriate tests (unit tests for utilities, Playwright tests for UI components)
-- Use TypeScript strict mode for all new code (`strict: true` in `tsconfig.json`)
-- Prefer functional programming patterns (pure functions, immutability) over object-oriented approaches
-- Write self-documenting code with clear variable/function names; add comments only for complex business logic
-- Follow the principle of least surprise—consistency with existing patterns is more important than individual preference
+- TypeScript strict mode required
+- Functional programming patterns preferred
+- Self-documenting code with clear naming
+- Consistency over individual preference
 
-**Astro Components (`.astro` files):**
-- Use PascalCase for component filenames: `HeroSection.astro`, `BlogPostCard.astro`
-- Keep components small and focused (single responsibility principle)
-- Extract reusable logic to utility functions in TypeScript files
-- Use Astro's Content Collections API for all content (never hardcode content in components)
-- Prefer static rendering by default; add `client:*` directives only when interactivity is required
-- Component structure order:
-  ```astro
-  ---
-  // 1. Imports
-  import { SomeUtility } from '@workspace/seo-utils';
+**Naming Conventions:**
+- Utility files: `snake_case` (e.g., `schema_generator.ts`)
+- Component files: `PascalCase` (e.g., `HeroSection.astro`)
+- Functions/variables: `camelCase`
+- Types/interfaces: `PascalCase`
 
-  // 2. Props interface
-  interface Props {
-    title: string;
-    description?: string;
-  }
-
-  // 3. Props destructuring
-  const { title, description } = Astro.props;
-
-  // 4. Logic (data fetching, transformations)
-  const processedTitle = title.toUpperCase();
-  ---
-
-  <!-- 5. Template -->
-  <section>
-    <h1>{processedTitle}</h1>
-    {description && <p>{description}</p>}
-  </section>
-
-  <!-- 6. Scoped styles (if needed) -->
-  <style>
-    section {
-      @apply container mx-auto px-4;
-    }
-  </style>
-  ```
+**Astro Components:**
+- Keep components small and focused
+- Use Content Collections API (never hardcode content)
+- Static rendering by default
+- Structure: imports → props → logic → template → styles
 
 **TypeScript:**
-- Use snake_case for file names in utility directories: `schema_generator.ts`, `meta_tags.ts`
-- Use PascalCase for component files: `Button.astro`, `HeroSection.astro`
-- Use camelCase for functions and variables: `generateSchema()`, `metaTitle`
-- Use PascalCase for types/interfaces: `BlogPost`, `SEOMetadata`
-- Prefer `interface` over `type` for object shapes (better error messages)
-- Always define explicit return types for public functions
-- Prefer `const` over `let`; avoid `var` entirely
-- Use template literals for string concatenation: `` `${base}/${path}` ``
+- Prefer `interface` over `type`
+- Explicit return types for public functions
+- Use `const` over `let`; avoid `var`
 
 **Tailwind CSS:**
-- Use Tailwind utility classes directly in Astro templates (avoid custom CSS unless necessary)
-- Define design tokens in `tailwind.config.cjs` per client site:
-  ```javascript
-  // sites/client-a/tailwind.config.cjs
-  module.exports = {
-    theme: {
-      extend: {
-        colors: {
-          primary: '#1a202c',   // Client brand primary color
-          secondary: '#2d3748', // Client brand secondary color
-        },
-      },
-    },
-  };
-  ```
-- Use `@apply` directive in `<style>` blocks only for frequently repeated complex patterns
-- Prefer responsive modifiers (`md:`, `lg:`) over media queries
-- Order utility classes consistently: layout → sizing → spacing → typography → colors → effects
+- Use utility classes directly in templates
+- `@apply` only for repeated complex patterns
+- Define design tokens in `tailwind.config.cjs`
 
 **Content & Markdown:**
-- Use frontmatter YAML for all metadata:
-  ```yaml
-  ---
-  title: "Page Title"
-  description: "SEO meta description"
-  publishDate: 2025-10-29
-  author: "Client Name"
-  ---
-  ```
-- Use semantic heading hierarchy (single H1 per page, progressive H2 → H3 → H4)
-- Always include alt text for images: `![Descriptive alt text](./image.jpg)`
-- Use relative links for internal pages: `[About](/about)` not `[About](https://site.com/about)`
+- Frontmatter YAML for all metadata
+- Semantic heading hierarchy (single H1)
+- Always include alt text for images
+- Use relative links for internal pages
 
-**Git Commit Messages:**
-- Follow Conventional Commits specification:
-  - `feat(client-a): add contact form to homepage`
-  - `fix(seo-utils): correct schema markup for Article type`
-  - `docs(readme): update deployment instructions`
-  - `chore(deps): update Astro to 5.0.1`
-- Scope should reference affected package/site: `(client-a)`, `(ui-components)`, `(seo-utils)`
-- Keep first line under 72 characters
-- Add description in commit body for complex changes
+**Git Commits:**
+- Conventional Commits: `feat(scope): description`
+- Scope references package/site
+- First line <72 characters
 
-**Claude Code Agent Definitions:**
-- Store agent definitions in `.claude/agents/` directory
-- Use kebab-case for agent filenames: `seo-optimizer.md`, `accessibility-auditor.md`
-- Follow agent template structure: name, description, system prompt, tools, model selection
-- Document agent purpose and expected outputs clearly
-- Version control agent prompts with changelog comments
+**Claude Code Agents:**
+- Store in `.claude/agents/`
+- Use kebab-case filenames
+- Document purpose and expected outputs
+
+**Detailed examples:** See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)
 
 ### 12. Architectural Principles & Constraints
 
@@ -810,67 +454,25 @@ nx run client-a:analyze
 
 ### 13. Prohibitions (Forbidden Actions)
 
-**DO NOT:**
+**Critical Prohibitions:**
 
-1. **DO NOT** use WordPress, PHP, or database-backed content management
-   - **Rationale:** This system is designed for static site generation with Git-based content. WordPress adds complexity, costs, and prevents full automation benefits.
-   - **Exception:** WordPress available as separate premium tier if client explicitly requires it (see WordPress_Options_Analysis.md)
+1. **NO WordPress/PHP or database-backed content** (static generation + Git only)
+2. **NO production deployment without passing quality gates** (6-gate validation required)
+3. **NO content in databases/external CMS** (Git is single source of truth)
+4. **NO blocking AI crawlers** (GPTBot, ClaudeBot) unless client explicitly requests
+5. **NO direct commits to `main`** (pull requests required for quality checks)
+6. **NO modifying shared components** without testing impact on ALL sites
+7. **NO client-side JavaScript for content** (AI crawlers ignore it)
+8. **NO hardcoded content in components** (use Content Collections API)
+9. **NO Tailwind `@apply` for simple utilities** (direct classes only)
+10. **NO missing alt text** (even decorative images need `alt=""`)
+11. **NO multiple H1 headings per page** (single H1 for SEO)
+12. **NO external fonts without performance budget** (self-host, subset, limit families)
+13. **NO dependencies without bundle size check** (run `nx run site:analyze`)
+14. **NO large media in Git** (use Git LFS or external CDN)
+15. **NO new agents without `skills-creator`** (standardization required)
 
-2. **DO NOT** deploy to production without passing all 6 quality gates
-   - **Rationale:** Quality gates ensure consistent standards across client portfolio. Bypassing gates creates technical debt and client dissatisfaction.
-   - **Emergency Override:** Requires written approval from technical lead + documentation of why gates bypassed
-
-3. **DO NOT** store content in databases or external CMS APIs
-   - **Rationale:** Git is single source of truth. External storage breaks version control, creates vendor lock-in, prevents Claude Code agent analysis.
-   - **Exception:** Third-party integrations (e.g., Shopify for e-commerce) allowed as data sources but NOT for primary content
-
-4. **DO NOT** block AI crawlers (GPTBot, ClaudeBot, etc.) in robots.txt
-   - **Rationale:** AI crawler indexing is a core success metric. Blocking them defeats primary value proposition of AI-first architecture.
-   - **Exception:** Client explicitly requests blocking for specific pages (e.g., staging environments, internal tools)
-
-5. **DO NOT** commit code directly to `main` branch without pull request
-   - **Rationale:** All code changes must go through automated quality checks (GitHub Actions workflows) and peer review.
-   - **Exception:** Emergency hotfixes with post-merge review within 24 hours
-
-6. **DO NOT** modify shared components (`packages/ui-components/`) without testing impact on ALL client sites
-   - **Rationale:** Shared component changes propagate to all sites. Untested changes can break multiple client sites simultaneously.
-   - **Process:** Run `nx affected:test` and `nx affected:build` before committing shared component changes
-
-7. **DO NOT** use client-side JavaScript for content rendering (except interactive components)
-   - **Rationale:** AI crawlers ignore client-side JavaScript. Content rendered client-side is invisible to AI agents.
-   - **Exception:** Interactive features (forms, modals, carousels) use `client:*` directives but content must be SSR
-
-8. **DO NOT** hardcode content in Astro components
-   - **Rationale:** All content must be editable via Sveltia CMS (stored in `src/content/`). Hardcoded content prevents non-technical client editing.
-   - **Exception:** UI labels and microcopy in component code acceptable if documented in `BRAND_GUIDELINES.md`
-
-9. **DO NOT** use Tailwind `@apply` for simple utility combinations
-   - **Rationale:** Tailwind utilities are designed for direct use in HTML. Excessive `@apply` defeats the purpose and increases CSS bundle size.
-   - **Guideline:** Use `@apply` only for complex patterns repeated 5+ times across codebase
-
-10. **DO NOT** skip alt text for images (even decorative images use `alt=""`)
-    - **Rationale:** Accessibility compliance and AI readability. `accessibility-auditor` agent will fail builds with missing alt text.
-    - **Process:** All images require alt text in markdown: `![Descriptive text](./image.jpg)` or in Astro: `<img src="..." alt="..." />`
-
-11. **DO NOT** create multiple H1 headings per page
-    - **Rationale:** SEO best practice and accessibility. Single H1 per page enforced by `seo-optimizer` agent.
-    - **Process:** Page title = H1, section titles = H2, subsections = H3, etc.
-
-12. **DO NOT** use external fonts without performance budget consideration
-    - **Rationale:** External fonts add latency and hurt Core Web Vitals (LCP).
-    - **Process:** Self-host fonts, use `font-display: swap`, subset fonts to required glyphs, limit to 2-3 font families maximum
-
-13. **DO NOT** install dependencies without checking bundle size impact
-    - **Rationale:** JavaScript bloat directly impacts performance metrics.
-    - **Process:** Run `nx run client-a:analyze` before/after adding dependency, document bundle size increase in PR description
-
-14. **DO NOT** commit large media files directly to Git repository
-    - **Rationale:** Git repositories grow unbounded with binary files, slowing clone times.
-    - **Process:** Use Git LFS for files >100KB, or store in external CDN and reference via URL
-
-15. **DO NOT** create new Claude Code agents without using `skills-creator` agent
-    - **Rationale:** Standardized agent structure ensures consistency, discoverability, and proper documentation.
-    - **Process:** Invoke `@skills-creator` agent with requirements, review generated `.md` file, test before committing
+**Detailed rationales and exceptions:** See [docs/STANDARDS.md](./docs/STANDARDS.md) (future)
 
 ---
 
@@ -878,11 +480,12 @@ nx run client-a:analyze
 
 *This document serves as the single source of truth for project requirements, technical architecture, and development constraints. All implementation decisions should reference this constitution. Update this document when project direction or technical requirements change significantly.*
 
-**Version:** 1.1
-**Last Updated:** October 31, 2025
+**Version:** 1.2
+**Last Updated:** November 2025
 **Maintained By:** Technical Lead
 **Review Frequency:** Quarterly or when major architectural decisions required
 
 **Changelog:**
-- **v1.1 (2025-10-31):** Added Section 0 "Current Project Status" clarifying Phase 0 state; converted Phases 1-3 checkmarks from ✅ (complete) to ⏱️ (planned); updated estimated timeline from 6 weeks to 6-8 weeks based on implementation analysis
+- **v1.2 (2025-11):** Reduced size by 40% for performance; moved detailed content to docs/ARCHITECTURE.md; updated status to "Active Client Site Creation" phase; condensed Success Metrics, Code Style, Prohibitions sections
+- **v1.1 (2025-10-31):** Added Current Project Status; clarified phase state; updated timeline estimates
 - **v1.0 (2025-10-29):** Initial constitution release

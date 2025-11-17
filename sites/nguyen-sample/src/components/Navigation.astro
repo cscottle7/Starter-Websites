@@ -1,0 +1,74 @@
+---
+/**
+ * Navigation Component - Sticky Header with Mobile Menu
+ * Custom component for Dr. Thomas Nguyen site
+ */
+
+interface Props {
+  logoUrl?: string;
+  logoAlt?: string;
+}
+
+const {
+  logoUrl = '/images/logos/dr-nguyen-logo.png.webp',
+  logoAlt = 'Dr Thomas Nguyen ENT'
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="sticky-nav">
+  <div class="nav-container">
+    <a href="/" class="logo-link">
+      <img src={logoUrl} alt={logoAlt} class="nav-logo" />
+    </a>
+
+    <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">
+      <span class="mobile-menu-icon"></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
+      <li><a href="/about" class={currentPath === '/about' ? 'active' : ''}>About</a></li>
+      <li><a href="/specialist-services" class={currentPath === '/specialist-services' ? 'active' : ''}>Specialist Services</a></li>
+      <li><a href="/locations" class={currentPath === '/locations' ? 'active' : ''}>Locations</a></li>
+      <li><a href="/resources" class={currentPath === '/resources' ? 'active' : ''}>Resources</a></li>
+      <li><a href="/contact" class={currentPath === '/contact' ? 'active' : ''}>Contact</a></li>
+      <li><a href="/contact" class="nav-cta">Book Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle functionality
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (mobileMenuToggle && navLinks) {
+    mobileMenuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+
+      // Update ARIA attribute for accessibility
+      const isOpen = navLinks.classList.contains('mobile-open');
+      mobileMenuToggle.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    // Close mobile menu when clicking a link
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.sticky-nav') && navLinks.classList.contains('mobile-open')) {
+        navLinks.classList.remove('mobile-open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>

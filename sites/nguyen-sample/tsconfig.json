@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@workspace/ui-components": ["../../packages/ui-components/src"],
+      "@workspace/seo-utils": ["../../packages/seo-utils/src"],
+      "@workspace/cms-config": ["../../packages/cms-config/src"]
+    }
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", "node_modules"]
+}

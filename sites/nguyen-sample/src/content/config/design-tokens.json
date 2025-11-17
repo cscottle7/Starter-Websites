@@ -1,0 +1,29 @@
+{
+  "typography": {
+    "headingFont": "DM Serif Text",
+    "bodyFont": "Nunito Sans",
+    "h1": {
+      "size": 64,
+      "color": "#262558"
+    },
+    "h2": {
+      "size": 48,
+      "color": "#262558"
+    },
+    "h3": {
+      "size": 36,
+      "color": "#262558"
+    },
+    "body": {
+      "size": 18,
+      "color": "#5F5F74"
+    }
+  },
+  "colors": {
+    "primary": "#424189",
+    "secondary": "#7E9BC5",
+    "darkBg": "#262558",
+    "lightBg": "#ECF2FB",
+    "warmBg": "#FBF7F3"
+  }
+}

@@ -1,0 +1,65 @@
+---
+/**
+ * Hero Banner Component - Split layout with content left, image right
+ * Custom component for Dr. Thomas Nguyen site
+ */
+
+interface Props {
+  backgroundImage: string;
+  title: string;
+  subtitle: string;
+  ctaText?: string;
+  ctaUrl?: string;
+  secondaryCtaText?: string;
+  secondaryCtaUrl?: string;
+}
+
+const {
+  backgroundImage,
+  title,
+  subtitle,
+  ctaText,
+  ctaUrl,
+  secondaryCtaText,
+  secondaryCtaUrl
+} = Astro.props;
+---
+
+<section class="hero-banner-split">
+  <div class="hero-container">
+    <div class="hero-content-left">
+      <h1 class="hero-title" set:html={title}></h1>
+      <p class="hero-subtitle">{subtitle}</p>
+      <div class="hero-actions">
+        {ctaText && ctaUrl && (
+          <a href={ctaUrl} class="btn btn-primary">{ctaText}</a>
+        )}
+        {secondaryCtaText && secondaryCtaUrl && (
+          <a href={secondaryCtaUrl} class="btn btn-secondary">{secondaryCtaText}</a>
+        )}
+      </div>
+    </div>
+    <div class="hero-image-right">
+      <img src={backgroundImage} alt="Dr. Thomas Nguyen with patient" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+  }
+</style>

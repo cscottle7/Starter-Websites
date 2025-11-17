@@ -1,0 +1,38 @@
+{
+  "mainNav": [
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "About",
+      "url": "/about"
+    },
+    {
+      "label": "Services",
+      "url": "/services"
+    },
+    {
+      "label": "Blog",
+      "url": "/blog"
+    }
+  ],
+  "footerLinks": [
+    {
+      "label": "ENT Treatments",
+      "url": "/services"
+    },
+    {
+      "label": "About Dr. Nguyen",
+      "url": "/about"
+    },
+    {
+      "label": "Contact Us",
+      "url": "/contact"
+    },
+    {
+      "label": "Health Resources",
+      "url": "/blog"
+    }
+  ]
+}

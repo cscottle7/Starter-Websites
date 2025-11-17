@@ -1,0 +1,30 @@
+{
+  "name": "nguyen-sample",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Dr. Thomas Nguyen ENT - Client Website",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "eslint .",
+    "type-check": "astro check && tsc --noEmit",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "@sveltia/cms": "^0.113.6",
+    "@workspace/cms-config": "workspace:*",
+    "@workspace/seo-utils": "workspace:*",
+    "@workspace/ui-components": "workspace:*",
+    "astro": "^5.0.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.2.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "sections": [
+    {
+      "title": "Quick Links",
+      "links": [
+        { "text": "Home", "url": "/" },
+        { "text": "About", "url": "/about" },
+        { "text": "Services", "url": "/services" },
+        { "text": "Contact", "url": "/contact" }
+      ]
+    }
+  ],
+  "locations": [
+    { "name": "Location 1", "url": "/locations/location-1" },
+    { "name": "Location 2", "url": "/locations/location-2" }
+  ],
+  "logos": [],
+  "copyright": "© 2025 Dr Thomas Nguyen. All rights reserved."
+}

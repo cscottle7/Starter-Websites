@@ -1,0 +1,154 @@
+---
+/**
+ * Site Footer Component - Custom footer with association logos
+ * For Dr. Thomas Nguyen site
+ */
+
+interface Props {
+  copyright?: string;
+}
+
+const { copyright = `© ${new Date().getFullYear()} Dr Thomas Nguyen. All rights reserved.` } = Astro.props;
+
+// Footer navigation structure
+const footerSections = [
+  {
+    title: 'Treatments',
+    links: [
+      { text: 'Treatment #1', url: '/treatments/treatment-1' },
+      { text: 'Treatment #2', url: '/treatments/treatment-2' },
+      { text: 'Treatment #3', url: '/treatments/treatment-3' },
+      { text: 'Treatment #4', url: '/treatments/treatment-4' },
+      { text: 'Treatment #5', url: '/treatments/treatment-5' },
+      { text: 'Treatment #6', url: '/treatments/treatment-6' }
+    ]
+  },
+  {
+    title: 'Conditions',
+    links: [
+      { text: 'Condition #1', url: '/conditions/condition-1' },
+      { text: 'Condition #2', url: '/conditions/condition-2' },
+      { text: 'Condition #3', url: '/conditions/condition-3' },
+      { text: 'Condition #4', url: '/conditions/condition-4' },
+      { text: 'Condition #5', url: '/conditions/condition-5' },
+      { text: 'Condition #6', url: '/conditions/condition-6' }
+    ]
+  },
+  {
+    title: 'Specialist Services',
+    links: [
+      { text: 'Referrers', url: '/referrers' },
+      { text: 'Patient Information', url: '/patient-information' }
+    ]
+  },
+  {
+    title: 'Quick Links',
+    links: [
+      { text: 'Dr Thomas Nguyen', url: '/about' },
+      { text: 'Our Team', url: '/team' },
+      { text: 'Patient Registration Form', url: '/registration' },
+      { text: 'FAQ/Blog', url: '/resources' }
+    ]
+  }
+];
+
+const locations = [
+  { name: 'TGC - Gledswood Hills', url: '/locations#gledswood' },
+  { name: 'Forster Private Hospital', url: '/locations#forster' }
+];
+
+// Association logos (placeholder paths - to be added in CMS)
+const associationLogos = [
+  { src: '/images/logos/frcs.png', alt: 'FRCS', height: 48 },
+  { src: '/images/logos/asohns.png', alt: 'ASOHNS', height: 48 },
+  { src: '/images/logos/uon.png', alt: 'University of Newcastle', height: 48 },
+  { src: '/images/logos/cirp.png', alt: 'CIRP', height: 48 },
+  { src: '/images/logos/asohns-badge.png', alt: 'ASOHNS Badge', height: 48 },
+  { src: '/images/logos/ahpra.png', alt: 'AHPRA', height: 48 }
+];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <!-- Main Footer Navigation -->
+    <div class="footer-content">
+      {footerSections.map(section => (
+        <div class="footer-column">
+          <h4>{section.title}</h4>
+          <ul class="footer-links">
+            {section.links.map(link => (
+              <li><a href={link.url}>{link.text}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Locations Section -->
+    <div class="footer-locations">
+      <h4>Locations</h4>
+      <ul class="footer-links">
+        {locations.map(location => (
+          <li><a href={location.url}>{location.name}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Association Logos -->
+    <div class="footer-logos">
+      {associationLogos.map(logo => (
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          class="footer-logo"
+          style={`height: ${logo.height}px;`}
+          loading="lazy"
+        />
+      ))}
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>{copyright}</p>
+      <div class="footer-legal-links">
+        <a href="/privacy">Privacy Policy</a>
+        <span>|</span>
+        <a href="/terms">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-locations {
+    margin-top: 32px;
+  }
+
+  .footer-locations h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .footer-legal-links {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-legal-links a {
+    color: #C6D7EE;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .footer-legal-links a:hover {
+    color: #ffffff;
+  }
+
+  .footer-legal-links span {
+    color: #C6D7EE;
+  }
+</style>
