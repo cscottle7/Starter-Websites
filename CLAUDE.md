@@ -60,6 +60,48 @@ A: Agents operate at multiple levels: (1) **Manual invocation** during developme
 **Q: What's the total cost to implement this system?**
 A: **Initial setup (Phase 1-2, Weeks 1-4):** $10k-$25k in developer time for monorepo setup, first pilot client site, and core Claude Code agents. **Per-client costs (after setup):** $2k-$5k development time using scaffolding scripts. **Ongoing:** Near-zero CMS costs (Sveltia is free), minimal hosting (your server or $20/month Vercel), maintenance automated via agents. Compare to WordPress headless alternative: $50k-$150k initial, 40-60% higher ongoing costs.
 
+**Q: What about DaisyUI vs custom components?**
+A: **Hybrid approach recommended:** Use DaisyUI for complex interactive components (Accordion, Dropdown, Modal, Tabs) to leverage battle-tested accessibility patterns. Use custom Astro components for simple, brand-specific elements (Button, Card, Hero, Section) to maximize client differentiation. See [docs/DAISYUI_SETUP_GUIDE.md](./docs/DAISYUI_SETUP_GUIDE.md) for implementation strategy.
+
+**Q: Is there a creative design workflow for unique branding?**
+A: Yes. The system includes a comprehensive creative design workflow with metaphor-grounded design generation, anti-AI design checklist enforcement, and visual research tools. Invoke `@creative-director-orchestrator` for projects requiring distinctive brand identities. See [docs/CREATIVE_WORKFLOW_GUIDE.md](./docs/CREATIVE_WORKFLOW_GUIDE.md) and [docs/DESIGN_QUALITY_SYSTEM.md](./docs/DESIGN_QUALITY_SYSTEM.md).
+
+---
+
+### 3.5. Comprehensive Documentation Index
+
+**Essential Guides:**
+- [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) - File structure, commands, code conventions
+- [docs/MULTI_SITE_GUIDE.md](./docs/MULTI_SITE_GUIDE.md) - Creating new client sites
+- [docs/GETTING_STARTED.md](./docs/GETTING_STARTED.md) - Initial setup instructions
+- [docs/COMMANDS_REFERENCE.md](./docs/COMMANDS_REFERENCE.md) - Complete CLI reference
+- [docs/CODE_STYLE_GUIDE.md](./docs/CODE_STYLE_GUIDE.md) - Coding standards
+
+**Workflows:**
+- [docs/COMPLETE_WORKFLOW_GUIDE.md](./docs/COMPLETE_WORKFLOW_GUIDE.md) - End-to-end process
+- [docs/CREATIVE_WORKFLOW_GUIDE.md](./docs/CREATIVE_WORKFLOW_GUIDE.md) - Design-first workflow
+- [docs/HUMAN_VS_AI_WORKFLOW.md](./docs/HUMAN_VS_AI_WORKFLOW.md) - AI vs manual decisions
+
+**Design Systems:**
+- [docs/DAISYUI_SETUP_GUIDE.md](./docs/DAISYUI_SETUP_GUIDE.md) - Component library strategy
+- [docs/CREATIVE_DESIGN_SYSTEM.md](./docs/CREATIVE_DESIGN_SYSTEM.md) - Metaphor-grounded design
+- [docs/DESIGN_QUALITY_SYSTEM.md](./docs/DESIGN_QUALITY_SYSTEM.md) - Creative quality gates
+- [docs/BRAND_GUIDELINES_FROM_LOGO.md](./docs/BRAND_GUIDELINES_FROM_LOGO.md) - Extract guidelines
+
+**Integration:**
+- [docs/FIGMA_MCP_SETUP.md](./docs/FIGMA_MCP_SETUP.md) - Figma MCP integration
+- [docs/FIGMA_FREE_WORKFLOW.md](./docs/FIGMA_FREE_WORKFLOW.md) - No-subscription workflow
+- [docs/ASTRO_HEADLESS_UI_GUIDE.md](./docs/ASTRO_HEADLESS_UI_GUIDE.md) - Headless UI components
+
+**Strategy:**
+- [docs/PROJECT_VISION.md](./docs/PROJECT_VISION.md) - Strategic vision & detailed FAQs
+- [docs/SUCCESS_METRICS.md](./docs/SUCCESS_METRICS.md) - Measurement methodology
+- [docs/TECH_STACK.md](./docs/TECH_STACK.md) - Technology documentation
+
+**Full Index:** [docs/README_DOCUMENTATION_INDEX.md](./docs/README_DOCUMENTATION_INDEX.md)
+
+---
+
 ### 4. Project Goal & High-Level Requirements
 
 **Jobs-to-be-Done (JTBD) Statement:**
@@ -215,7 +257,7 @@ The multi-site infrastructure is **operational and ready for new client sites**.
 - **aria-query:** ARIA attribute validation
 
 **Image Optimization:**
-- **@astrojs/image:** Astro's built-in image optimization (WebP conversion, responsive images)
+- **Astro Assets (astro:assets):** Built-in image optimization (WebP conversion, responsive images)
 - **sharp:** High-performance image processing library
 
 **Development Tools:**

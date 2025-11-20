@@ -62,7 +62,11 @@
       "Bash(nx build:*)",
       "Bash(taskkill:*)",
       "Bash(tasklist)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(nx run-many:*)",
+      "Bash(if not exist \"sites\\harbourview-general-practice\\src\\components\" mkdir \"sites\\harbourview-general-practice\\src\\components\")",
+      "Bash(cp:*)",
+      "Bash(timeout:*)"
     ],
     "deny": [],
     "ask": []

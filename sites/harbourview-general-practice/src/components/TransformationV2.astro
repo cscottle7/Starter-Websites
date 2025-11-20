@@ -1,0 +1,86 @@
+---
+// Transformation Promise Section v2.0 - "Your Breakthrough Starts Here"
+// Section 2 content: Solution-first narrative with inverted hierarchy (stats > headings)
+// Metaphor: The catalyst components - what enables your transformation
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+}
+
+const {
+  heading = "Your Breakthrough Starts Here",
+  subheading = "We remove barriers, empower decisions, and provide expert guidance—you drive the transformation."
+} = Astro.props;
+
+// Transformation pillars from meta-prompt
+const transformations = [
+  {
+    stat: "350+",
+    label: "Patients Empowered",
+    description: "Dr. Sharma has catalyzed 350+ patients to access Medicare-funded psychology support, transforming mental health journeys.",
+    link: "/services/mental-health",
+    linkText: "Explore Mental Health Support",
+    gradientFrom: "violet-500",
+    gradientTo: "red-400"
+  },
+  {
+    stat: "24/7",
+    label: "Online Booking",
+    description: "Book your appointment anytime, anywhere. Our digital-first approach removes traditional barriers to care access.",
+    link: "/book",
+    linkText: "Book Now",
+    gradientFrom: "red-400",
+    gradientTo: "yellow-400"
+  },
+  {
+    stat: "4",
+    label: "Languages Spoken",
+    description: "Mandarin, Hindi, Punjabi, Spanish—communicate in the language you're most comfortable with for optimal care outcomes.",
+    link: "/doctors",
+    linkText: "Meet Our Multilingual Team",
+    gradientFrom: "yellow-400",
+    gradientTo: "violet-500"
+  }
+];
+---
+
+<!-- Anti-AI: Overlapping section with negative margin + curved top edge -->
+<section class="py-24 md:py-32 -mt-20 relative z-10 bg-white rounded-t-[4rem]">
+  <div class="container mx-auto px-4">
+    <!-- Section Intro -->
+    <div class="max-w-3xl mx-auto text-center mb-20">
+      <h2 class="text-5xl md:text-6xl font-display font-bold text-violet-500 mb-6">
+        {heading}
+      </h2>
+      <p class="text-2xl text-stone-600 leading-relaxed">
+        {subheading}
+      </p>
+    </div>
+
+    <!-- INVERTED HIERARCHY: Stats Grid (text-9xl stats LARGER than text-2xl headings) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+      {transformations.map((transformation) => (
+        <div class="text-center">
+          <!-- HUGE STAT (bigger than heading) - Anti-AI constraint -->
+          <p class={`text-9xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-br from-${transformation.gradientFrom} to-${transformation.gradientTo} mb-4`}>
+            {transformation.stat}
+          </p>
+
+          <!-- Small heading (inverted hierarchy) -->
+          <h3 class="text-2xl font-semibold text-stone-700 mb-4">
+            {transformation.label}
+          </h3>
+
+          <p class="text-lg text-stone-600 leading-relaxed mb-6">
+            {transformation.description}
+          </p>
+
+          <a href={transformation.link} class="inline-block text-violet-500 font-bold hover:text-red-400 transition-colors">
+            {transformation.linkText} →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

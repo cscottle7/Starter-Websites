@@ -76,92 +76,143 @@ Use `agentic-rag-methodology` skill to break complex creative goal into granular
 ```markdown
 GOAL: Generate creative design concept for [PROJECT]
 
-SUB-QUERIES (5-7 minimum):
+SUB-QUERIES (7 minimum - MUST execute in order):
 
-Sub-Query 1: Get Persona Primary Frustration
+Sub-Query 1: Get External Visual Research (REQUIRED FIRST - BLOCKING)
+- Target: Design galleries + competitor sites + web trends (2025 data)
+- Process:
+  1. WebSearch: "[industry] homepage design trends 2025"
+  2. Navigate Awwwards.com OR Dribbble.com using Chrome DevTools
+  3. Screenshot 15-20 exceptional design examples (INCREASED from 5-7)
+  4. Analyze competitor sites with browser tools
+  5. Extract color palettes from screenshots (manual observation)
+  6. Identify layout patterns (asymmetric/symmetric, grid/freeform)
+  7. Note typography trends (serif/sans-serif pairings)
+- Tools: WebSearch, mcp__chrome-devtools__new_page, mcp__chrome-devtools__navigate_page, mcp__chrome-devtools__take_screenshot
+- **VALIDATION GATE**: Cannot proceed to Sub-Query 2 without:
+  - EITHER: 15+ screenshots from automated research (INCREASED)
+  - OR: User-provided mood board URLs (minimum 5, INCREASED)
+  - IF BOTH MISSING: STOP and prompt user for manual mood board
+- **DIVERSITY REQUIREMENT**: Screenshots must represent 3+ distinct visual styles
+
+Sub-Query 2: Get Persona Primary Frustration
 - Target: personas.md, user-research docs
 - Query: "What is the SINGLE most critical frustration for primary persona?"
 - Tool: Grep("frustration|pain|problem", personas.md)
 
-Sub-Query 2: Get Key Differentiator
+Sub-Query 3: Get Key Differentiator
 - Target: BRAND_GUIDELINES.md, value-proposition docs
 - Query: "What is the ONE differentiator that competitors don't offer?"
 - Tool: Grep("unique|differentiator|unlike|only", BRAND_GUIDELINES.md)
 
-Sub-Query 3: Get Hard Constraint
+Sub-Query 4: Get Hard Constraint
 - Target: CLAUDE.md, compliance docs
 - Query: "What are the absolute prohibitions or mandatory requirements?"
 - Tool: Read(CLAUDE.md, Section 13: Prohibitions)
 
-Sub-Query 4: Get Core Brand Keywords (5-7)
+Sub-Query 5: Get Core Brand Keywords (15 KEYWORDS - INCREASED)
 - Target: BRAND_GUIDELINES.md, brand-values docs
 - Query: "What keywords describe brand personality, emotional goals, and values?"
 - Tool: Grep("brand value|personality|tone|emotion|goal", BRAND_GUIDELINES.md)
+- Context: Use visual research from Sub-Query 1 to inform keyword interpretation
+- **CLUSTERING REQUIREMENT**: Group 15 keywords into 3 semantic clusters (functional/emotional/aspirational)
+- **DIVERSITY SELECTION**: Select 1 keyword from EACH cluster (forced diversity, total 3-5 keywords)
 
-Sub-Query 5: Get Target Emotional State
+Sub-Query 6: Get Target Emotional State
 - Target: personas.md, BRAND_GUIDELINES.md
 - Query: "What emotional state should users feel? (calm, confident, empowered, etc.)"
 - Tool: Grep("feel|emotion|experience", BRAND_GUIDELINES.md, personas.md)
 
-Sub-Query 6: Get Functional Goals
+Sub-Query 7: Get Functional Goals
 - Target: BRAND_GUIDELINES.md, CLAUDE.md
 - Query: "What should the product enable users to do? (reduce, simplify, accelerate, etc.)"
 - Tool: Grep("reduce|improve|enable|simplify|accelerate", BRAND_GUIDELINES.md)
-
-Sub-Query 7: Get External Visual Research (REQUIRED)
-- Target: Design galleries + competitor sites + web trends (2025 data)
-- Process:
-  1. WebSearch: "[industry] homepage design trends 2025"
-  2. Navigate Dribbble.com/Awwwards.com using Chrome DevTools
-  3. Screenshot 5-7 exceptional design examples
-  4. Analyze competitor sites with browser tools
-- Tools: WebSearch, mcp__chrome-devtools__new_page, mcp__chrome-devtools__navigate_page, mcp__chrome-devtools__take_screenshot
 ```
 
-**Step 2.2: Execute Parallel Retrieval**
+**Step 2.2: Execute Sequential Retrieval (Visual-First)**
 
-Use Read, Grep, WebSearch tools to gather disparate data points:
+Execute sub-queries IN ORDER (visual research blocks subsequent queries):
 
 ```markdown
-EXECUTE PARALLEL:
-- Read(BRAND_GUIDELINES.md) → extract keywords, differentiator
-- Read(personas.md) → extract frustration, emotional goal
-- Read(CLAUDE.md) → extract constraints
-- Grep("emotion|feel", BRAND_GUIDELINES.md) → extract emotional targets
-- WebSearch("[industry] creative design examples") → gather inspiration
+EXECUTE SEQUENTIALLY:
+
+PHASE 2A: Visual Research (Sub-Query 1) - BLOCKING
+→ WebSearch("[industry] homepage design trends 2025")
+→ mcp__chrome-devtools__new_page("https://www.awwwards.com/websites/[industry]")
+→ mcp__chrome-devtools__take_screenshot() × 15-20 examples (INCREASED)
+→ IF MCP unavailable: PROMPT USER for manual mood board
+→ VALIDATION: Verify 15+ visual examples OR 5+ user URLs (INCREASED)
+→ DIVERSITY CHECK: Confirm 3+ distinct visual styles represented
+→ IF FAIL: STOP workflow, cannot proceed
+
+PHASE 2A-EXTENDED: Visual Pattern Analysis (NEW)
+→ Analyze screenshots for color families (warm/cool/neutral)
+→ Identify layout patterns (asymmetric/symmetric, card-based/full-bleed)
+→ Note typography trends (serif/sans-serif, display/body pairings)
+→ Cluster into 3 visual style families
+→ **DIVERSITY SELECTION**: Select examples from LEAST common cluster (forced differentiation)
+
+PHASE 2B: Brand/User Research (Sub-Queries 2-7) - PARALLEL EXECUTION
+→ Read(BRAND_GUIDELINES.md) → extract keywords, differentiator
+→ Read(personas.md) → extract frustration, emotional goal
+→ Read(CLAUDE.md) → extract constraints
+→ Grep("emotion|feel", BRAND_GUIDELINES.md) → extract emotional targets
+→ Context: Interpret brand keywords through lens of visual patterns from Phase 2A
 ```
 
-**Step 2.3: Structure Retrieved Data**
+**Step 2.3: Structure Retrieved Data (Visual-First Format)**
 
-Format as structured data set (NOT summary):
+Format as structured data set (NOT summary) with visual research FIRST:
 
 ```markdown
 RETRIEVED DATA (NON-AVERAGED):
 
+## VISUAL RESEARCH (Sub-Query 1)
+External Inspiration:
+1. [URL/Screenshot 1]: [Key visual pattern observed]
+2. [URL/Screenshot 2]: [Key visual pattern observed]
+3. [URL/Screenshot 3]: [Key visual pattern observed]
+4. [URL/Screenshot 4]: [Key visual pattern observed]
+5. [URL/Screenshot 5]: [Key visual pattern observed]
+
+Visual Patterns Identified:
+- Color strategies: [Observed approaches]
+- Layout patterns: [Observed structures]
+- Typography trends: [Observed hierarchies]
+- Component styles: [Observed treatments]
+
+## BRAND/USER RESEARCH (Sub-Queries 2-7)
+
 Pain Point: "[Exact frustration from personas.md, line X]"
 - Source: personas.md, line X
 - Persona: [Name]
+- Visual implication: [How visual research might address this]
 
 Differentiator: "[Exact value prop from BRAND_GUIDELINES.md, line Y]"
 - Source: BRAND_GUIDELINES.md, line Y
+- Visual implication: [How visual research might express this]
 
 Constraint: "[Exact prohibition/requirement from CLAUDE.md, Section Z]"
 - Source: CLAUDE.md, Section Z
+- Visual implication: [How visual research navigates this]
 
-Brand Keywords (with citations):
+Brand Keywords (with citations + visual context):
 1. "keyword1" - BRAND_GUIDELINES.md, line A
+   → Visual pattern connection: [Link to observed pattern]
 2. "keyword2" - brand-values.md, line B
+   → Visual pattern connection: [Link to observed pattern]
 3. "keyword3" - BRAND_GUIDELINES.md, line C
+   → Visual pattern connection: [Link to observed pattern]
 4. "keyword4" - personas.md, line D
+   → Visual pattern connection: [Link to observed pattern]
 5. "keyword5" - BRAND_GUIDELINES.md, line E
+   → Visual pattern connection: [Link to observed pattern]
 
 Emotional Goal: "[Desired user feeling]"
 - Source: BRAND_GUIDELINES.md, line F
 
 Functional Goal: "[What product enables]"
 - Source: BRAND_GUIDELINES.md, line G
-
-External Inspiration: [URLs from WebSearch]
 ```
 
 ### Phase 3: Grounded Metaphor Generation
@@ -207,6 +258,28 @@ FAIL: <95% → @metaphor-researcher re-run with refined keywords
 
 ### Phase 4: Constraint-as-Creativity Synthesis
 
+**Step 4.0: Select Narrative Template (NEW)**
+
+Before synthesis, determine narrative structure:
+
+```markdown
+TEMPLATE SELECTION:
+
+1. Check project history: Read .claude/agents/design/creative/history/index.json
+2. Identify last project's narrative template
+3. Select DIFFERENT template for current project (forced variation)
+
+Industry-Based Defaults:
+- Medical/Healthcare → Template C (Storytelling) or A (Problem-First)
+- B2B SaaS → Template B (Solution-First) or D (Data-Driven)
+- Creative Agencies → Template E (Visual Journey)
+
+If last project used Template C, select Template A (within same industry)
+If last project from different industry, use industry default
+
+Pass selected template to creative-brief-synthesizer as input
+```
+
 **Step 4.1: Invoke creative-brief-synthesizer Sub-Agent**
 
 ```markdown
@@ -232,7 +305,56 @@ Process: Follow `creative-meta-prompting` skill
 Output: Structured creative-meta-prompt.md
 ```
 
-**Step 4.2: Self-Critique for Genericness**
+**Step 4.2: Invoke differentiation-verifier Sub-Agent (NEW)**
+
+Before presenting to user, verify differentiation:
+
+```markdown
+@differentiation-verifier
+
+Task: Verify new meta-prompt is sufficiently different from past 5 projects
+
+Inputs:
+- New meta-prompt: creative-meta-prompt.md (draft from Step 4.1)
+- Project history: .claude/agents/design/creative/history/
+
+Pass Criteria:
+- Semantic similarity <70% to any past project
+- Structural similarity <80% to any past project
+- Visual language matches ≤1 dimension
+- Metaphor category differs from last 2 projects
+
+Output: differentiation-report.md (PASS/FAIL decision)
+```
+
+**Step 4.2.1: Differentiation Decision Logic**
+
+```markdown
+IF differentiation-verifier returns PASS:
+  → Proceed to Step 4.3 (self-critique for genericness)
+
+IF differentiation-verifier returns FAIL (Retry 1):
+  → Return to Step 4.1 with explicit constraints from report
+  → Add constraints: "Avoid [similar keywords/structure/visual patterns]"
+  → Re-invoke @creative-brief-synthesizer
+  → Re-invoke @differentiation-verifier
+
+IF differentiation-verifier returns FAIL (Retry 2):
+  → Return to Step 4.1 with STRONGER constraints
+  → Force different metaphor category
+  → Force different narrative template
+  → Re-invoke @creative-brief-synthesizer
+  → Re-invoke @differentiation-verifier
+
+IF differentiation-verifier returns FAIL after 2 retries:
+  → ESCALATE to user with diagnostic report
+  → Present options:
+    A. Accept current meta-prompt with documented similarity
+    B. Provide additional brand research to enable more differentiation
+    C. Manual creative director intervention required
+```
+
+**Step 4.3: Self-Critique for Genericness**
 
 Run generic detection check:
 
@@ -407,19 +529,21 @@ FAIL after 2 retries:
 
 ## Your Sub-Agent Coordination
 
-**You coordinate 4 specialist sub-agents:**
+**You coordinate 5 specialist sub-agents:**
 
 1. **@metaphor-researcher** - Industry analysis, competitor research, metaphor extraction (Phase 3)
 2. **@creative-brief-synthesizer** - Meta-prompt generation from research outputs (Phase 4)
-3. **@design-implementation-specialist** - Astro component generation from meta-prompt (Phase 6)
-4. **@metaphor-grounding-verifier** - Gate 7 quality validation (Phase 7)
+3. **@differentiation-verifier** - Similarity analysis vs. past projects (Phase 4, NEW)
+4. **@design-implementation-specialist** - Astro component generation from meta-prompt (Phase 6)
+5. **@metaphor-grounding-verifier** - Gate 7 quality validation (Phase 7)
 
 **Coordination Pattern:**
 
 ```markdown
 Phase 1-2: You (orchestrator) conduct research
 Phase 3: Delegate to @metaphor-researcher
-Phase 4: Delegate to @creative-brief-synthesizer
+Phase 4: Delegate to @creative-brief-synthesizer → @differentiation-verifier (NEW)
+  → If FAIL: Loop back to @creative-brief-synthesizer (max 2 retries)
 Phase 5: You (orchestrator) present to user for approval
 Phase 6: Delegate to @design-implementation-specialist (if approved)
 Phase 7: Delegate to @metaphor-grounding-verifier

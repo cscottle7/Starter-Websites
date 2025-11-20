@@ -1,0 +1,194 @@
+---
+// TrustFooter.astro - Safe Waters Final Reassurance
+// Trust badges + footer with organized information
+// Anti-AI Constraint: Constraint creativity (trust badges as beautiful design elements, not boring badges)
+
+interface Props {
+  practiceName?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+}
+
+const {
+  practiceName = "Harbourview General Practice",
+  address = "123 Harbour Street, Sydney NSW 2000",
+  phone = "(02) 9999 9999",
+  email = "info@harbourviewgp.com.au"
+} = Astro.props;
+
+const trustBadges = [
+  { label: "Years", sublabel: "Community Care", value: "80", icon: "shield" },
+  { label: "AHPRA Registered", icon: "certificate" },
+  { label: "Bulk Billing Available", icon: "dollar" },
+  { label: "7+ Languages Spoken", icon: "globe" },
+  { label: "24/7 Online Booking", icon: "calendar" }
+];
+
+const services = [
+  { name: "General Practice", href: "/services/general-practice" },
+  { name: "Chronic Disease Management", href: "/services/chronic-disease" },
+  { name: "Women's Health", href: "/services/womens-health" },
+  { name: "Men's Health", href: "/services/mens-health" },
+  { name: "Skin Cancer Checks", href: "/services/skin-checks" },
+  { name: "Vaccinations", href: "/services/vaccinations" }
+];
+
+const languages = ["English", "中文", "Español", "हिन्दी", "Italiano", "Ελληνικά", "Tiếng Việt"];
+---
+
+<!-- Trust Indicators Section (elevated design) -->
+<section class="py-20 bg-white border-t border-stone-200">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-5xl mx-auto items-center">
+
+      {trustBadges.map((badge, index) => (
+        <div class={`${index === 0 ? 'col-span-2 md:col-span-1' : ''} flex flex-col items-center text-center`}>
+          {badge.value ? (
+            <!-- 80 Years Badge (special treatment) -->
+            <>
+              <div class="w-24 h-24 bg-blue-900 rounded-full flex items-center justify-center mb-4 shadow-lg">
+                <span class="text-orange-400 text-3xl font-bold">{badge.value}</span>
+              </div>
+              <p class="text-blue-900 font-bold text-lg">{badge.label}</p>
+              <p class="text-stone-600 text-sm">{badge.sublabel}</p>
+            </>
+          ) : (
+            <!-- Other trust badges -->
+            <>
+              <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-3">
+                {badge.icon === 'dollar' ? (
+                  <svg class="w-10 h-10 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/>
+                  </svg>
+                ) : badge.icon === 'globe' ? (
+                  <span class="text-3xl">🌍</span>
+                ) : badge.icon === 'calendar' ? (
+                  <svg class="w-10 h-10 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
+                  </svg>
+                ) : (
+                  <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                  </svg>
+                )}
+              </div>
+              <p class="text-stone-700 text-sm font-semibold">{badge.label}</p>
+            </>
+          )}
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+<!-- Wave Separator -->
+<svg class="w-full" viewBox="0 0 1440 120" preserveAspectRatio="none">
+  <path
+    fill="#1e3a8a"
+    d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L0,120Z"
+  />
+</svg>
+
+<!-- Footer -->
+<footer class="bg-blue-900 text-blue-100 pt-16 pb-8">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+      <!-- Practice Info -->
+      <div>
+        <h3 class="text-2xl font-bold text-white mb-4">{practiceName}</h3>
+        <p class="text-blue-200 mb-6 leading-relaxed">
+          Your safe harbour for comprehensive, multilingual healthcare. Serving the community for 80 years.
+        </p>
+        <div class="flex gap-4">
+          <a
+            href="#"
+            class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-orange-400 hover:text-blue-900 transition"
+            aria-label="Facebook"
+          >
+            <span>f</span>
+          </a>
+          <a
+            href="#"
+            class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-orange-400 hover:text-blue-900 transition"
+            aria-label="Instagram"
+          >
+            <span>i</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="text-lg font-bold text-white mb-4">Our Services</h4>
+        <ul class="space-y-2 text-blue-200">
+          {services.map(service => (
+            <li>
+              <a href={service.href} class="hover:text-orange-400 transition">
+                {service.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-lg font-bold text-white mb-4">Contact Us</h4>
+        <ul class="space-y-3 text-blue-200">
+          <li class="flex gap-2">
+            <span>📍</span>
+            <span>{address}</span>
+          </li>
+          <li class="flex gap-2">
+            <span>📞</span>
+            <a href={`tel:${phone.replace(/\s/g, '')}`} class="hover:text-orange-400 transition">
+              {phone}
+            </a>
+          </li>
+          <li class="flex gap-2">
+            <span>✉️</span>
+            <a href={`mailto:${email}`} class="hover:text-orange-400 transition">
+              {email}
+            </a>
+          </li>
+        </ul>
+        <a
+          href="/book"
+          class="inline-block mt-4 bg-orange-400 text-blue-900 px-6 py-3 rounded-xl font-semibold hover:bg-orange-300 transition"
+        >
+          Book Online
+        </a>
+      </div>
+
+      <!-- Hours & Languages -->
+      <div>
+        <h4 class="text-lg font-bold text-white mb-4">Practice Hours</h4>
+        <ul class="space-y-2 text-blue-200 mb-6">
+          <li>Mon-Fri: 8:00 AM - 6:00 PM</li>
+          <li>Saturday: 9:00 AM - 1:00 PM</li>
+          <li>Sunday: Closed</li>
+        </ul>
+        <h4 class="text-lg font-bold text-white mb-3">Languages</h4>
+        <p class="text-blue-200 text-sm">
+          {languages.join(' • ')}
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-blue-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-blue-300 text-sm">
+        © 2024 {practiceName}. All rights reserved.
+      </p>
+      <div class="flex gap-6 text-sm text-blue-300">
+        <a href="/privacy" class="hover:text-orange-400 transition">Privacy Policy</a>
+        <a href="/terms" class="hover:text-orange-400 transition">Terms of Service</a>
+        <a href="/accessibility" class="hover:text-orange-400 transition">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,65 @@
+---
+// Hero.astro - Harbour Entrance Metaphor
+// The Safe Harbour: Welcoming gateway communicating safety and accessibility
+// Anti-AI Constraint: Intentional asymmetry (33% left margin positioning)
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryCTA?: string;
+  secondaryCTA?: string;
+}
+
+const {
+  title = "Your Safe Harbour for Comprehensive Healthcare",
+  subtitle = "Experienced, multilingual care you can access 24/7—no weeks of waiting, no rushed appointments",
+  primaryCTA = "Book Appointment Online",
+  secondaryCTA = "Explore Our Services"
+} = Astro.props;
+---
+
+<section class="relative h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden">
+  <!-- Organic wave pattern background -->
+  <div class="absolute inset-0 opacity-10">
+    <svg class="w-full h-full" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+      <path d="M0,400 Q360,350 720,400 T1440,400 L1440,800 L0,800 Z" fill="currentColor" class="text-blue-700"/>
+      <path d="M0,450 Q360,400 720,450 T1440,450 L1440,800 L0,800 Z" fill="currentColor" class="text-blue-600" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <!-- Content positioned at 33% left margin (intentional asymmetry) -->
+  <div class="relative z-10 container mx-auto px-6 h-full flex items-center">
+    <div class="max-w-4xl md:ml-[8%] lg:ml-[12%]">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-tight mb-6">
+        {title}
+      </h1>
+      <p class="text-xl md:text-2xl text-blue-100 leading-relaxed mb-10 max-w-2xl">
+        {subtitle}
+      </p>
+
+      <!-- Dual CTAs with coastal coral accent -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/book"
+          class="bg-orange-400 text-blue-900 px-8 py-4 rounded-2xl text-lg font-semibold shadow-xl hover:bg-orange-300 transition inline-block text-center"
+        >
+          {primaryCTA}
+        </a>
+        <a
+          href="#services"
+          class="border-2 border-white text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-white/10 transition inline-block text-center"
+        >
+          {secondaryCTA}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Organic wave SVG transition to next section -->
+  <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path
+      fill="#fafaf9"
+      d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L0,120Z"
+    />
+  </svg>
+</section>

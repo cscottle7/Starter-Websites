@@ -1,0 +1,119 @@
+---
+// ServicesGrid.astro - Mooring Berths Metaphor
+// Each service is a specialized berth for specific health needs
+// Anti-AI Constraint: Spatial rhythm variation (dramatically different gap spacing)
+
+interface Service {
+  title: string;
+  description: string;
+  icon: string;
+  href: string;
+  colSpan: string;
+  bgColor: string;
+}
+
+const services: Service[] = [
+  {
+    title: "General Practice",
+    description: "Comprehensive primary care for all ages. Your first port of call for health guidance.",
+    icon: "anchor",
+    href: "/services/general-practice",
+    colSpan: "md:col-span-3 lg:col-span-4",
+    bgColor: "bg-blue-50"
+  },
+  {
+    title: "Chronic Disease Management",
+    description: "Navigate long-term conditions with experienced guidance and ongoing support.",
+    icon: "compass",
+    href: "/services/chronic-disease",
+    colSpan: "md:col-span-2 lg:col-span-3",
+    bgColor: "bg-stone-50"
+  },
+  {
+    title: "Skin Cancer Checks",
+    description: "Expert screening and early detection.",
+    icon: "sun",
+    href: "/services/skin-checks",
+    colSpan: "md:col-span-2 lg:col-span-2",
+    bgColor: "bg-orange-50"
+  },
+  {
+    title: "Women's Health",
+    description: "Comprehensive care across all life stages—from adolescence through menopause.",
+    icon: "heart",
+    href: "/services/womens-health",
+    colSpan: "md:col-span-3 lg:col-span-3",
+    bgColor: "bg-blue-50"
+  },
+  {
+    title: "Men's Health",
+    description: "Compassionate support for physical and mental wellbeing.",
+    icon: "shield",
+    href: "/services/mens-health",
+    colSpan: "md:col-span-2 lg:col-span-3",
+    bgColor: "bg-stone-50"
+  },
+  {
+    title: "Mental Health Support",
+    description: "Non-judgmental care, Medicare-funded treatment plans.",
+    icon: "mind",
+    href: "/services/mental-health",
+    colSpan: "md:col-span-3 lg:col-span-3",
+    bgColor: "bg-orange-50"
+  },
+  {
+    title: "Children's Health",
+    description: "Gentle, experienced care for newborns through adolescence. Bulk billing available.",
+    icon: "child",
+    href: "/services/childrens-health",
+    colSpan: "md:col-span-2 lg:col-span-4",
+    bgColor: "bg-blue-50"
+  },
+  {
+    title: "Vaccinations",
+    description: "Childhood immunisations, flu shots, travel medicine.",
+    icon: "syringe",
+    href: "/services/vaccinations",
+    colSpan: "md:col-span-3 lg:col-span-5",
+    bgColor: "bg-stone-50"
+  }
+];
+---
+
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4 text-center">
+      Your Healthcare Mooring Berths
+    </h2>
+    <p class="text-xl text-stone-600 text-center max-w-3xl mx-auto mb-16">
+      Comprehensive services where every health need finds its safe harbour
+    </p>
+
+    <!-- Asymmetric grid with varied gap spacing (tidal rhythm) -->
+    <div class="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-9 gap-6 gap-y-12 lg:gap-y-20">
+      {services.map(service => (
+        <div class={`${service.colSpan} ${service.bgColor} p-8 rounded-3xl shadow-lg hover:shadow-xl transition`}>
+          <!-- Icon with coastal coral accent -->
+          <div class="w-16 h-16 bg-orange-400 rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-blue-900" fill="currentColor" viewBox="0 0 24 24">
+              {/* Icon paths would be inserted here based on service.icon */}
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </div>
+
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">{service.title}</h3>
+          <p class="text-stone-700 leading-relaxed mb-4">
+            {service.description}
+          </p>
+
+          <a
+            href={service.href}
+            class="text-orange-400 font-semibold hover:text-orange-500 inline-flex items-center gap-2"
+          >
+            Learn more →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

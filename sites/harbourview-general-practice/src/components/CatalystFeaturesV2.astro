@@ -1,0 +1,105 @@
+---
+// Catalyst Features Section v2.0 - The 4 Transformation Enablers
+// Value proposition breakdown showing what makes Harbourview unique
+// Metaphor: The catalyst components (Expert, Accessible, Innovative, Community)
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+}
+
+const {
+  heading = "The Transformation Enablers",
+  subheading = "Breakthrough wellness outcomes through expert guidance, innovative access, and patient empowerment—removing every barrier between you and your health goals."
+} = Astro.props;
+
+// 4 catalyst components from meta-prompt Section 3
+const features = [
+  {
+    title: "Expert Precision",
+    keyword: "EXPERT",
+    icon: "🎯",
+    description: "80 combined years medical experience with 6 FRACGP-certified GPs. Specialized 'reaction chambers': mental health, women's health, chronic disease, sports medicine.",
+    stats: "6 GPs • 80 Years Experience",
+    link: "/doctors"
+  },
+  {
+    title: "Barrier Removal",
+    keyword: "ACCESSIBLE + INNOVATIVE",
+    icon: "⚡",
+    description: "Digital innovation (24/7 online booking), financial access (bulk billing), time access (same-day + Saturday), language access (4 languages), location access (telehealth).",
+    stats: "24/7 Booking • 4 Languages",
+    link: "/services"
+  },
+  {
+    title: "Community Support",
+    keyword: "COMMUNITY",
+    icon: "🌐",
+    description: "Local Neutral Bay practice (neighbourhood hub, not corporate chain). Culturally sensitive care, family-focused continuity, allied health integration.",
+    stats: "Local Hub • CALD-Friendly",
+    link: "/about"
+  },
+  {
+    title: "Patient Empowerment",
+    keyword: "EMPOWERING",
+    icon: "💡",
+    description: "Mental health care plans (patient-driven psychology access), patient education resources, preventative health assessments, transparent fee structure.",
+    stats: "350+ Empowered • No Surprises",
+    link: "/services/mental-health"
+  }
+];
+---
+
+<section class="py-24 md:py-32 bg-gradient-to-b from-white via-violet-50 to-white">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h2 class="text-5xl md:text-6xl font-display font-bold text-violet-500 mb-6">
+        {heading}
+      </h2>
+      <p class="text-2xl text-stone-600 leading-relaxed">
+        {subheading}
+      </p>
+    </div>
+
+    <!-- 4-Column Feature Grid - Anti-AI: Bold borders, gradient hover -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {features.map((feature) => (
+        <div class="group bg-white rounded-3xl p-8 border-4 border-violet-500/20 hover:border-violet-500 transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-2">
+          <!-- Gradient Icon Circle -->
+          <div class="w-16 h-16 bg-gradient-to-br from-violet-500 to-red-400 rounded-full flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+            {feature.icon}
+          </div>
+
+          <!-- Title with keyword -->
+          <h3 class="text-2xl font-bold text-stone-800 mb-2">
+            {feature.title}
+          </h3>
+          <p class="text-xs uppercase tracking-wide text-violet-500 font-semibold mb-4">
+            {feature.keyword}
+          </p>
+
+          <!-- Description -->
+          <p class="text-base text-stone-600 leading-relaxed mb-6">
+            {feature.description}
+          </p>
+
+          <!-- Stats Badge -->
+          <div class="bg-gradient-to-r from-violet-500/10 to-red-400/10 rounded-xl px-4 py-2 mb-4">
+            <p class="text-sm font-semibold text-violet-700">
+              {feature.stats}
+            </p>
+          </div>
+
+          <!-- CTA Link -->
+          <a href={feature.link} class="inline-flex items-center gap-2 text-violet-500 font-bold hover:text-red-400 transition-colors">
+            Learn More
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

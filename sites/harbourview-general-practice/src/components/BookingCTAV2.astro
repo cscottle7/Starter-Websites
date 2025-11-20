@@ -1,0 +1,94 @@
+---
+// Booking CTA Section v2.0 - "Start Your Transformation Today"
+// Activation Energy CTA with 3-step process
+// Metaphor: The catalyst activation moment - patient initiates reaction
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  phoneNumber?: string;
+}
+
+const {
+  title = "Start Your Transformation Today",
+  subtitle = "Book your first appointment in 60 seconds. Our catalyst team is ready to empower your wellness breakthrough.",
+  ctaText = "Book Your Appointment Now",
+  ctaLink = "/book",
+  phoneNumber = "(02) 9953 0000"
+} = Astro.props;
+
+// 3-step transformation process
+const steps = [
+  {
+    number: "1",
+    title: "Choose Your Catalyst",
+    description: "Select your preferred GP based on expertise, language, or availability",
+    color: "violet-500"
+  },
+  {
+    number: "2",
+    title: "Pick Your Time",
+    description: "Same-day, next-day, or future appointments—Saturday hours available",
+    color: "red-400"
+  },
+  {
+    number: "3",
+    title: "Activate Your Journey",
+    description: "Receive confirmation + prepare for your breakthrough appointment",
+    color: "yellow-400"
+  }
+];
+---
+
+<!-- Anti-AI: Diagonal clip-path on BOTH edges, full-width gradient -->
+<section
+  class="relative py-32 md:py-48 bg-gradient-to-br from-violet-500 via-red-400 to-yellow-400 overflow-hidden"
+  style="clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%)"
+>
+  <!-- Abstract energy field overlay -->
+  <div class="absolute inset-0 bg-[url('/images/catalyst-energy-field.svg')] opacity-10"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <!-- Main Heading -->
+      <h2 class="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight">
+        {title}
+      </h2>
+      <p class="text-2xl md:text-3xl font-light mb-16 opacity-95">
+        {subtitle}
+      </p>
+
+      <!-- 3-Step Process (Floating Cards) - Anti-AI: backdrop-blur glassmorphism -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {steps.map((step) => (
+          <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border-4 border-white/30 hover:bg-white/20 transition-all duration-300">
+            <div class={`w-20 h-20 bg-white rounded-full flex items-center justify-center text-5xl font-display font-bold text-${step.color} mx-auto mb-6`}>
+              {step.number}
+            </div>
+            <h3 class="text-2xl font-bold mb-3">{step.title}</h3>
+            <p class="text-lg opacity-90">{step.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- MEGA CTA Button - Anti-AI: Display font, scale hover -->
+      <div class="space-y-6">
+        <a
+          href={ctaLink}
+          class="inline-flex items-center gap-4 bg-white text-violet-500 px-12 py-6 rounded-full font-display font-bold text-2xl shadow-2xl hover:shadow-[0_30px_80px_rgba(255,255,255,0.5)] hover:scale-110 transition-all duration-500"
+        >
+          {ctaText}
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+
+        <p class="text-xl opacity-90">
+          Or call us: <a href={`tel:${phoneNumber.replace(/\s/g, '')}`} class="font-bold underline hover:text-yellow-300 transition-colors">{phoneNumber}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

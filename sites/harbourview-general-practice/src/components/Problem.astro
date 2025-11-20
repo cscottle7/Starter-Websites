@@ -1,0 +1,73 @@
+---
+// Problem.astro - Storm Before the Harbour
+// Contrasts turbulent healthcare waters with safe harbour solution
+// Anti-AI Constraint: Unexpected color usage (warm coral for problems vs typical red)
+
+interface Props {
+  problemTitle?: string;
+  solutionTitle?: string;
+}
+
+const {
+  problemTitle = "Tired of Waiting Weeks?",
+  solutionTitle = "Find Your Safe Harbour"
+} = Astro.props;
+
+const problems = [
+  "Impossible to get appointments—weeks of waiting",
+  "Rushed 5-minute consultations where you can't ask questions",
+  "Language barriers making you feel lost and unheard",
+  "Mysterious pricing causing financial anxiety"
+];
+
+const solutions = [
+  "Book online 24/7—secure your berth within days, not weeks",
+  "Comprehensive, unhurried consultations—we listen fully",
+  "Multilingual GPs who speak your language",
+  "Transparent, accessible pricing—no surprises"
+];
+---
+
+<section class="py-20 bg-stone-50">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-7 gap-10 lg:gap-16 items-center">
+
+      <!-- Problem Column (Turbulent Waters) - 3 cols -->
+      <div class="lg:col-span-3 relative">
+        <!-- Tilted background shape -->
+        <div class="absolute inset-0 bg-orange-100/30 rounded-3xl transform -rotate-2"></div>
+
+        <div class="relative bg-white p-8 rounded-2xl shadow-lg">
+          <h2 class="text-3xl font-bold text-stone-900 mb-6">{problemTitle}</h2>
+          <ul class="space-y-4 text-stone-700">
+            {problems.map(problem => (
+              <li class="flex gap-3">
+                <span class="text-orange-400 font-bold">×</span>
+                <span>{problem}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Solution Column (Safe Harbour) - 4 cols -->
+      <div class="lg:col-span-4 relative">
+        <!-- Tilted background shape (opposite direction) -->
+        <div class="absolute inset-0 bg-blue-100/30 rounded-3xl transform rotate-1"></div>
+
+        <div class="relative bg-blue-900 p-10 rounded-2xl shadow-xl">
+          <h2 class="text-3xl font-bold text-white mb-6">{solutionTitle}</h2>
+          <ul class="space-y-4 text-blue-100">
+            {solutions.map(solution => (
+              <li class="flex gap-3">
+                <span class="text-orange-400 font-bold text-xl">✓</span>
+                <span>{solution}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

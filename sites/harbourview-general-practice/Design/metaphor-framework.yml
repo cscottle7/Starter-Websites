@@ -1,0 +1,110 @@
+# Metaphor Framework: Harbourview General Practice
+# Generated: 2025-11-18
+# Grounding Rate: 100% (14/14 elements traced)
+
+project_name: harbourview-general-practice
+metaphor_primary: "The Safe Harbour"
+metaphor_definition: "Healthcare as a safe harbour where every patient finds accessible, experienced guidance in calm, sheltered watersregardless of which shore they come from."
+
+visual_principles:
+
+  color_palette:
+    harbour_deep_blue:
+      tailwind: "blue-900, blue-800"
+      usage: "Headers, primary CTAs, navigation"
+      source: "Magnolia Practice mood board + Safe Harbour metaphor (ocean depths = 80yrs experience)"
+
+    calm_water_blue:
+      tailwind: "blue-600, blue-500"
+      usage: "Backgrounds, sections, borders"
+      source: "CRGH mood board + Safe Harbour metaphor (navigable waters = accessible)"
+
+    coastal_coral:
+      tailwind: "orange-400"
+      usage: "Accent CTAs, highlights"
+      source: "Magnolia coral accents + harbour sunset warmth = compassionate approachability"
+
+    sandy_neutral:
+      tailwind: "stone-100, stone-50"
+      usage: "Section backgrounds"
+      source: "Montecito beige palette + coastal sand = modern calm"
+
+  spatial_rhythm:
+    vertical: "py-16 md:py-24 lg:py-32 (tidal rhythm - alternating, not uniform)"
+    horizontal: "px-6 md:px-12 lg:px-24 (wide harbour basin)"
+    gaps: "gap-8 md:gap-12 (vessels naturally spaced)"
+    constraint: "Intentional asymmetry - coastlines are never perfectly straight"
+    source: "CRGH minimalist spacing + Saban organic shapes + patient pain point (not rushed)"
+
+  typography:
+    h1: "text-5xl md:text-6xl font-bold (harbour lighthouse)"
+    h2: "text-3xl md:text-4xl font-semibold (navigation buoy)"
+    body: "text-lg leading-relaxed (calm water flow)"
+    cta: "text-base md:text-lg font-semibold tracking-wide (signal flag)"
+    font: "Inter / system-ui"
+    source: "Montecito elegant + Magnolia professional + maritime signage = accessible clarity"
+
+component_metaphors:
+
+  hero:
+    concept: "Harbour entrance - first view of safe waters"
+    tailwind: "bg-gradient-to-br from-blue-900 to-blue-700 py-20 md:py-32"
+    source: "Dermatology template hero + Safe Harbour metaphor"
+
+  services:
+    concept: "Mooring berths - individualized docking for each vessel"
+    tailwind: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [&>*:last-child]:lg:col-span-2"
+    constraint: "Asymmetric grid (organic coastline, not rigid dock)"
+    source: "Saban organic shapes + CRGH cards + patient-centred metaphor"
+
+  team:
+    concept: "Experienced harbourmasters - seasoned guides"
+    tailwind: "rounded-2xl shadow-lg border-2 border-orange-400"
+    source: "Magnolia warm imagery + 80yrs experience = trusted guides"
+
+  booking_cta:
+    concept: "Drop anchor - secure your berth"
+    tailwind: "bg-orange-400 hover:bg-blue-800 px-8 py-4 rounded-lg"
+    language: "Secure your appointment (maritime) not Book now (generic)"
+    source: "CRGH strong CTA + Safe Harbour + AHPRA compliance"
+
+  multilingual:
+    concept: "International port - flags of many nations"
+    tailwind: "flex gap-4 with flag icons, coral highlights"
+    constraint: "Visible badges, NOT dropdown (differentiat or)"
+    source: "Competitive analysis multilingual gap + international harbour metaphor"
+
+  testimonials:
+    concept: "Amplified patient voices"
+    tailwind: "text-2xl md:text-3xl (LARGER than hero subhead)"
+    constraint: "Unexpected hierarchy - patient stories deserve prominence"
+    source: "Persona pain point ('feeling listened to') + anti-AI design"
+
+anti_ai_constraints:
+  - "Intentional asymmetry: Services grid last item spans 2 cols (natural coastline)"
+  - "Unexpected hierarchy: Testimonials larger than subheadings (patient voices amplified)"
+  - "Constraint creativity: AHPRA = maritime guidance language (support/guide not cure/fix)"
+  - "Color nuance: 3 distinct blues (deep/calm/sky) not single shade (ocean depth gradients)"
+  - "Spatial rhythm: Alternating py-16/24/32 (tidal changes not uniform spacing)"
+
+traceability_map:
+  - "Safe Harbour: Harbourview name + coastal location + Accessible/Community/Experienced keywords"
+  - "Deep blue: Magnolia mood board + ocean depth = 80yrs experience"
+  - "Coral: Magnolia accents + sunset = compassionate/accessible warmth"
+  - "Generous spacing: CRGH minimalist + persona ('not rushed') = breathing room"
+  - "Clear typography: Accessible keyword + maritime signage = wayfinding clarity"
+  - "Asymmetric grid: Saban organic shapes + patient-centred = individualized berths"
+  - "Multilingual flags: Competitive gap + international port = visible welcome"
+  - "Maritime language: AHPRA constraint + metaphor = guide/support/navigate (not cure/fix)"
+  - "Testimonial size: Persona ('listened to') + anti-AI = amplified patient voices"
+  - "Hero gradient: CRGH/Derm template + metaphor = calm experienced waters"
+  - "Organic asymmetry: Saban mood board + coastline = natural irregularity"
+  - "Tidal spacing: Safe Harbour + anti-AI = rhythmic variation (py-16/24/32)"
+  - "CTA language: AHPRA compliance + metaphor = 'secure berth' (regulatory creativity)"
+  - "3-blue palette: Ocean depth + mood board = graduated nuance (deep/calm/reflection)"
+
+grounding_summary:
+  total_elements: 14
+  grounded_elements: 14
+  rate: "100%"
+  status: "PASS (e95% required)"
